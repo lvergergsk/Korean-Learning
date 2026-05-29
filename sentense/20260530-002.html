@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩语学习笔记</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 18mm 24mm;
+
+            @bottom-center {
+                content: "— " counter(page) " —";
+                font-size: 11px;
+                color: #bbb;
+                font-family: 'Georgia', serif;
+                letter-spacing: 0.15em;
+            }
+        }
+
+        /* Syllable layout */
+        .wrd {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .hc {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ks {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 5px;
+        }
+
+        /* Key badge */
+        .k {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-bottom: 2px solid #9ca3af;
+            border-radius: 2px;
+            color: #374151;
+            font-size: 9px;
+            font-weight: 700;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.5;
+            padding: 0 3.5px;
+            min-width: 14px;
+            text-align: center;
+        }
+
+        .k-sh {
+            background: #fef3c7;
+            border-color: #d97706;
+            border-bottom-color: #b45309;
+            color: #92400e;
+        }
+
+        /* Sentence accent bar */
+        .sentence-box::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 3px;
+            background: #1e3a5f;
+            margin-bottom: 18px;
+        }
+
+        /* Section title trailing rule */
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        /* Tips diamond bullet */
+        .tip-item {
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .tip-item::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            font-size: 8px;
+            color: #b45309;
+            top: 5px;
+        }
+
+        @media print {
+            body {
+                background: none !important;
+                padding: 0 !important;
+            }
+
+            .a4-container {
+                box-shadow: none !important;
+            }
+        }
+
+        @media screen {
+            body {
+                padding: 30px 0 50px;
+            }
+
+            .a4-container {
+                box-shadow: 0 4px 28px rgba(0, 0, 0, 0.13);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-200 text-gray-800 leading-relaxed"
+    style="font-family:'Helvetica Neue',Arial,'Noto Sans CJK SC','Malgun Gothic',sans-serif; font-size:14px;">
+
+    <div class="a4-container w-[210mm] mx-auto bg-white px-[18mm] py-[20mm]">
+
+        <div class="sentence-box pb-6 mb-8 border-b border-gray-200">
+
+            <div class="flex flex-wrap items-end mb-3" style="gap: 8px 12px;">
+
+                <span class="wrd">
+                    <span class="hc">
+                        <span class="ks"><span class="k">w</span><span class="k">k</span><span class="k">f</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">잘</span>
+                    </span>
+                </span>
+
+                <span class="wrd">
+                    <span class="hc">
+                        <span class="ks"><span class="k">q</span><span class="k">n</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">부</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">x</span><span class="k">k</span><span class="k">r</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">탁</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">g</span><span class="k">k</span><span class="k">q</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">합</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">s</span><span class="k">l</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">니</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">e</span><span class="k">k</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">다</span>
+                    </span>
+                    <span style="font-size:21px;color:#9ca3af;padding-bottom:1px;">.</span>
+                </span>
+
+            </div>
+
+            <div class="flex items-center justify-between mb-2">
+                <div class="text-sm text-gray-500">请多关照。 / 拜托了。</div>
+                <a href="https://translate.google.com/?sl=ko&tl=zh-CN&text=%EC%9E%98%20%EB%B6%80%ED%83%81%ED%95%A9%EB%8B%88%EB%8B%A4.&op=translate"
+                    target="_blank"
+                    class="inline-flex items-center gap-1 text-gray-400 hover:text-blue-500 transition-colors no-underline"
+                    style="font-size:11px;letter-spacing:0.03em;text-decoration:none;" title="在 Google 翻译中朗读">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                    </svg>
+                    朗读
+                </a>
+            </div>
+            <div class="flex items-baseline gap-2">
+                <span class="shrink-0 font-bold uppercase text-gray-400"
+                    style="font-size:9px;letter-spacing:0.14em;">ROM</span>
+                <span class="text-gray-500" style="font-size:13px;line-height:1.8;">
+                    jal | bu-tak-ham-ni-da
+                </span>
+            </div>
+        </div>
+
+        <div class="section-title flex items-center gap-2"
+            style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.2em;margin:0 0 12px 0;">
+            核心词汇与语法</div>
+        <table class="w-full border-collapse" style="font-size:13px;">
+            <thead>
+                <tr style="border-bottom:2px solid #1e3a5f;">
+                    <th
+                        style="color:#1e3a5f;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;padding:8px 12px 10px;text-align:left;width:27%;">
+                        词汇</th>
+                    <th
+                        style="color:#1e3a5f;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;padding:8px 12px 10px;text-align:left;width:43%;">
+                        释义与语法作用</th>
+                    <th
+                        style="color:#1e3a5f;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;padding:8px 12px 10px;text-align:left;">
+                        备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom:1px solid #f3f4f6;">
+                    <td style="padding:10px 12px;vertical-align:top;">
+                        <span style="font-weight:700;color:#1e3a5f;font-size:13.5px;">잘</span>
+                        <span style="display:block;font-size:11px;color:#9ca3af;margin-top:3px;">jal</span>
+                    </td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">好、特别、很好地（副词）</td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">常用副词，修饰后面的动词。此处表示希望事情进行得顺利。</td>
+                </tr>
+                <tr style="border-bottom:1px solid #f3f4f6;">
+                    <td style="padding:10px 12px;vertical-align:top;">
+                        <span style="font-weight:700;color:#1e3a5f;font-size:13.5px;">부탁</span>
+                        <span style="display:block;font-size:11px;color:#9ca3af;margin-top:3px;">bu-tak</span>
+                    </td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">拜托、嘱托、请求（名词）</td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">汉字词“付托”。是寻求他人帮助或客套时的核心词汇。</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 12px;vertical-align:top;">
+                        <span style="font-weight:700;color:#1e3a5f;font-size:13.5px;">합니다</span>
+                        <span style="display:block;font-size:11px;color:#9ca3af;margin-top:3px;">ham-ni-da</span>
+                    </td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">做（动词 하다 的格式体终结形式）</td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">由 하다 结合最高敬语词尾 -ㅂ니다 构成，常用于正式、庄重的场合。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-title flex items-center gap-2"
+            style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.2em;margin:28px 0 12px 0;">
+            记忆要点</div>
+        <div style="border-left:3px solid #b45309;padding-left:16px;">
+            <ul style="list-style:none;padding:0;margin:0;">
+
+                <li class="tip-item" style="font-size:13px;color:#4b5563;line-height:1.75;margin-bottom:13px;">
+                    <strong>核心场景与礼仪：</strong>“잘 부탁합니다”是初次见面、职场报到或请求他人协助时最常用的核心句型。在正式场合中，通常会在前面加上初次见面的问候语：
+                    <br>&ensp;→ <u>처음 뵙겠습니다.</u> 잘 부탁합니다. <span style="color:#9ca3af;font-size:12px;">（初次见面，请多关照。）</span>
+                </li>
+
+                <li class="tip-item" style="font-size:13px;color:#4b5563;line-height:1.75;margin-bottom:13px;">
+                    <strong>语调与敬语升级：</strong>根据对象的身份和场合，该短语有不同的变形：
+                    <br>&ensp;· <strong>敬语升级（最郑重）</strong>：잘 부탁<u>드립니다</u> <span style="color:#9ca3af;font-size:12px;">（对上级、客户使用，用谦词 "드립니다" 代替 "합니다"）</span>
+                    <br>&ensp;· <strong>非正式平语（亲近）</strong>：잘 부탁<u>해</u> <span style="color:#9ca3af;font-size:12px;">（对同辈或晚辈使用）</span>
+                </li>
+
+                <li class="tip-item" style="font-size:13px;color:#4b5563;line-height:1.75;margin-bottom:13px;">
+                    <strong>两段分块朗读：</strong>按意群断句，整体自然连读：
+                    <br>① <strong>잘</strong> <span style="color:#9ca3af;font-size:12px;">jal</span> → 好好地、顺利地
+                    <br>② <strong>부탁합니다</strong> <span style="color:#9ca3af;font-size:12px;">bu-tak-ham-ni-da</span> → 拜托了
+                </li>
+
+                <li class="tip-item" style="font-size:13px;color:#4b5563;line-height:1.75;">
+                    <strong>双重音变陷阱：</strong>书写形式与实际发音差异显著，初学者需特别注意听觉习惯：
+                    <br>&ensp;· <strong>激音化（부탁합니다）</strong>：前一个字的收音 `ㄱ` 与后一个字的初声 `ㅎ` 相遇，融合成激音 **ㅋ** 的发音，实际读作 [부타<b>캄</b>니다]。
+                    <br>&ensp;· <strong>鼻音化（합니다）</strong>：收音 `ㅂ` 遇到后面的初声 `ㄴ` 时，为了发音顺畅会弱化变为鼻音 **ㅁ**，实际读作 [부타캄<b>님</b>다]。
+                    <br>&ensp;· <strong>终极实际发音</strong>：写为 잘 부탁합니다，实际标准读音为 <strong>[잘 부타캄니다]</strong>。
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+</html>
