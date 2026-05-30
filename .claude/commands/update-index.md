@@ -1,79 +1,84 @@
 # Update Index
 
-Scan all sentence files under `sentense/`, verify each file's Google Translate link, update `index.html`, then report what changed.
+Scan `character/` and `sentense/` folders, verify Google Translate links **only for files changed since the last index.html commit**, update `index.html`, then report.
 
 ## Steps
 
-### 1. Discover sentence files
+### 1. Discover files and changed set
 
-Run:
+Run both commands:
 ```bash
-ls sentense/*.html | sort
+ls character/*.html sentense/*.html 2>/dev/null | sort
+git diff $(git log -1 --format=%H -- index.html)..HEAD --name-only -- character/ sentense/
 ```
 
-### 2. Extract sentence text and Google Translate URL from each file
+First command = all files (both folders). Second command = files changed since last index update (need URL verification for `sentense/` files). If second command returns nothing, skip steps 2–3.
 
-For each `.html` file found, use Python to parse out:
-- The Korean sentence text (collect all `.ch` span text in order, plus any trailing punctuation character that appears after the last `.hc` span)
-- The `href` of the `<a>` tag whose title is `"在 Google 翻译中朗读"`
+### 2. Verify Google Translate links (changed sentense/ files only)
 
-Run a single Python script like this:
+Only `sentense/` files have Google Translate links. Run this Python script passing only changed `sentense/` files:
 
 ```python
-import re, glob
+import re, sys
 from urllib.parse import unquote, quote
 
-files = sorted(glob.glob('sentense/*.html'))
+files = sorted(sys.argv[1:])
 for path in files:
     html = open(path).read()
-    # Extract Korean chars from .ch spans
     chars = re.findall(r'class="ch"[^>]*>([^<]+)<', html)
-    # Extract trailing punctuation (。. ？ ！ etc.) after last .hc span
     punct_match = re.search(r'</span>\s*<span[^>]*>([。.？！…]+)</span>\s*</span>\s*</div>', html)
     sentence = ''.join(chars) + (punct_match.group(1) if punct_match else '')
-    # Extract Google Translate URL
-    url_match = re.search(r'title="在 Google 翻译中朗读"[^>]*href="([^"]+)"', html)
-    if not url_match:
-        url_match = re.search(r'href="(https://translate\.google\.com[^"]+)"', html)
+    url_match = re.search(r'href="(https://translate\.google\.com[^"]+)"', html)
     url = url_match.group(1) if url_match else ''
-    # Decode text param from URL
     text_match = re.search(r'[?&]text=([^&]+)', url)
     decoded = unquote(text_match.group(1)) if text_match else ''
-    correct = quote(sentence, safe='')
     ok = decoded == sentence
-    print(f'{path}|{sentence}|{decoded}|{correct}|{ok}')
+    print(f'{path}|{sentence}|{decoded}|{quote(sentence, safe="")}|{ok}')
 ```
 
-### 3. Fix any wrong Google Translate links
+### 3. Fix wrong links
 
-For each file where the decoded URL text does not match the extracted sentence:
-- Rebuild the correct URL:  
-  `https://translate.google.com/?sl=ko&tl=zh-CN&text=<URL-encoded sentence>&op=translate`
-- Use the Edit tool to replace the old `href` value with the corrected one in that file.
+For any `sentense/` file where the last column is `False`, replace the old `href` with:
+`https://translate.google.com/?sl=ko&tl=zh-CN&text=<URL-encoded sentence>&op=translate`
 
-### 4. Update index.html
+### 4. Handle bad filenames
 
-Read `index.html`. The sentences section looks like:
+For any file (in either folder) not already in the index whose filename does not match `YYYYMMDD-NNN.html`:
 
+1. Read the file. Determine its type:
+   - **`sentense/`**: Korean sentence note if it contains `.ch` span elements.
+   - **`character/`**: Korean character note if it contains `<h2>` section headings with Korean characters.
+   - If neither matches, skip and report as unrecognised.
+2. Determine the correct name:
+   - Extract the date: look for a Google Translate link or date signal in the HTML; fall back to `git log -1 --format=%cs -- <path>`; fall back to today's date.
+   - Find the next free sequence number for that date in the same folder (`ls <folder>/YYYYMMDD-*.html`).
+   - Rename: if tracked use `git mv`, else plain `mv`.
+
+### 5. Update index.html
+
+Read `index.html`. It has two `<section>` blocks — **字母** (character/) and **句子** (sentense/) — each containing a `<ul>`. For every file that passes validation (sorted), ensure a matching `<li>` exists in the correct section's `<ul>`. Do not remove or reorder existing entries.
+
+**Label to use:**
+- `sentense/` file: the Korean sentence text from the Google Translate URL (`text=` param, URL-decoded).
+- `character/` file: `<h2>` headings joined with ` / ` (strip all HTML tags).
+
+**Date prefix:** from filename `YYYYMMDD-NNN.html` → `YYYY.MM.DD`.
+
+Each new `<li>` must follow this pattern:
 ```html
-<ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
-    <li>
-        <a href="sentense/20260530-001.html" ...>
-            한국어를 처음 배우는 중이니 너그럽게 봐주세요.
-        </a>
-    </li>
-    ...
-</ul>
+                <li>
+                    <a href="FOLDER/YYYYMMDD-NNN.html" class="entry-link">
+                        <span class="entry-date">YYYY.MM.DD</span>
+                        <span class="entry-text">…label…</span>
+                        <svg class="entry-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </li>
 ```
 
-- For every file in `sentense/` (sorted), ensure there is a matching `<li>` entry whose `href` points to it and whose link text is the extracted Korean sentence.
-- Add missing entries; do not remove or reorder existing ones.
-- Each `<li>` should follow the same HTML pattern as the existing entries.
+### 6. Report
 
-### 5. Report
-
-Print a summary:
-- Files scanned
-- Google Translate links fixed (list which files and what was wrong)
-- Index entries added (list which files)
-- "Nothing to change" if everything was already correct
+- Changed files checked / links fixed (which files, what was wrong)
+- Files renamed (old → new)
+- Index entries added (which section)
+- Unrecognised files skipped
+- "Nothing to change" if all was already correct

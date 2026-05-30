@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩语学习笔记</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 18mm 24mm;
+
+            @bottom-center {
+                content: "— " counter(page) " —";
+                font-size: 11px;
+                color: #bbb;
+                font-family: 'Georgia', serif;
+                letter-spacing: 0.15em;
+            }
+        }
+
+        /* Syllable layout */
+        .wrd {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .hc {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ks {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 5px;
+        }
+
+        /* Key badge */
+        .k {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            border-bottom: 2px solid #9ca3af;
+            border-radius: 2px;
+            color: #374151;
+            font-size: 9px;
+            font-weight: 700;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.5;
+            padding: 0 3.5px;
+            min-width: 14px;
+            text-align: center;
+        }
+
+        .k-sh {
+            background: #fef3c7;
+            border-color: #d97706;
+            border-bottom-color: #b45309;
+            color: #92400e;
+        }
+
+        /* Sentence accent bar */
+        .sentence-box::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 3px;
+            background: #1e3a5f;
+            margin-bottom: 18px;
+        }
+
+        /* Section title trailing rule */
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        /* Tips diamond bullet */
+        .tip-item {
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .tip-item::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            font-size: 8px;
+            color: #b45309;
+            top: 5px;
+        }
+
+        @media print {
+            body {
+                background: none !important;
+                padding: 0 !important;
+            }
+
+            .a4-container {
+                box-shadow: none !important;
+            }
+        }
+
+        @media screen {
+            body {
+                padding: 30px 0 50px;
+            }
+
+            .a4-container {
+                box-shadow: 0 4px 28px rgba(0, 0, 0, 0.13);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-200 text-gray-800 leading-relaxed"
+    style="font-family:'Helvetica Neue',Arial,'Noto Sans CJK SC','Malgun Gothic',sans-serif; font-size:14px;">
+
+    <div class="a4-container w-[210mm] mx-auto bg-white px-[18mm] py-[20mm]">
+
+        <div class="sentence-box pb-6 mb-8 border-b border-gray-200">
+
+            <div class="flex flex-wrap items-end mb-3" style="gap: 8px 12px;">
+
+                <span class="wrd">
+                    <span class="hc">
+                        <span class="ks"><span class="k">d</span><span class="k">h</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">오</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">s</span><span class="k">m</span><span class="k">f</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">늘</span>
+                    </span>
+                </span>
+
+                <span class="wrd">
+                    <span class="hc">
+                        <span class="ks"><span class="k">a</span><span class="k">k</span><span class="k">s</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">만</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">s</span><span class="k">k</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">나</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">t</span><span class="k">j</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">서</span>
+                    </span>
+                </span>
+
+                <span class="wrd">
+                    <span class="hc">
+                        <span class="ks"><span class="k">w</span><span class="k">j</span><span class="k">d</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">정</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">a</span><span class="k">k</span><span class="k">f</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">말</span>
+                    </span>
+                </span>
+
+                <span class="wrd">
+                    <span class="hc">
+                        <span class="ks"><span class="k">q</span><span class="k">k</span><span class="k">s</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">반</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">r</span><span class="k">k</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">가</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">d</span><span class="k">n</span><span class="k">j</span><span class="k k-sh">⇧t</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">웠</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">d</span><span class="k">j</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">어</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">d</span><span class="k">y</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">요</span>
+                    </span>
+                    <span style="font-size:21px;color:#9ca3af;padding-bottom:1px;">.</span>
+                </span>
+
+                <span class="wrd">
+                    <span class="hc">
+                        <span class="ks"><span class="k">d</span><span class="k">k</span><span class="k">v</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">앞</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">d</span><span class="k">m</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">으</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">f</span><span class="k">h</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">로</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">e</span><span class="k">h</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">도</span>
+                    </span>
+                </span>
+
+                <span class="wrd">
+                    <span class="hc">
+                        <span class="ks"><span class="k">w</span><span class="k">k</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">자</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">w</span><span class="k">n</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">주</span>
+                    </span>
+                </span>
+
+                <span class="wrd">
+                    <span class="hc">
+                        <span class="ks"><span class="k">d</span><span class="k">u</span><span class="k">s</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">연</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">f</span><span class="k">k</span><span class="k">r</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">락</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">g</span><span class="k">k</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">하</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">r</span><span class="k">h</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">고</span>
+                    </span>
+                </span>
+
+                <span class="wrd">
+                    <span class="hc">
+                        <span class="ks"><span class="k">w</span><span class="k">l</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">지</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">s</span><span class="k">o</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">내</span>
+                    </span>
+                    <span class="hc">
+                        <span class="ks"><span class="k">d</span><span class="k">y</span></span>
+                        <span class="ch" style="font-size:21px;font-weight:700;color:#111827;line-height:1;">요</span>
+                    </span>
+                    <span style="font-size:21px;color:#9ca3af;padding-bottom:1px;">.</span>
+                </span>
+
+            </div>
+
+            <div class="flex items-center justify-between mb-2">
+                <div class="text-sm text-gray-500">今天很高兴见到你。以后也经常保持联系吧。</div>
+                <a href="https://translate.google.com/?sl=ko&tl=zh-CN&text=%EC%98%A4%EB%8A%98%20%EB%A7%8C%EB%82%98%EC%84%9C%20%EC%A0%95%EB%A7%90%20%EB%B0%98%EA%B0%80%EC%9B%A0%EC%96%B4%EC%9A%94.%20%EC%95%96%EC%9C%BC%EB%A1%9C%EB%8F%84%20%EC%9E%90%EC%A3%BC%20%EC%97%B0%EB%9D%BD%ED%95%98%EA%B3%A0%20%EC%A7%80%EB%82%B4%EC%9A%94.&op=translate"
+                    target="_blank"
+                    class="inline-flex items-center gap-1 text-gray-400 hover:text-blue-500 transition-colors no-underline"
+                    style="font-size:11px;letter-spacing:0.03em;text-decoration:none;" title="在 Google 翻译中朗读">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                    </svg>
+                    朗读
+                </a>
+            </div>
+            <div class="flex items-baseline gap-2">
+                <span class="shrink-0 font-bold uppercase text-gray-400"
+                    style="font-size:9px;letter-spacing:0.14em;">ROM</span>
+                <span class="text-gray-500" style="font-size:13px;line-height:1.8;">
+                    oh-neul | man-na-seo | jeong-mal | ban-ga-wot-seo-yo | ap-eu-ro-do | ja-ju | yeon-rak-ha-go | ji-nae-yo
+                </span>
+            </div>
+        </div>
+
+        <div class="section-title flex items-center gap-2"
+            style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.2em;margin:0 0 12px 0;">
+            核心词汇与语法</div>
+        <table class="w-full border-collapse" style="font-size:13px;">
+            <thead>
+                <tr style="border-bottom:2px solid #1e3a5f;">
+                    <th
+                        style="color:#1e3a5f;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;padding:8px 12px 10px;text-align:left;width:27%;">
+                        词汇</th>
+                    <th
+                        style="color:#1e3a5f;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;padding:8px 12px 10px;text-align:left;width:43%;">
+                        释义与语法作用</th>
+                    <th
+                        style="color:#1e3a5f;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;padding:8px 12px 10px;text-align:left;">
+                        备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom:1px solid #f3f4f6;">
+                    <td style="padding:10px 12px;vertical-align:top;">
+                        <span style="font-weight:700;color:#1e3a5f;font-size:13.5px;">오늘</span>
+                        <span style="display:block;font-size:11px;color:#9ca3af;margin-top:3px;">oh-neul</span>
+                    </td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">今天（名词 / 副词）</td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">常用于句首作为时间状语，后面不需要接时间助词 에。</td>
+                </tr>
+                <tr style="border-bottom:1px solid #f3f4f6;">
+                    <td style="padding:10px 12px;vertical-align:top;">
+                        <span style="font-weight:700;color:#1e3a5f;font-size:13.5px;">만나서</span>
+                        <span style="display:block;font-size:11px;color:#9ca3af;margin-top:3px;">man-na-seo</span>
+                    </td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">见面（만나다）+ 因果/顺接连词词尾（-아서/어서）</td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">表示“因为见面而…”，是引发后面高兴情绪的前提原因。</td>
+                </tr>
+                <tr style="border-bottom:1px solid #f3f4f6;">
+                    <td style="padding:10px 12px;vertical-align:top;">
+                        <span style="font-weight:700;color:#1e3a5f;font-size:13.5px;">정말 반가웠어요</span>
+                        <span style="display:block;font-size:11px;color:#9ca3af;margin-top:3px;">jeong-mal ban-ga-wot-seo-yo</span>
+                    </td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">真的（정말）+ 高兴（반갑다 的过去时 해요 体）</td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">반갑다 属于 ㅂ 不规则变音形容词。常用于告别或总结今日见面时的客套语。</td>
+                </tr>
+                <tr style="border-bottom:1px solid #f3f4f6;">
+                    <td style="padding:10px 12px;vertical-align:top;">
+                        <span style="font-weight:700;color:#1e3a5f;font-size:13.5px;">앞으로도</span>
+                        <span style="display:block;font-size:11px;color:#9ca3af;margin-top:3px;">ap-eu-ro-do</span>
+                    </td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">今后、未来（앞으로）+ 也（도，助词）</td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">앞（前/未来）+ 으로（向…方向）组合为副词，加 도 表示“在未来的日子里也…”。</td>
+                </tr>
+                <tr style="border-bottom:1px solid #f3f4f6;">
+                    <td style="padding:10px 12px;vertical-align:top;">
+                        <span style="font-weight:700;color:#1e3a5f;font-size:13.5px;">자주</span>
+                        <span style="display:block;font-size:11px;color:#9ca3af;margin-top:3px;">ja-ju</span>
+                    </td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">经常、常常（频率副词）</td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">直接修饰后面的动词短语，提高动作发生频率。</td>
+                </tr>
+                <tr style="border-bottom:1px solid #f3f4f6;">
+                    <td style="padding:10px 12px;vertical-align:top;">
+                        <span style="font-weight:700;color:#1e3a5f;font-size:13.5px;">연락하고</span>
+                        <span style="display:block;font-size:11px;color:#9ca3af;margin-top:3px;">yeon-rak-ha-go</span>
+                    </td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">联系（연락하다）+ 并列/顺接词尾（-고）</td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">用于连接两个连续发生的动作。注意此处的流音化和激音化读音变化。</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px 12px;vertical-align:top;">
+                        <span style="font-weight:700;color:#1e3a5f;font-size:13.5px;">지내요</span>
+                        <span style="display:block;font-size:11px;color:#9ca3af;margin-top:3px;">ji-nae-yo</span>
+                    </td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">度过、相处（지내다 + 해요 体）</td>
+                    <td style="padding:10px 12px;vertical-align:top;color:#4b5563;line-height:1.6;">"연락하고 지내요" 是非常地道的韩语韩式社交语，表示“常联系、常走动”。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-title flex items-center gap-2"
+            style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.2em;margin:28px 0 12px 0;">
+            记忆要点</div>
+        <div style="border-left:3px solid #b45309;padding-left:16px;">
+            <ul style="list-style:none;padding:0;margin:0;">
+
+                <li class="tip-item" style="font-size:13px;color:#4b5563;line-height:1.75;margin-bottom:13px;">
+                    <strong>句型框架套用：</strong>掌握实用社交句型 <strong>[动词]-아서/어서 반가웠어요</strong>（因做某事而很高兴），可以直接替换造句：
+                    <br>&ensp;→ 이야기해서 정말 반가웠어요 <span style="color:#9ca3af;font-size:12px;">（很高兴能和你聊天）</span>
+                    <br>&ensp;→ 같이 밥을 먹어서 반가웠어요 <span style="color:#9ca3af;font-size:12px;">（很高兴一起吃了饭）</span>
+                </li>
+
+                <li class="tip-item" style="font-size:13px;color:#4b5563;line-height:1.75;margin-bottom:13px;">
+                    <strong>意群分块朗读：</strong>韩语长句建议按意群断句，读顺一句再连接下一句：
+                    <br>① <strong>오늘 만나서</strong> <span style="color:#9ca3af;font-size:12px;">oh-neul man-na-seo</span> → 今天见面
+                    <br>② <strong>정말 반가웠어요</strong> <span style="color:#9ca3af;font-size:12px;">jeong-mal ban-ga-wot-seo-yo</span> → 真的很高兴
+                    <br>③ <strong>앞으로도 자주</strong> <span style="color:#9ca3af;font-size:12px;">ap-eu-ro-do ja-ju</span> → 今后也经常
+                    <br>④ <strong>연락하고 지내요</strong> <span style="color:#9ca3af;font-size:12px;">yeon-rak-ha-go ji-nae-yo</span> → 保持联系吧
+                </li>
+
+                <li class="tip-item" style="font-size:13px;color:#4b5563;line-height:1.75;margin-bottom:13px;">
+                    <strong>连接词尾对比（-아서/어서 vs -고）：</strong>本句中包含两种常见的连接词尾：
+                    <br>&ensp;· <strong>-아서/어서</strong>（因果/前提）：만나서 反映了后面半句“高兴”的原因，前后具有严密的逻辑先后关联。
+                    <br>&ensp;· <strong>-고</strong>（并列/独立顺接）：연락하다 和 지내다 是并列或先后发生的关系，两个动作相对独立。
+                </li>
+
+                <li class="tip-item" style="font-size:13px;color:#4b5563;line-height:1.75;">
+                    <strong>多处音变陷阱（重点记忆）：</strong>书写和发音不一致，是初学者的听读难点：
+                    <br>&ensp;· <strong>반가웠어요</strong>：实际发音为 <strong>[반가워써요]</strong>（双收音 ㅆ 移到后面与 어 发生连音化）。
+                    <br>&ensp;· <strong>앞으로도</strong>：实际发音为 <strong>[아프로도]</strong>（收音 ㅍ 移到后面与 으 发生连音化）。
+                    <br>&ensp;· <strong>연락하고</strong>：发生双重音变！先由于流音化变音为 [열락]，再由于 ㄱ 与 ㅎ 相遇发生激音化，最终实际发音为 <strong>[열라카고]</strong>。
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+</html>
