@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩语字母表（修正补充版）</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['PingFang SC', 'Microsoft YaHei', 'system-ui', 'sans-serif'],
+                        kr: ['Malgun Gothic', 'Dotum', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen">
+
+    <div class="max-w-5xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+
+        <!-- Page Header -->
+        <div class="mb-12">
+            <h1 class="text-3xl font-bold text-slate-900 tracking-tight">韩语字母表</h1>
+            <p class="mt-2 text-slate-500 text-sm">한국어 알파벳 · 修正补充版</p>
+            <div class="mt-4 flex gap-3 flex-wrap">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">모음 21个</span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">자음 19个</span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-violet-100 text-violet-800">받침 收音</span>
+            </div>
+        </div>
+
+        <!-- Section 1: 모음 (Vowels) -->
+        <div class="mb-12">
+            <h2 class="text-xl font-bold text-slate-900 border-l-4 border-blue-600 pl-3 mb-1 tracking-wide">一、모음 <span class="font-normal text-slate-500 text-base">元音 · 共21个</span></h2>
+            <p class="text-sm text-slate-500 pl-4 mb-6">元音包含"单元音"和"双元音"两部分。</p>
+
+            <!-- 1.1 단모음 -->
+            <div class="mb-8">
+                <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider pl-1 mb-3">
+                    1. 단모음 <span class="text-slate-400 normal-case font-normal">单元音 · 10个 · 发音时嘴唇和舌头形状保持不变</span>
+                </h3>
+                <div class="grid grid-cols-5 sm:grid-cols-10 gap-2">
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-blue-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-blue-700">ㅏ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">a</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-blue-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-blue-700">ㅐ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">ae</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-blue-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-blue-700">ㅓ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">eo</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-blue-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-blue-700">ㅔ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">e</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-blue-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-blue-700">ㅗ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">o</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-blue-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-blue-700">ㅜ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">u</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-blue-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-blue-700">ㅡ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">eu</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-blue-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-blue-700">ㅣ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">i</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-blue-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-blue-300 transition-all cursor-default" title="现代韩国语中允许发成双元音">
+                        <span class="font-kr text-3xl font-bold text-blue-700">ㅚ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">oe</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-blue-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-blue-300 transition-all cursor-default" title="现代韩国语中允许发成双元音">
+                        <span class="font-kr text-3xl font-bold text-blue-700">ㅟ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">wi</span>
+                    </div>
+                </div>
+                <p class="mt-2 text-xs text-slate-400 pl-1">* ㅚ 和 ㅟ 在现代韩国语中虽允许发成双元音，但在理论分类上严格属于单元音</p>
+            </div>
+
+            <!-- 1.2 이중모음 -->
+            <div>
+                <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider pl-1 mb-3">
+                    2. 이중모음 <span class="text-slate-400 normal-case font-normal">双元音 · 11个 · 发音时嘴唇或舌头会发生滑动</span>
+                </h3>
+                <div class="grid grid-cols-6 sm:grid-cols-11 gap-2">
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅑ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">ya</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅒ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">yae</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅕ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">yeo</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅖ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">ye</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅘ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">wa</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅙ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">wae</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅛ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">yo</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅝ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">wo</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅞ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">we</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅠ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">yu</span>
+                    </div>
+                    <div class="char-card bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-3 flex flex-col items-center hover:shadow-md hover:ring-sky-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-sky-700">ㅢ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">ui</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: 자음 (Consonants) -->
+        <div class="mb-12">
+            <h2 class="text-xl font-bold text-slate-900 border-l-4 border-emerald-600 pl-3 mb-1 tracking-wide">二、자음 <span class="font-normal text-slate-500 text-base">辅音/子音 · 共19个</span></h2>
+            <p class="text-sm text-slate-500 pl-4 mb-6">辅音根据发音方法的不同，分为平音、激音和紧音。</p>
+
+            <!-- 2.1 기본자음 -->
+            <div class="mb-8">
+                <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider pl-1 mb-3">
+                    1. 기본자음 <span class="text-slate-400 normal-case font-normal">基本辅音 · 14个</span>
+                </h3>
+
+                <!-- Legend -->
+                <div class="flex gap-3 mb-3 pl-1">
+                    <span class="inline-flex items-center gap-1.5 text-xs text-slate-500"><span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500"></span>平音（气流弱）</span>
+                    <span class="inline-flex items-center gap-1.5 text-xs text-slate-500"><span class="inline-block w-2.5 h-2.5 rounded-full bg-teal-600"></span>激音（强送气）</span>
+                </div>
+
+                <div class="overflow-hidden bg-white shadow-sm ring-1 ring-slate-200 rounded-xl">
+                    <table class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-50 text-slate-700 text-xs uppercase font-semibold">
+                            <tr>
+                                <th scope="col" class="px-5 py-3 text-left tracking-wider w-[12%]">字母</th>
+                                <th scope="col" class="px-5 py-3 text-left tracking-wider w-[12%]">发音</th>
+                                <th scope="col" class="px-5 py-3 text-left tracking-wider w-[15%]">类型</th>
+                                <th scope="col" class="px-5 py-3 text-left tracking-wider">发音说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white text-sm">
+                            <!-- 平音 -->
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-emerald-800">ㄱ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">g / k</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700 font-medium">平音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">词首发 g，词中/词末发 k</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-emerald-800">ㄴ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">n</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700 font-medium">平音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">类似英语 n</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-emerald-800">ㄷ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">d / t</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700 font-medium">平音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">词首发 d，词末发 t</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-emerald-800">ㄹ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">r / l</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700 font-medium">平音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">词首发 r（弹舌），词末发 l</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-emerald-800">ㅁ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">m</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700 font-medium">平音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">类似英语 m</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-emerald-800">ㅂ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">b / p</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700 font-medium">平音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">词首发 b，词末发 p</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-emerald-800">ㅅ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">s</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700 font-medium">平音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">类似英语 s，接 ㅣ 时发 sh</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-emerald-800">ㅇ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">ng / 不发音</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700 font-medium">平音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">作声母时不发音，作韵尾时发 ng</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-emerald-800">ㅈ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">j</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-emerald-100 text-emerald-700 font-medium">平音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">类似英语 j</td>
+                            </tr>
+                            <!-- 激音 -->
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-teal-800">ㅊ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">ch</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-teal-100 text-teal-700 font-medium">激音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">强送气，类似英语 ch</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-teal-800">ㅋ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">kh</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-teal-100 text-teal-700 font-medium">激音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">强送气 k</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-teal-800">ㅌ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">th</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-teal-100 text-teal-700 font-medium">激音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">强送气 t</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-teal-800">ㅍ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">ph</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-teal-100 text-teal-700 font-medium">激音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">强送气 p</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 whitespace-nowrap font-kr text-3xl font-bold text-teal-800">ㅎ</td>
+                                <td class="px-5 py-3 whitespace-nowrap font-medium text-slate-600 font-mono">h</td>
+                                <td class="px-5 py-3"><span class="px-2 py-0.5 rounded-full text-xs bg-teal-100 text-teal-700 font-medium">激音</span></td>
+                                <td class="px-5 py-3 text-slate-500 text-xs">类似英语 h</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 2.2 쌍자음 -->
+            <div>
+                <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider pl-1 mb-3">
+                    2. 쌍자음 <span class="text-slate-400 normal-case font-normal">双子音/紧音 · 5个 · 发音时喉咙绷紧，不送气</span>
+                </h3>
+                <div class="grid grid-cols-5 gap-2">
+                    <div class="bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-4 flex flex-col items-center hover:shadow-md hover:ring-orange-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-orange-700">ㄲ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">kk</span>
+                        <span class="mt-1 text-xs text-slate-400">紧音ㄱ</span>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-4 flex flex-col items-center hover:shadow-md hover:ring-orange-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-orange-700">ㄸ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">tt</span>
+                        <span class="mt-1 text-xs text-slate-400">紧音ㄷ</span>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-4 flex flex-col items-center hover:shadow-md hover:ring-orange-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-orange-700">ㅃ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">pp</span>
+                        <span class="mt-1 text-xs text-slate-400">紧音ㅂ</span>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-4 flex flex-col items-center hover:shadow-md hover:ring-orange-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-orange-700">ㅆ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">ss</span>
+                        <span class="mt-1 text-xs text-slate-400">紧音ㅅ</span>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm ring-1 ring-slate-200 p-4 flex flex-col items-center hover:shadow-md hover:ring-orange-300 transition-all cursor-default">
+                        <span class="font-kr text-3xl font-bold text-orange-700">ㅉ</span>
+                        <span class="mt-1 text-xs text-slate-500 font-mono">jj</span>
+                        <span class="mt-1 text-xs text-slate-400">紧音ㅈ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: 받침 (Final Consonants) -->
+        <div class="mb-12">
+            <h2 class="text-xl font-bold text-slate-900 border-l-4 border-violet-600 pl-3 mb-1 tracking-wide">三、받침 <span class="font-normal text-slate-500 text-base">收音/尾音</span></h2>
+            <p class="text-sm text-slate-500 pl-4 mb-6">当辅音放在字底部时成为收音。</p>
+
+            <!-- 3.1 홑받침/쌍받침 -->
+            <div class="mb-8">
+                <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider pl-1 mb-3">
+                    1. 홑받침 / 쌍받침 <span class="text-slate-400 normal-case font-normal">单收音/双子音收音 · 16个</span>
+                </h3>
+                <div class="overflow-hidden bg-white shadow-sm ring-1 ring-slate-200 rounded-xl mb-3">
+                    <div class="grid grid-cols-8 sm:grid-cols-16 divide-x divide-slate-100">
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㄱ</span>
+                            <span class="mt-1 text-xs text-violet-600 font-mono font-semibold">[ㄱ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㄴ</span>
+                            <span class="mt-1 text-xs text-violet-600 font-mono font-semibold">[ㄴ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㄷ</span>
+                            <span class="mt-1 text-xs text-violet-600 font-mono font-semibold">[ㄷ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㄹ</span>
+                            <span class="mt-1 text-xs text-violet-600 font-mono font-semibold">[ㄹ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅁ</span>
+                            <span class="mt-1 text-xs text-violet-600 font-mono font-semibold">[ㅁ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅂ</span>
+                            <span class="mt-1 text-xs text-violet-600 font-mono font-semibold">[ㅂ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅅ</span>
+                            <span class="mt-1 text-xs text-slate-400 font-mono font-semibold">[ㄷ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅇ</span>
+                            <span class="mt-1 text-xs text-violet-600 font-mono font-semibold">[ㅇ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅈ</span>
+                            <span class="mt-1 text-xs text-slate-400 font-mono font-semibold">[ㄷ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅊ</span>
+                            <span class="mt-1 text-xs text-slate-400 font-mono font-semibold">[ㄷ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅋ</span>
+                            <span class="mt-1 text-xs text-slate-400 font-mono font-semibold">[ㄱ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅌ</span>
+                            <span class="mt-1 text-xs text-slate-400 font-mono font-semibold">[ㄷ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅍ</span>
+                            <span class="mt-1 text-xs text-slate-400 font-mono font-semibold">[ㅂ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅎ</span>
+                            <span class="mt-1 text-xs text-slate-400 font-mono font-semibold">[ㄷ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㄲ</span>
+                            <span class="mt-1 text-xs text-slate-400 font-mono font-semibold">[ㄱ]</span>
+                        </div>
+                        <div class="p-3 flex flex-col items-center hover:bg-violet-50 transition-colors cursor-default">
+                            <span class="font-kr text-2xl font-bold text-violet-800">ㅆ</span>
+                            <span class="mt-1 text-xs text-slate-400 font-mono font-semibold">[ㄷ]</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+                    <p class="text-xs text-amber-800 font-medium mb-1">7种代表音规则</p>
+                    <p class="text-xs text-amber-700">这16个收音实际发音时，最终只归纳为 <strong>7种代表音</strong>：</p>
+                    <div class="flex gap-2 mt-2 flex-wrap">
+                        <span class="font-kr font-bold text-amber-900 text-base">ㄱ</span>
+                        <span class="font-kr font-bold text-amber-900 text-base">ㄴ</span>
+                        <span class="font-kr font-bold text-amber-900 text-base">ㄷ</span>
+                        <span class="font-kr font-bold text-amber-900 text-base">ㄹ</span>
+                        <span class="font-kr font-bold text-amber-900 text-base">ㅁ</span>
+                        <span class="font-kr font-bold text-amber-900 text-base">ㅂ</span>
+                        <span class="font-kr font-bold text-amber-900 text-base">ㅇ</span>
+                    </div>
+                    <p class="text-xs text-amber-600 mt-1">括号 [ ] 内标注的即为实际发音时对应的代表音。</p>
+                </div>
+            </div>
+
+            <!-- 3.2 자음군 -->
+            <div>
+                <h3 class="text-sm font-semibold text-slate-700 uppercase tracking-wider pl-1 mb-3">
+                    2. 자음군 <span class="text-slate-400 normal-case font-normal">复合收音/双收音 · 11个 · 由两个不同的辅音组合而成，发音时通常只读其中一个</span>
+                </h3>
+                <div class="overflow-hidden bg-white shadow-sm ring-1 ring-slate-200 rounded-xl">
+                    <table class="min-w-full divide-y divide-slate-200">
+                        <thead class="bg-slate-50 text-slate-700 text-xs uppercase font-semibold">
+                            <tr>
+                                <th scope="col" class="px-5 py-3 text-left tracking-wider w-[15%]">字母</th>
+                                <th scope="col" class="px-5 py-3 text-left tracking-wider w-[20%]">组成</th>
+                                <th scope="col" class="px-5 py-3 text-left tracking-wider w-[20%]">实际读音</th>
+                                <th scope="col" class="px-5 py-3 text-left tracking-wider">说明</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white text-sm">
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㄳ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㄱ + ㅅ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㄱ</span> <span class="text-xs text-slate-400 font-mono">[k]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">通常读前一个辅音 ㄱ</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㄵ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㄴ + ㅈ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㄴ</span> <span class="text-xs text-slate-400 font-mono">[n]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">读 ㄴ</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㄶ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㄴ + ㅎ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㄴ</span> <span class="text-xs text-slate-400 font-mono">[n]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">读 ㄴ，ㅎ 多脱落</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㄺ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㄹ + ㄱ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㄱ</span> <span class="text-xs text-slate-400 font-mono">[k]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">通常读 ㄱ（少数情况读 ㄹ）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㄻ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㄹ + ㅁ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㅁ</span> <span class="text-xs text-slate-400 font-mono">[m]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">读 ㅁ</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㄼ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㄹ + ㅂ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㄹ</span> <span class="text-xs text-slate-400 font-mono">[l]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">通常读 ㄹ（部分词汇读 ㅂ）</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㄽ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㄹ + ㅅ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㄹ</span> <span class="text-xs text-slate-400 font-mono">[l]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">读 ㄹ</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㄾ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㄹ + ㅌ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㄹ</span> <span class="text-xs text-slate-400 font-mono">[l]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">读 ㄹ</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㄿ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㄹ + ㅍ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㄹ</span> <span class="text-xs text-slate-400 font-mono">[l]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">词末读 ㄹ，接元音时读 ㅍ</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㅀ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㄹ + ㅎ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㄹ</span> <span class="text-xs text-slate-400 font-mono">[l]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">读 ㄹ，ㅎ 多脱落</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/80 transition-colors">
+                                <td class="px-5 py-3 font-kr text-3xl font-bold text-violet-800">ㅄ</td>
+                                <td class="px-5 py-3 font-kr text-slate-600">ㅂ + ㅅ</td>
+                                <td class="px-5 py-3"><span class="font-kr font-bold text-violet-700">ㅂ</span> <span class="text-xs text-slate-400 font-mono">[p]</span></td>
+                                <td class="px-5 py-3 text-xs text-slate-500">读 ㅂ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
