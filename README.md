@@ -17,3 +17,7 @@ Run this after adding new files to `sentense/`. It will:
 2. Verify each file's Google Translate pronunciation link matches the actual sentence — fixes any mismatch
 3. Add missing entries to `index.html`
 4. Report what was changed
+
+```
+claude --resume fbda9221-ee5a-46e6-b918-ae059912110f
+```
