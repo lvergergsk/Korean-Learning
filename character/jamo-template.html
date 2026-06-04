@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><!-- JAMO --> <!-- ROMANIZATION --> — 韩语字母</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['PingFang SC', 'Microsoft YaHei', 'system-ui', 'sans-serif'],
+                        kr: ['Malgun Gothic', 'Dotum', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen">
+
+    <div class="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+
+        <!-- Back navigation -->
+        <div class="mb-6">
+            <a href="alphabet.html" class="text-sm text-blue-600 hover:text-blue-800 hover:underline">← 字母表</a>
+        </div>
+
+        <!-- ============================================================
+             HEADER — change JAMO, ROMANIZATION, PRONUNCIATION, KEY
+             ============================================================ -->
+        <div class="mb-10">
+            <div style="width:32px;height:3px;background:#1e3a5f;margin-bottom:16px;"></div>
+            <div class="flex items-baseline gap-4">
+                <!-- JAMO: the large character -->
+                <span class="font-kr text-5xl font-bold text-blue-900" style="line-height:1;">ㄴ</span>
+                <div>
+                    <!-- ROMANIZATION: official name -->
+                    <div class="text-xl font-bold text-slate-800 tracking-wide">ni-eun</div>
+                    <!-- PRONUNCIATION: position-based notes + keyboard key -->
+                    <div class="text-sm text-slate-400 mt-0.5">
+                        词首 / 词中发 <span class="font-mono text-slate-600">[n]</span>，
+                        作收音发 <span class="font-mono text-slate-600">[n]</span>
+                        &ensp;·&ensp;
+                        键盘 <kbd class="px-1.5 py-0.5 bg-slate-100 border border-slate-300 rounded shadow-sm font-mono text-xs">s</kbd>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             SECTION 1 — Base consonant + basic vowels
+             Vowel keyboard keys (두벌식):
+               ㅏ=k  ㅓ=j  ㅕ=u  ㅗ=h  ㅛ=y  ㅜ=n  ㅡ=m  ㅣ=l
+             ============================================================ -->
+        <div class="mb-12">
+            <!-- Change heading: consonant + name -->
+            <h2 class="text-lg font-bold text-slate-900 border-l-4 border-blue-600 pl-3 mb-4 tracking-wide">ㄴ + 基础元音</h2>
+            <div class="overflow-hidden bg-white shadow-sm ring-1 ring-slate-200 rounded-xl">
+                <table class="min-w-full divide-y divide-slate-200">
+                    <thead class="bg-slate-50 text-slate-700 text-xs uppercase font-semibold">
+                        <tr>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[12%]">字母</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[12%]">发音</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[38%]">常用单词</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[22%]">含义</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[16%]">键盘输入</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 bg-white text-sm">
+
+                        <!-- ── Row template ──────────────────────────────────
+                             Duplicate this block for each vowel combination.
+                             Fields to change each row:
+                               - 字母 cell: syllable (나)
+                               - 发音 cell: romanization (na)
+                               - 常用单词: Korean word, romanization, Google Translate URL
+                               - 含义: Chinese meaning
+                               - 键盘输入: consonant key + vowel key
+                             ─────────────────────────────────────────────── -->
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap font-kr text-3xl font-bold text-blue-900">나</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-slate-600">na</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center space-x-2">
+                                    <span class="font-kr text-base font-semibold text-slate-900">나무</span>
+                                    <span class="text-xs text-slate-400 font-mono">(na-mu)</span>
+                                    <a href="https://translate.google.com/?sl=ko&tl=zh-CN&text=나무&op=translate"
+                                        target="_blank"
+                                        class="text-xs text-blue-600 hover:text-blue-800 hover:underline font-medium">发音</a>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-slate-600">树木 / 木材</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <kbd class="px-2 py-1 bg-slate-100 border border-slate-300 rounded shadow-sm font-mono text-xs">s</kbd>
+                                <span class="text-slate-400 mx-1 text-xs">+</span>
+                                <kbd class="px-2 py-1 bg-slate-100 border border-slate-300 rounded shadow-sm font-mono text-xs">k</kbd>
+                            </td>
+                        </tr>
+                        <!-- Add more rows here ... -->
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             SECTION 2 — Tensed consonant (쌍자음), if applicable.
+             Only ㄱ→ㄲ, ㄷ→ㄸ, ㅂ→ㅃ, ㅅ→ㅆ, ㅈ→ㅉ have tensed forms.
+             Delete this section for consonants without a tensed pair.
+             ============================================================ -->
+        <!--
+        <div class="mb-12">
+            <h2 class="text-lg font-bold text-slate-900 border-l-4 border-indigo-600 pl-3 mb-4 tracking-wide">
+                ㄲ 쌍기역 (ssang-gi-yeok) + 基础元音
+            </h2>
+            <div class="overflow-hidden bg-white shadow-sm ring-1 ring-slate-200 rounded-xl">
+                <table class="min-w-full divide-y divide-slate-200">
+                    <thead class="bg-slate-50 text-slate-700 text-xs uppercase font-semibold">
+                        <tr>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[12%]">字母</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[12%]">发音</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[38%]">常用单词</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[22%]">含义</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[16%]">键盘输入</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 bg-white text-sm">
+                        Shift key rows: Shift+R (for ㄲ), Shift+E (ㄸ), Shift+Q (ㅃ), Shift+T (ㅆ), Shift+W (ㅉ)
+                        <tr class="hover:bg-slate-50/80 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap font-kr text-3xl font-bold text-indigo-900">까</td>
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-slate-600">kka</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center space-x-2">
+                                    <span class="font-kr text-base font-semibold text-slate-900">까마귀</span>
+                                    <span class="text-xs text-slate-400 font-mono">(kka-ma-gwi)</span>
+                                    <a href="https://translate.google.com/?sl=ko&tl=zh-CN&text=까마귀&op=translate"
+                                        target="_blank"
+                                        class="text-xs text-blue-600 hover:text-blue-800 hover:underline font-medium">发音</a>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-slate-600">乌鸦</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <kbd class="px-2 py-1 bg-slate-100 border border-slate-300 rounded shadow-sm font-mono text-xs">Shift</kbd>
+                                <span class="text-slate-400 mx-0.5 text-xs">+</span>
+                                <kbd class="px-2 py-1 bg-slate-100 border border-slate-300 rounded shadow-sm font-mono text-xs">R</kbd>
+                                <span class="text-slate-400 mx-0.5 text-xs">+</span>
+                                <kbd class="px-2 py-1 bg-slate-100 border border-slate-300 rounded shadow-sm font-mono text-xs">k</kbd>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        -->
+
+        <!-- ============================================================
+             SECTION 3 — Notes / tips (optional)
+             ============================================================ -->
+        <!--
+        <style>
+            .tip-item { position: relative; padding-left: 14px; }
+            .tip-item::before { content: '◆'; position: absolute; left: 0; font-size: 8px; color: #b45309; top: 5px; }
+        </style>
+        <div class="mb-12">
+            <h2 class="text-sm font-semibold text-slate-700 uppercase tracking-wider border-l-4 border-amber-500 pl-3 mb-4">注意事项</h2>
+            <div class="bg-white shadow-sm ring-1 ring-slate-200 rounded-xl p-6">
+                <div class="border-l-4 border-amber-500 pl-4">
+                    <ul style="list-style:none;padding:0;margin:0;">
+                        <li class="tip-item text-sm text-slate-500 leading-relaxed mb-4">
+                            Note content here.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        -->
+
+    </div>
+
+</body>
+
+</html>
