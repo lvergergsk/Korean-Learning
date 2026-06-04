@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>できる韓国語 初級I — 学习笔记</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['PingFang SC', 'Microsoft YaHei', 'system-ui', 'sans-serif'],
+                        kr:   ['Malgun Gothic', 'Dotum', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        /* TOC active / hover */
+        .toc-link { display: block; padding: 3px 10px; border-left: 2px solid transparent; font-size: 0.78rem; color: #64748b; transition: all .15s; text-decoration: none; }
+        .toc-link:hover { border-left-color: #2563eb; color: #1d4ed8; background: #eff6ff; border-radius: 0 6px 6px 0; }
+        .toc-link.sub { padding-left: 20px; font-size: 0.73rem; color: #94a3b8; }
+        .toc-link.sub:hover { color: #2563eb; }
+
+        /* Section heading */
+        .sec-h2 { font-size: 1.15rem; font-weight: 700; color: #0f172a; border-left: 4px solid #2563eb; padding-left: 12px; margin-bottom: 4px; letter-spacing: .02em; }
+        .sec-h2.green { border-color: #16a34a; }
+        .sec-h2.amber { border-color: #d97706; }
+        .sec-h2.violet { border-color: #7c3aed; }
+        .sec-h2.rose   { border-color: #e11d48; }
+        .sec-h2.teal   { border-color: #0d9488; }
+        .sec-h3 { font-size: 0.78rem; font-weight: 600; color: #475569; text-transform: uppercase; letter-spacing: .08em; border-left: 4px solid #cbd5e1; padding-left: 10px; margin-bottom: 12px; }
+
+        /* Card */
+        .card { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.07); border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 22px; margin-bottom: 20px; }
+
+        /* Table */
+        .tbl { width: 100%; border-collapse: collapse; font-size: .82rem; }
+        .tbl thead tr { background: #f8fafc; }
+        .tbl th { text-align: left; padding: 8px 12px; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; color: #475569; border-bottom: 1px solid #e2e8f0; }
+        .tbl td { padding: 7px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; color: #334155; }
+        .tbl tr:last-child td { border-bottom: none; }
+        .tbl tr:hover td { background: #f8fafc; }
+        .tbl .kr { font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-size: 1rem; font-weight: 700; color: #1e40af; }
+        .tbl .kr-sm { font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-weight: 700; color: #1e40af; }
+        .tbl .cn { color: #334155; }
+        .tbl .note { color: #94a3b8; font-size: .72rem; }
+
+        /* Number grid */
+        .num-cell { background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:8px 4px; text-align:center; }
+        .num-cell .n { font-size:1.5rem; font-family:'Malgun Gothic','Dotum',sans-serif; font-weight:700; color:#1e40af; }
+        .num-cell .r { font-size:.68rem; color:#64748b; margin-top:2px; }
+
+        /* Inline kr highlight */
+        .kr { font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-weight: 700; color: #1e40af; }
+        .kr-eg { font-family: 'Malgun Gothic', 'Dotum', sans-serif; color: #1d4ed8; }
+
+        /* Badge */
+        .badge { display:inline-block; border-radius:9999px; padding: 1px 9px; font-size:.7rem; font-weight:600; }
+        .badge-blue   { background:#dbeafe; color:#1d4ed8; }
+        .badge-green  { background:#dcfce7; color:#166534; }
+        .badge-amber  { background:#fef3c7; color:#b45309; }
+        .badge-violet { background:#ede9fe; color:#6d28d9; }
+        .badge-rose   { background:#ffe4e6; color:#be123c; }
+        .badge-slate  { background:#f1f5f9; color:#475569; }
+
+        /* Tip box */
+        .tip-box { background:#fffbeb; border:1px solid #fcd34d; border-radius:10px; padding:10px 14px; }
+        .tip-box p { font-size:.78rem; color:#78350f; }
+
+        /* Grammar section */
+        .lesson-header { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+        .lesson-num { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#1e40af; color:#fff; font-size:.8rem; font-weight:700; flex-shrink:0; }
+        .lesson-title { font-size:.95rem; font-weight:700; color:#1e3a5f; }
+        .lesson-sub { font-size:.75rem; color:#94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen">
+
+<!-- ======== Page Header ======== -->
+<div class="bg-white border-b border-slate-200 px-4 py-6">
+    <div class="max-w-6xl mx-auto">
+        <p class="text-xs text-slate-400 mb-1">できる韓国語 初級 I</p>
+        <h1 class="text-2xl font-bold text-slate-900">韩语初级学习笔记</h1>
+        <p class="mt-1 text-sm text-slate-500">零基础中文读者适用 · 涵盖全书 20 课语法、助词、词汇与发音规则</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+            <span class="badge badge-blue">20课语法</span>
+            <span class="badge badge-green">助词速查</span>
+            <span class="badge badge-amber">汉字词·固有词数字</span>
+            <span class="badge badge-violet">常用词汇</span>
+            <span class="badge badge-rose">发音规则</span>
+        </div>
+    </div>
+</div>
+
+<!-- ======== Body: Sidebar + Content ======== -->
+<div class="max-w-6xl mx-auto px-4 py-8 lg:grid lg:gap-8" style="grid-template-columns: 210px 1fr;">
+
+    <!-- ===== TOC Sidebar ===== -->
+    <aside class="hidden lg:block">
+        <div class="sticky top-8">
+            <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest px-2 mb-3">目录</p>
+            <nav class="space-y-0.5">
+                <a class="toc-link" href="#greetings">① 问候语</a>
+                <a class="toc-link" href="#particles">② 助词总览</a>
+                <a class="toc-link" href="#numbers">③ 数字</a>
+                <a class="toc-link sub" href="#sino-nums">汉字词数字</a>
+                <a class="toc-link sub" href="#native-nums">固有词数字</a>
+                <a class="toc-link sub" href="#counters">助数词</a>
+                <a class="toc-link sub" href="#time-words">时间词汇</a>
+                <a class="toc-link" href="#grammar">④ 语法句型</a>
+                <a class="toc-link sub" href="#L01">L1 입니다 / 입니까</a>
+                <a class="toc-link sub" href="#L02">L2 이/가 아닙니다</a>
+                <a class="toc-link sub" href="#L03">L3 예요/이에요</a>
+                <a class="toc-link sub" href="#L04">L4 있다/없다</a>
+                <a class="toc-link sub" href="#L05">L5 位置词</a>
+                <a class="toc-link sub" href="#L06">L6 ㄴ/습니다 · -고</a>
+                <a class="toc-link sub" href="#L07">L7 否定句</a>
+                <a class="toc-link sub" href="#L08">L8 -네요</a>
+                <a class="toc-link sub" href="#L09">L9 -아/어요</a>
+                <a class="toc-link sub" href="#L10">L10 固有词数字</a>
+                <a class="toc-link sub" href="#L11">L11 过去形</a>
+                <a class="toc-link sub" href="#L12">L12 敬语</a>
+                <a class="toc-link sub" href="#L13">L13 敬语过去形</a>
+                <a class="toc-link sub" href="#L14">L14 -지요 · -지만</a>
+                <a class="toc-link sub" href="#L15">L15 -고 싶어요</a>
+                <a class="toc-link sub" href="#L16">L16 -아/어서</a>
+                <a class="toc-link sub" href="#L17">L17 许可 · 条件</a>
+                <a class="toc-link sub" href="#L18">L18 建议 · 目的</a>
+                <a class="toc-link sub" href="#L19">L19 请求</a>
+                <a class="toc-link sub" href="#L20">L20 능력/가능</a>
+                <a class="toc-link" href="#irregular">⑤ 不规则变化</a>
+                <a class="toc-link" href="#vocab">⑥ 常用词汇</a>
+                <a class="toc-link sub" href="#v-people">人际关系</a>
+                <a class="toc-link sub" href="#v-jobs">职业</a>
+                <a class="toc-link sub" href="#v-adj">形容词</a>
+                <a class="toc-link sub" href="#v-verbs">动词</a>
+                <a class="toc-link" href="#pronunciation">⑦ 发音规则</a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- ===== Main Content ===== -->
+    <main class="min-w-0">
+
+        <!-- ============================================================ -->
+        <!-- ① GREETINGS                                                   -->
+        <!-- ============================================================ -->
+        <section id="greetings" class="mb-14">
+            <h2 class="sec-h2 mb-1">① 问候语与常用表达</h2>
+            <p class="text-xs text-slate-400 pl-4 mb-6">这些是日常必用的固定说法，整句记忆即可。</p>
+
+            <div class="card">
+                <p class="sec-h3">日常问候</p>
+                <table class="tbl">
+                    <thead><tr><th>韩语</th><th>中文意思</th><th>说明</th></tr></thead>
+                    <tbody>
+                        <tr><td class="kr">안녕하세요?</td><td class="cn">你好</td><td class="note">早中晚通用，万能问候语</td></tr>
+                        <tr><td class="kr">안녕하십니까?</td><td class="cn">您好</td><td class="note">更正式场合（安好吗？）</td></tr>
+                        <tr><td class="kr">오래간만입니다<br><span style="font-size:.8em;opacity:.7">/ 오랜만이에요</span></td><td class="cn">好久不见</td><td class="note"></td></tr>
+                        <tr><td class="kr">잘 지내셨어요?</td><td class="cn">您还好吗？（最近过得怎样？）</td><td class="note">久别重逢时用</td></tr>
+                        <tr><td class="kr">잘 지냈어요</td><td class="cn">我很好</td><td class="note">上句的回答</td></tr>
+                        <tr><td class="kr">만나서 반갑습니다</td><td class="cn">很高兴认识您</td><td class="note">初次见面</td></tr>
+                        <tr><td class="kr">앞으로 잘 부탁합니다</td><td class="cn">以后请多关照</td><td class="note">初次见面结尾</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <p class="sec-h3">道谢与道歉</p>
+                <table class="tbl">
+                    <thead><tr><th>韩语</th><th>中文意思</th><th>说明</th></tr></thead>
+                    <tbody>
+                        <tr><td class="kr">감사합니다</td><td class="cn">谢谢</td><td class="note">正式</td></tr>
+                        <tr><td class="kr">고맙습니다</td><td class="cn">谢谢</td><td class="note">略随意</td></tr>
+                        <tr><td class="kr">천만에요</td><td class="cn">不客气</td><td class="note">感谢的回答</td></tr>
+                        <tr><td class="kr">죄송합니다</td><td class="cn">非常抱歉</td><td class="note">正式道歉，对上级用</td></tr>
+                        <tr><td class="kr">미안합니다</td><td class="cn">对不起</td><td class="note">一般道歉</td></tr>
+                        <tr><td class="kr">괜찮아요</td><td class="cn">没关系</td><td class="note">道歉的回答</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <p class="sec-h3">告别与日常套话</p>
+                <table class="tbl">
+                    <thead><tr><th>韩语</th><th>中文意思</th><th>说明</th></tr></thead>
+                    <tbody>
+                        <tr><td class="kr">안녕히 가세요</td><td class="cn">再见（说给离开的人）</td><td class="note">自己留下，对方离去</td></tr>
+                        <tr><td class="kr">안녕히 계세요</td><td class="cn">再见（说给留下的人）</td><td class="note">自己离开，对方留下</td></tr>
+                        <tr><td class="kr">잘 먹겠습니다</td><td class="cn">我要开动了（饭前感谢语）</td><td class="note"></td></tr>
+                        <tr><td class="kr">잘 먹었습니다</td><td class="cn">吃得很好（饭后致谢）</td><td class="note"></td></tr>
+                        <tr><td class="kr">다녀오겠습니다</td><td class="cn">我出发了（对留在家里的人说）</td><td class="note"></td></tr>
+                        <tr><td class="kr">다녀오세요</td><td class="cn">路上小心（对出门者说）</td><td class="note"></td></tr>
+                        <tr><td class="kr">수고하셨습니다</td><td class="cn">您辛苦了</td><td class="note">工作结束后说</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <p class="sec-h3">课堂用语</p>
+                <table class="tbl">
+                    <thead><tr><th>韩语</th><th>中文</th></tr></thead>
+                    <tbody>
+                        <tr><td class="kr">보세요</td><td>请看</td></tr>
+                        <tr><td class="kr">쓰세요</td><td>请写</td></tr>
+                        <tr><td class="kr">들으세요</td><td>请听</td></tr>
+                        <tr><td class="kr">읽으세요</td><td>请读</td></tr>
+                        <tr><td class="kr">따라하세요</td><td>请跟读</td></tr>
+                        <tr><td class="kr">알겠어요</td><td>我明白了</td></tr>
+                        <tr><td class="kr">모르겠어요</td><td>我不明白</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ② PARTICLES                                                   -->
+        <!-- ============================================================ -->
+        <section id="particles" class="mb-14">
+            <h2 class="sec-h2 green mb-1">② 助词总览</h2>
+            <p class="text-xs text-slate-400 pl-4 mb-6">韩语助词接在名词后，标注名词在句中的作用，类似中文的"是……的"、"把"、"到"等。</p>
+
+            <div class="card">
+                <p class="sec-h3">核心助词</p>
+                <table class="tbl">
+                    <thead><tr><th>助词</th><th>中文对应</th><th>用法规则</th><th>例</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="ptcl">은/는</span></td>
+                            <td>主题标记「は」</td>
+                            <td class="note">尾音有辅音→<span class="kr-sm">은</span>，无辅音→<span class="kr-sm">는</span></td>
+                            <td><span class="kr-eg">사람<b>은</b> / 회사<b>는</b></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">이/가</span></td>
+                            <td>主语标记「が」</td>
+                            <td class="note">有辅音→<span class="kr-sm">이</span>，无辅音→<span class="kr-sm">가</span></td>
+                            <td><span class="kr-eg">학생<b>이</b> / 교사<b>가</b></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">을/를</span></td>
+                            <td>宾语标记「を」</td>
+                            <td class="note">有辅音→<span class="kr-sm">을</span>，无辅音→<span class="kr-sm">를</span></td>
+                            <td><span class="kr-eg">책<b>을</b> / 커피<b>를</b></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">도</span></td>
+                            <td>也、还</td>
+                            <td class="note">无辅音变化</td>
+                            <td><span class="kr-eg">저<b>도</b> 학생이에요</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">만</span></td>
+                            <td>只，仅</td>
+                            <td class="note">无辅音变化</td>
+                            <td><span class="kr-eg">가족<b>만</b> 입어요</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <p class="sec-h3">位置与时间助词</p>
+                <table class="tbl">
+                    <thead><tr><th>助词</th><th>中文对应</th><th>说明</th><th>例</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="ptcl">에</span></td>
+                            <td>在……（位置）/在……（时间）</td>
+                            <td class="note">表示静态位置或时间点</td>
+                            <td><span class="kr-eg">방<b>에</b> 있어요 / 6시<b>에</b></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">에서</span></td>
+                            <td>在……（动作发生地）/ 从……</td>
+                            <td class="note">表示动作发生地点或出发地</td>
+                            <td><span class="kr-eg">학교<b>에서</b> 공부해요</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">부터</span></td>
+                            <td>从……（时间起点）</td>
+                            <td class="note">时间起点用부터，场所起点用에서</td>
+                            <td><span class="kr-eg">9시<b>부터</b></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">까지</span></td>
+                            <td>到……（终点）</td>
+                            <td class="note">时间和场所都可用</td>
+                            <td><span class="kr-eg">6시<b>까지</b> / 서울<b>까지</b></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">에서…까지</span></td>
+                            <td>从……到……（场所）</td>
+                            <td class="note"></td>
+                            <td><span class="kr-eg">집<b>에서</b> 학교<b>까지</b></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">부터…까지</span></td>
+                            <td>从……到……（时间）</td>
+                            <td class="note"></td>
+                            <td><span class="kr-eg">9시<b>부터</b> 6시<b>까지</b></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <p class="sec-h3">其他常用助词</p>
+                <table class="tbl">
+                    <thead><tr><th>助词</th><th>中文对应</th><th>用法规则</th><th>例</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="ptcl">하고 / 와/과</span></td>
+                            <td>和……（与……一起）</td>
+                            <td class="note">하고口语，와/과书面；有辅音→과，无辅音→와</td>
+                            <td><span class="kr-eg">친구<b>하고</b> 가요</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">(으)로</span></td>
+                            <td>用……（手段）/ 往……（方向）</td>
+                            <td class="note">有辅音→으로（ㄹ→로），无辅音→로</td>
+                            <td><span class="kr-eg">버스<b>로</b> 가요 / 기차<b>로</b></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">보다</span></td>
+                            <td>比……（比较）</td>
+                            <td class="note">无辅音变化</td>
+                            <td><span class="kr-eg">서울<b>보다</b> 따뜻해요</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">에게 / 한테</span></td>
+                            <td>给……（对人）</td>
+                            <td class="note">에게书面，한테口语</td>
+                            <td><span class="kr-eg">친구<b>에게</b> 주다</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">에게서 / 한테서</span></td>
+                            <td>从……（人）那里得到</td>
+                            <td class="note"></td>
+                            <td><span class="kr-eg">친구<b>한테서</b> 받았어요</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">께 / 께서</span></td>
+                            <td>给……（敬语）/ 主语（敬语）</td>
+                            <td class="note">께=에게敬，께서=이/가敬</td>
+                            <td><span class="kr-eg">선생님<b>께서</b> 오세요</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">의</span></td>
+                            <td>……的（所属）</td>
+                            <td class="note">实际发音常读成 [에]</td>
+                            <td><span class="kr-eg">나<b>의</b> 가방</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="ptcl">(이)라고 합니다</span></td>
+                            <td>叫做……（自我介绍名字）</td>
+                            <td class="note">有辅音→이라고，无辅音→라고</td>
+                            <td><span class="kr-eg">다나카<b>라고 합니다</b></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ③ NUMBERS                                                     -->
+        <!-- ============================================================ -->
+        <section id="numbers" class="mb-14">
+            <h2 class="sec-h2 amber mb-1">③ 数字</h2>
+            <p class="text-xs text-slate-400 pl-4 mb-6">韩语有两套数字系统，用途不同，需要分别记忆。</p>
+
+            <!-- Sino-Korean -->
+            <div id="sino-nums" class="card">
+                <p class="sec-h3">汉字词数字（한자어 숫자）</p>
+                <p class="text-xs text-slate-500 mb-4">来自汉字读音，用于：<span class="badge badge-blue">月份</span> <span class="badge badge-blue">日期</span> <span class="badge badge-blue">价格</span> <span class="badge badge-blue">电话号码</span> <span class="badge badge-blue">楼层</span> <span class="badge badge-blue">分钟</span></p>
+                <div class="grid grid-cols-5 sm:grid-cols-10 gap-2 mb-4">
+                    <div class="num-cell"><div class="n">일</div><div class="r">1</div></div>
+                    <div class="num-cell"><div class="n">이</div><div class="r">2</div></div>
+                    <div class="num-cell"><div class="n">삼</div><div class="r">3</div></div>
+                    <div class="num-cell"><div class="n">사</div><div class="r">4</div></div>
+                    <div class="num-cell"><div class="n">오</div><div class="r">5</div></div>
+                    <div class="num-cell"><div class="n">육</div><div class="r">6</div></div>
+                    <div class="num-cell"><div class="n">칠</div><div class="r">7</div></div>
+                    <div class="num-cell"><div class="n">팔</div><div class="r">8</div></div>
+                    <div class="num-cell"><div class="n">구</div><div class="r">9</div></div>
+                    <div class="num-cell"><div class="n">십</div><div class="r">10</div></div>
+                </div>
+                <div class="grid grid-cols-4 sm:grid-cols-7 gap-2 mb-4">
+                    <div class="num-cell"><div class="n">백</div><div class="r">100</div></div>
+                    <div class="num-cell"><div class="n">천</div><div class="r">1,000</div></div>
+                    <div class="num-cell"><div class="n">만</div><div class="r">10,000</div></div>
+                    <div class="num-cell bg-slate-50"><div class="n" style="color:#64748b">공/영</div><div class="r">0</div></div>
+                </div>
+                <div class="tip-box">
+                    <p>● 16（십육）的发音是 [심뉵]，注意特殊变音。</p>
+                    <p class="mt-1">● 例：<span class="kr-eg">3월 10일</span>（3月10日）/ <span class="kr-eg">15,000원</span>（만오천 원）/ <span class="kr-eg">몇 월이에요?</span>（几月？）/ <span class="kr-eg">며칠이에요?</span>（几号？）</p>
+                </div>
+            </div>
+
+            <!-- Native Korean -->
+            <div id="native-nums" class="card">
+                <p class="sec-h3">固有词数字（고유어 숫자）</p>
+                <p class="text-xs text-slate-500 mb-4">韩语本土数字（仅1~99），用于：<span class="badge badge-amber">小时</span> <span class="badge badge-amber">年龄</span> <span class="badge badge-amber">次数（回）</span> <span class="badge badge-amber">人数</span></p>
+                <div class="grid grid-cols-5 sm:grid-cols-10 gap-2 mb-4">
+                    <div class="num-cell"><div class="n">하나</div><div class="r">1</div></div>
+                    <div class="num-cell"><div class="n">둘</div><div class="r">2</div></div>
+                    <div class="num-cell"><div class="n">셋</div><div class="r">3</div></div>
+                    <div class="num-cell"><div class="n">넷</div><div class="r">4</div></div>
+                    <div class="num-cell"><div class="n">다섯</div><div class="r">5</div></div>
+                    <div class="num-cell"><div class="n">여섯</div><div class="r">6</div></div>
+                    <div class="num-cell"><div class="n">일곱</div><div class="r">7</div></div>
+                    <div class="num-cell"><div class="n">여덟</div><div class="r">8</div></div>
+                    <div class="num-cell"><div class="n">아홉</div><div class="r">9</div></div>
+                    <div class="num-cell"><div class="n">열</div><div class="r">10</div></div>
+                </div>
+                <div class="grid grid-cols-5 sm:grid-cols-10 gap-2 mb-4">
+                    <div class="num-cell"><div class="n">스물</div><div class="r">20</div></div>
+                    <div class="num-cell"><div class="n">서른</div><div class="r">30</div></div>
+                    <div class="num-cell"><div class="n">마흔</div><div class="r">40</div></div>
+                    <div class="num-cell"><div class="n">쉰</div><div class="r">50</div></div>
+                    <div class="num-cell"><div class="n">예순</div><div class="r">60</div></div>
+                    <div class="num-cell"><div class="n">일흔</div><div class="r">70</div></div>
+                    <div class="num-cell"><div class="n">여든</div><div class="r">80</div></div>
+                    <div class="num-cell"><div class="n">아흔</div><div class="r">90</div></div>
+                </div>
+                <div class="tip-box">
+                    <p>● 接助数词时，1·2·3·4·20变短形：<span class="kr-eg">한 / 두 / 세 / 네 / 스무</span></p>
+                    <p class="mt-1">● 例：<span class="kr-eg">두 시</span>（2点）/ <span class="kr-eg">스무 살</span>（20岁）/ <span class="kr-eg">세 번</span>（3次）</p>
+                </div>
+            </div>
+
+            <!-- Counters -->
+            <div id="counters" class="card">
+                <p class="sec-h3">助数词（量词）</p>
+                <table class="tbl">
+                    <thead><tr><th>助数词</th><th>单位</th><th>用哪套数字</th><th>例</th></tr></thead>
+                    <tbody>
+                        <tr><td class="kr-sm">시</td><td>小时（~点）</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">두 시</span>（2点）</td></tr>
+                        <tr><td class="kr-sm">분</td><td>分钟</td><td><span class="badge badge-blue">汉字词</span></td><td><span class="kr-eg">삼십 분</span>（30分）</td></tr>
+                        <tr><td class="kr-sm">살</td><td>岁（年龄）</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">스물여덟 살</span>（28岁）</td></tr>
+                        <tr><td class="kr-sm">번</td><td>次</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">세 번</span>（3次）</td></tr>
+                        <tr><td class="kr-sm">명 / 사람</td><td>人</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">두 명</span>（2人）</td></tr>
+                        <tr><td class="kr-sm">개</td><td>个</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">한 개</span>（1个）</td></tr>
+                        <tr><td class="kr-sm">대</td><td>台（机器/车）</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">두 대</span>（2台）</td></tr>
+                        <tr><td class="kr-sm">장</td><td>张（纸）</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">열 장</span>（10张）</td></tr>
+                        <tr><td class="kr-sm">마리</td><td>只（动物）</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">세 마리</span>（3只）</td></tr>
+                        <tr><td class="kr-sm">잔</td><td>杯</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">두 잔</span>（2杯）</td></tr>
+                        <tr><td class="kr-sm">병</td><td>瓶</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">한 병</span>（1瓶）</td></tr>
+                        <tr><td class="kr-sm">권</td><td>册（书）</td><td><span class="badge badge-amber">固有词</span></td><td><span class="kr-eg">네 권</span>（4册）</td></tr>
+                        <tr><td class="kr-sm">월 / 일</td><td>月 / 日（日期）</td><td><span class="badge badge-blue">汉字词</span></td><td><span class="kr-eg">삼월 십일 일</span>（3月11日）</td></tr>
+                        <tr><td class="kr-sm">원</td><td>韩元（货币）</td><td><span class="badge badge-blue">汉字词</span></td><td><span class="kr-eg">만 오천 원</span>（15,000₩）</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Time words -->
+            <div id="time-words" class="card">
+                <p class="sec-h3">时间词汇</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">새벽</div><div class="text-xs text-slate-500 mt-1">深夜/凌晨（午夜后至天亮）</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">아침</div><div class="text-xs text-slate-500 mt-1">早晨</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">점심</div><div class="text-xs text-slate-500 mt-1">午/中午</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">낮</div><div class="text-xs text-slate-500 mt-1">白天</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">저녁</div><div class="text-xs text-slate-500 mt-1">傍晚/晚上</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">밤</div><div class="text-xs text-slate-500 mt-1">夜晚</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">오전 / 오후</div><div class="text-xs text-slate-500 mt-1">上午 / 下午</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">그저께</div><div class="text-xs text-slate-500 mt-1">前天</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">어제</div><div class="text-xs text-slate-500 mt-1">昨天</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">오늘</div><div class="text-xs text-slate-500 mt-1">今天</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">내일</div><div class="text-xs text-slate-500 mt-1">明天</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">모레</div><div class="text-xs text-slate-500 mt-1">后天</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">지난주</div><div class="text-xs text-slate-500 mt-1">上周</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">이번 주</div><div class="text-xs text-slate-500 mt-1">本周</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">다음 주</div><div class="text-xs text-slate-500 mt-1">下周</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">지난달</div><div class="text-xs text-slate-500 mt-1">上个月</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">이번 달</div><div class="text-xs text-slate-500 mt-1">本月</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">다음 달</div><div class="text-xs text-slate-500 mt-1">下个月</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">작년</div><div class="text-xs text-slate-500 mt-1">去年</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">올해</div><div class="text-xs text-slate-500 mt-1">今年</div></div>
+                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">내년</div><div class="text-xs text-slate-500 mt-1">明年</div></div>
+                </div>
+                <p class="text-xs text-slate-400 mt-3">* 오늘·어제·내일·모레 等词后面 <b>不加</b> 时间助词「에」。</p>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ④ GRAMMAR                                                     -->
+        <!-- ============================================================ -->
+        <section id="grammar" class="mb-14">
+            <h2 class="sec-h2 mb-1">④ 语法句型（第1~20课）</h2>
+            <p class="text-xs text-slate-400 pl-4 mb-6">每课的核心句型，配有简明中文说明和例句。</p>
+
+            <!-- ---- L1 ---- -->
+            <div id="L01" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">1</div>
+                    <div><div class="lesson-title">입니다 / 입니까?</div><div class="lesson-sub">我是…… / 是……吗？（正式体）</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">名词 + 입니다</div>
+                    <div class="cn-meaning">「是……」——正式、公开场合用（发音：[임니다]）</div>
+                    <div class="example"><span class="kr">저는 회사원입니다.</span> — 我是上班族。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">名词 + 입니까?</div>
+                    <div class="cn-meaning">「是……吗？」——正式疑问（发音：[임니까]）</div>
+                    <div class="example"><span class="kr">학생입니까?</span> — 是学生吗？</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">은/는（主题助词）</div>
+                    <div class="cn-meaning">类似中文"说到……"，标出句子主题；有尾音→은，无尾音→는</div>
+                    <div class="example"><span class="kr">사람은</span>（说到人）/ <span class="kr">회사는</span>（说到公司）</div>
+                </div>
+                <div class="tip-box mt-3">
+                    <p>● <span class="kr-eg">이라고 합니다</span>：我叫做……（自我介绍名字时）</p>
+                    <p class="mt-1">例：<span class="kr-eg">다나카라고 합니다.</span> — 我叫田中。</p>
+                </div>
+            </div>
+
+            <!-- ---- L2 ---- -->
+            <div id="L02" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">2</div>
+                    <div><div class="lesson-title">이/가 아닙니다</div><div class="lesson-sub">不是……（正式体否定）</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">名词 + 이/가 아닙니다</div>
+                    <div class="cn-meaning">「不是……」——有尾音用이，无尾音用가</div>
+                    <div class="example">
+                        <span class="kr">한국 사람이 아닙니다.</span> — 不是韩国人。<br>
+                        <span class="kr">배우가 아닙니다.</span> — 不是演员。
+                    </div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">이/가（主语助词）</div>
+                    <div class="cn-meaning">标记主语；有尾音→이，无尾音→가</div>
+                    <div class="example"><span class="kr">일본인이</span>（日本人是）/ <span class="kr">회사가</span>（公司是）</div>
+                </div>
+            </div>
+
+            <!-- ---- L3 ---- -->
+            <div id="L03" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">3</div>
+                    <div><div class="lesson-title">예요 / 이에요</div><div class="lesson-sub">是……（日常口语体）</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">名词（元音结尾）+ 예요</div>
+                    <div class="cn-meaning">「是……」——日常对话用，比입니다更随意</div>
+                    <div class="example"><span class="kr">교사예요.</span> — 是老师。/ <span class="kr">서울이에요.</span> — 是首尔。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">名词（辅音结尾）+ 이에요</div>
+                    <div class="cn-meaning">同上，辅音结尾用이에요</div>
+                    <div class="example"><span class="kr">학생이에요?</span> — 是学生吗？</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">이/가 아니에요</div>
+                    <div class="cn-meaning">「不是……」——日常否定</div>
+                    <div class="example"><span class="kr">교사가 아니에요.</span> — 不是老师。</div>
+                </div>
+                <div class="overflow-hidden bg-white ring-1 ring-slate-200 rounded-xl mt-3">
+                    <table class="tbl">
+                        <thead><tr><th>指示代词</th><th>单独</th><th>+은/는</th><th>+이/가</th></tr></thead>
+                        <tbody>
+                            <tr><td class="note">이 这个（近）</td><td class="kr-sm">이것/이거</td><td class="kr-sm">이것은/이건</td><td class="kr-sm">이것이/이게</td></tr>
+                            <tr><td class="note">그 那个（近对方）</td><td class="kr-sm">그것/그거</td><td class="kr-sm">그것은/그건</td><td class="kr-sm">그것이/그게</td></tr>
+                            <tr><td class="note">저 那个（远处）</td><td class="kr-sm">저것/저거</td><td class="kr-sm">저것은/저건</td><td class="kr-sm">저것이/저게</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ---- L4 ---- -->
+            <div id="L04" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">4</div>
+                    <div><div class="lesson-title">있습니다 / 없습니다</div><div class="lesson-sub">有/在 / 没有/不在</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">있습니다 / 있어요</div>
+                    <div class="cn-meaning">「有……」/ 「在……」</div>
+                    <div class="example"><span class="kr">친구가 있어요.</span> — 有朋友。/ <span class="kr">식당이 있습니다.</span> — 有餐厅。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">없습니다 / 없어요</div>
+                    <div class="cn-meaning">「没有……」/ 「不在……」</div>
+                    <div class="example"><span class="kr">시간이 없어요.</span> — 没时间。/ <span class="kr">친구가 없습니다.</span> — 没有朋友。</div>
+                </div>
+            </div>
+
+            <!-- ---- L5 ---- -->
+            <div id="L05" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">5</div>
+                    <div><div class="lesson-title">에 있어요（位置表达）</div><div class="lesson-sub">在哪里？</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">场所 + 에 있어요</div>
+                    <div class="cn-meaning">「在……里/上/前……」，位置助词用「에」</div>
+                    <div class="example"><span class="kr">책상 위에 있어요.</span> — 在书桌上面。/ <span class="kr">가방은 어디에 있어요?</span> — 包在哪里？</div>
+                </div>
+                <div class="overflow-hidden bg-white ring-1 ring-slate-200 rounded-xl">
+                    <table class="tbl">
+                        <thead><tr><th>韩语</th><th>中文</th><th>韩语</th><th>中文</th></tr></thead>
+                        <tbody>
+                            <tr><td class="kr-sm">위</td><td>上面</td><td class="kr-sm">밑/아래</td><td>下面</td></tr>
+                            <tr><td class="kr-sm">옆</td><td>旁边</td><td class="kr-sm">앞</td><td>前面</td></tr>
+                            <tr><td class="kr-sm">뒤</td><td>后面</td><td class="kr-sm">안</td><td>里面</td></tr>
+                            <tr><td class="kr-sm">밖</td><td>外面</td><td class="kr-sm">오른쪽</td><td>右边</td></tr>
+                            <tr><td class="kr-sm">왼쪽</td><td>左边</td><td class="kr-sm">맞은편</td><td>对面</td></tr>
+                            <tr><td class="kr-sm">근처</td><td>附近</td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ---- L6 ---- -->
+            <div id="L06" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">6</div>
+                    <div><div class="lesson-title">ㄴ/습니다 · -고</div><div class="lesson-sub">动词·形容词正式体 / 连接「和、然后」</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + ㄴ니다（无尾音）/ 습니다（有尾音）</div>
+                    <div class="cn-meaning">动词·形容词的正式礼貌体（类似日语「ます」），疑问→ ㄴ니까? / 습니까?</div>
+                    <div class="example">
+                        <span class="kr">가다</span> → <span class="kr">갑니다 / 갑니까?</span>（去/去吗？）<br>
+                        <span class="kr">먹다</span> → <span class="kr">먹습니다 / 먹습니까?</span>（吃/吃吗？）<br>
+                        <span class="note">⚠ ㄹ结尾词干：ㄹ脱落 → 살다 → 삽니다</span>
+                    </div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 고</div>
+                    <div class="cn-meaning">连接两个动作「……，然后……」/ 「……和……」</div>
+                    <div class="example"><span class="kr">청소를 하고 빨래합니다.</span> — 打扫然后洗衣服。</div>
+                </div>
+            </div>
+
+            <!-- ---- L7 ---- -->
+            <div id="L07" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">7</div>
+                    <div><div class="lesson-title">否定句</div><div class="lesson-sub">不……</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">안 + 동사/형용사</div>
+                    <div class="cn-meaning">短否定「不……」（안放在动词前）</div>
+                    <div class="example"><span class="kr">안 갑니다.</span> — 不去。/ <span class="kr">안 먹어요.</span> — 不吃。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 지 않습니다 / 지 않아요</div>
+                    <div class="cn-meaning">长否定，意思相同，语气略正式</div>
+                    <div class="example"><span class="kr">가지 않습니다.</span> — 不去。/ <span class="kr">멀지 않아요.</span> — 不远。</div>
+                </div>
+                <div class="tip-box">
+                    <p>⚠ 「하다」动词的否定：<b>안</b>放在名词前，不放在하다前</p>
+                    <p class="mt-1">✗ <span class="kr-eg">안 공부합니다</span> → ✓ <span class="kr-eg">공부를 안 합니다</span>（不学习）</p>
+                </div>
+            </div>
+
+            <!-- ---- L8 ---- -->
+            <div id="L08" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">8</div>
+                    <div><div class="lesson-title">-네요</div><div class="lesson-sub">啊，真是……呢！（感叹·同感）</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 네요</div>
+                    <div class="cn-meaning">表达感叹、共鸣，类似中文「……呢！」「好……啊！」；ㄹ词干脱落</div>
+                    <div class="example">
+                        <span class="kr">싸네요!</span> — 好便宜啊！<br>
+                        <span class="kr">맛있네요!</span> — 真好吃啊！<br>
+                        <span class="kr">멀다</span> → <span class="kr">머네요</span>（ㄹ脱落）
+                    </div>
+                </div>
+            </div>
+
+            <!-- ---- L9 ---- -->
+            <div id="L09" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">9</div>
+                    <div><div class="lesson-title">-아/어요（日常体）</div><div class="lesson-sub">比ㄴ/습니다更口语的礼貌体</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干母音是 ㅏ/ㅗ → + 아요</div>
+                    <div class="cn-meaning">阳性母音（ㅏ/ㅗ）词干，加「아요」</div>
+                    <div class="example"><span class="kr">살다</span> → <span class="kr">살아요</span>（住）/ <span class="kr">좋다</span> → <span class="kr">좋아요</span>（好）</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干其他母音 → + 어요</div>
+                    <div class="cn-meaning">阴性母音词干，加「어요」</div>
+                    <div class="example"><span class="kr">먹다</span> → <span class="kr">먹어요</span>（吃）/ <span class="kr">맛있다</span> → <span class="kr">맛있어요</span></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">하다 → 해요</div>
+                    <div class="cn-meaning">所有하다动词的口语体</div>
+                    <div class="example"><span class="kr">공부하다</span> → <span class="kr">공부해요</span>（学习）/ <span class="kr">유명하다</span> → <span class="kr">유명해요</span>（有名）</div>
+                </div>
+                <div class="tip-box">
+                    <p>● 词干末尾是元音时，与아/어合并缩略：</p>
+                    <p class="mt-1"><span class="kr-eg">가다</span>→<span class="kr-eg">가요</span> / <span class="kr-eg">오다</span>→<span class="kr-eg">와요</span> / <span class="kr-eg">배우다</span>→<span class="kr-eg">배워요</span> / <span class="kr-eg">기다리다</span>→<span class="kr-eg">기다려요</span></p>
+                </div>
+            </div>
+
+            <!-- ---- L11 ---- -->
+            <div id="L11" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">11</div>
+                    <div><div class="lesson-title">-았/었 (过去式)</div><div class="lesson-sub">……了 / ……过</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干（ㅏ/ㅗ）+ 았습니다 / 았어요</div>
+                    <div class="cn-meaning">阳性母音词干的过去形</div>
+                    <div class="example"><span class="kr">살다</span> → <span class="kr">살았어요</span>（住过）/ <span class="kr">좋았어요</span>（很好）</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干（其他）+ 었습니다 / 었어요</div>
+                    <div class="cn-meaning">阴性母音词干的过去形</div>
+                    <div class="example"><span class="kr">먹다</span> → <span class="kr">먹었어요</span>（吃了）</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">하다 → 했습니다 / 했어요</div>
+                    <div class="cn-meaning">하다动词的过去形</div>
+                    <div class="example"><span class="kr">공부했어요.</span> — 学习了。/ <span class="kr">갔어요.</span>（가다→가+았→갔）— 去了。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">名词 + 이었어요 / 였어요</div>
+                    <div class="cn-meaning">名词过去形「曾是……」；有尾音→이었어요，无尾音→였어요</div>
+                    <div class="example"><span class="kr">학생이었어요.</span> — 曾是学生。</div>
+                </div>
+            </div>
+
+            <!-- ---- L12 ---- -->
+            <div id="L12" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">12</div>
+                    <div><div class="lesson-title">敬语 -(으)시-</div><div class="lesson-sub">对长辈或地位高的人使用</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + (으)세요 / (으)십니다</div>
+                    <div class="cn-meaning">敬语体；有尾音词干加으시，无尾音加시；ㄹ词干ㄹ脱落</div>
+                    <div class="example">
+                        <span class="kr">가다</span> → <span class="kr">가세요?</span>（您去吗？）<br>
+                        <span class="kr">읽다</span> → <span class="kr">읽으세요?</span>（您看吗？）<br>
+                        <span class="kr">알다</span> → <span class="kr">아세요?</span>（ㄹ脱落，您知道吗？）
+                    </div>
+                </div>
+                <div class="overflow-hidden bg-white ring-1 ring-slate-200 rounded-xl">
+                    <table class="tbl">
+                        <thead><tr><th>普通</th><th>敬语</th><th>中文</th></tr></thead>
+                        <tbody>
+                            <tr><td class="kr-sm">먹다 / 마시다</td><td class="kr-sm">드시다</td><td>吃/喝（敬）</td></tr>
+                            <tr><td class="kr-sm">있다</td><td class="kr-sm">계시다</td><td>在（敬）</td></tr>
+                            <tr><td class="kr-sm">자다</td><td class="kr-sm">주무시다</td><td>睡觉（敬）</td></tr>
+                            <tr><td class="kr-sm">죽다</td><td class="kr-sm">돌아가시다</td><td>去世（敬）</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="grammar-card mt-3">
+                    <div class="kr-pattern">-(으)세요 / -(으)십시오（命令/请求）</div>
+                    <div class="cn-meaning">「请……」；(으)십시오 用于更正式公共场合</div>
+                    <div class="example"><span class="kr">앉으세요.</span> — 请坐。/ <span class="kr">기다려 주십시오.</span> — 请等候。</div>
+                </div>
+            </div>
+
+            <!-- ---- L13 ---- -->
+            <div id="L13" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">13</div>
+                    <div><div class="lesson-title">敬语过去形 -(으)셨어요</div><div class="lesson-sub">您（做了）……吗？</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + (으)셨습니다 / (으)셨어요</div>
+                    <div class="cn-meaning">敬语过去形；规则同敬语现在形，只是시→셨</div>
+                    <div class="example">
+                        <span class="kr">가셨어요?</span> — 您去了吗？<br>
+                        <span class="kr">드셨어요?</span> — 您吃了吗？（드시다的过去）
+                    </div>
+                </div>
+            </div>
+
+            <!-- ---- L14 ---- -->
+            <div id="L14" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">14</div>
+                    <div><div class="lesson-title">-지요? · -지만</div><div class="lesson-sub">……对吧？ / ……但是……</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 지요? （口语缩略：죠?）</div>
+                    <div class="cn-meaning">向对方确认「……对吧？」「……是吧？」</div>
+                    <div class="example"><span class="kr">내일 가지요?</span> — 明天去吧？/ <span class="kr">회사원이지요?</span> — 是上班族对吧？</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 지만</div>
+                    <div class="cn-meaning">逆接连词「虽然……但是……」</div>
+                    <div class="example"><span class="kr">맛있지만 비싸요.</span> — 好吃但很贵。/ <span class="kr">주말이지만 바빠요.</span> — 虽然是周末但很忙。</div>
+                </div>
+            </div>
+
+            <!-- ---- L15 ---- -->
+            <div id="L15" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">15</div>
+                    <div><div class="lesson-title">-고 싶어요</div><div class="lesson-sub">想要……（愿望）</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 고 싶어요 / 고 싶습니다</div>
+                    <div class="cn-meaning">「我想……」（说话人自己的愿望）</div>
+                    <div class="example"><span class="kr">온천에 가고 싶어요.</span> — 我想去温泉。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 고 싶지 않아요</div>
+                    <div class="cn-meaning">「我不想……」</div>
+                    <div class="example"><span class="kr">여기에 있고 싶지 않아요.</span> — 我不想待在这里。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 고 싶어 해요</div>
+                    <div class="cn-meaning">「他/她想……」（第三人称愿望用此形式）</div>
+                    <div class="example"><span class="kr">친구가 가고 싶어 해요.</span> — 朋友想去。</div>
+                </div>
+            </div>
+
+            <!-- ---- L16 ---- -->
+            <div id="L16" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">16</div>
+                    <div><div class="lesson-title">-아/어서（理由）· 으不规则</div><div class="lesson-sub">因为……所以……</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 아서 / 어서（하다→해서）</div>
+                    <div class="cn-meaning">表示理由原因「因为……，所以……」；⚠ 아/어서前面<b>不能</b>用过去形</div>
+                    <div class="example">
+                        <span class="kr">바람이 불어서 춥습니다.</span> — 因为刮风所以冷。<br>
+                        <span class="kr">너무 맛있어서 또 먹었어요.</span> — 因为太好吃，又吃了一次。（✓）<br>
+                        <span class="note">✗ 맛있었어서 — 错误，어서前不用었</span>
+                    </div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">으不规则：词干末音ㅡ + 아/어 → ㅡ脱落</div>
+                    <div class="cn-meaning">词干末是「ㅡ」的动词，加아/어时ㅡ脱落，根据前一母音决定아/어</div>
+                    <div class="example">
+                        <span class="kr">바쁘다</span> → <span class="kr">바빠요 / 바빠서</span>（忙）<br>
+                        <span class="kr">예쁘다</span> → <span class="kr">예뻐요 / 예뻐서</span>（漂亮）<br>
+                        <span class="kr">쓰다</span> → <span class="kr">써요 / 써서</span>（用/写）<br>
+                        <span class="kr">아프다</span> → <span class="kr">아파요</span>（疼）/ <span class="kr">크다</span> → <span class="kr">커요</span>（大）
+                    </div>
+                </div>
+            </div>
+
+            <!-- ---- L17 ---- -->
+            <div id="L17" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">17</div>
+                    <div><div class="lesson-title">许可·条件·假设</div><div class="lesson-sub">可以吗？/ 如果……就……</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 아/어도 돼요?</div>
+                    <div class="cn-meaning">「……可以吗？」（征求许可）</div>
+                    <div class="example"><span class="kr">같이 가도 돼요?</span> — 可以一起去吗？</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">回答：네, 아/어도 돼요 / 안 돼요 / (으)면 안 돼요</div>
+                    <div class="cn-meaning">肯定：可以。/ 否定：不行。/ 条件否定：……的话不行。</div>
+                    <div class="example"><span class="kr">여기서 사진을 찍으면 안 돼요.</span> — 这里不能拍照。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + (으)면 돼요</div>
+                    <div class="cn-meaning">「……就行了」（条件成立即可）</div>
+                    <div class="example"><span class="kr">9시까지 오면 돼요.</span> — 9点前来就行了。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + (으)면</div>
+                    <div class="cn-meaning">「如果……」「……的话」（条件/假设）</div>
+                    <div class="example"><span class="kr">돈이 있으면 여행하고 싶어요.</span> — 如果有钱就想旅行。</div>
+                </div>
+            </div>
+
+            <!-- ---- L18 ---- -->
+            <div id="L18" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">18</div>
+                    <div><div class="lesson-title">建议·目的</div><div class="lesson-sub">我们……吧 / 为了……去……</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + (으)ㄹ까요?</div>
+                    <div class="cn-meaning">「我们……吧？」（提议，询问对方意见）；ㄹ词干脱落</div>
+                    <div class="example"><span class="kr">커피라도 마실까요?</span> — 喝点咖啡怎么样？/ <span class="kr">뭘 만들까요?</span> — 做什么好呢？</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + (으)ㅂ시다 / 아/어요</div>
+                    <div class="cn-meaning">「我们……吧！」（劝诱；不对长辈使用此形式）</div>
+                    <div class="example"><span class="kr">빨리 갑시다.</span> — 快走吧！/ <span class="kr">가요.</span> — 走吧。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + (으)러 + 移动动词</div>
+                    <div class="cn-meaning">「为了……而去/来」（目的；后接가다/오다等移动动词）</div>
+                    <div class="example"><span class="kr">배우러 갑니다.</span> — 去学习。/ <span class="kr">서류를 받으러 왔습니다.</span> — 来取文件。</div>
+                </div>
+            </div>
+
+            <!-- ---- L19 ---- -->
+            <div id="L19" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">19</div>
+                    <div><div class="lesson-title">请求表达</div><div class="lesson-sub">麻烦您……/ 请您……</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 아/어 주시겠어요?</div>
+                    <div class="cn-meaning">「能不能请您……？」（有礼貌的委托，常加좀）</div>
+                    <div class="example"><span class="kr">사진 좀 찍어 주시겠어요?</span> — 能帮我们拍张照吗？</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + 아/어 주세요 / 아/어 주십시오</div>
+                    <div class="cn-meaning">「请……」（请求/拜托）；주십시오更正式</div>
+                    <div class="example"><span class="kr">창문을 열어 주세요.</span> — 请开一下窗户。</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">ㄴ/습니다만 · 죄송합니다만 · 실례합니다만</div>
+                    <div class="cn-meaning">「……不过……」，请求前的客套前缀，相当于「对不起，打扰一下……」</div>
+                    <div class="example"><span class="kr">죄송합니다만, 좀 기다려 주시겠어요?</span> — 抱歉，能稍等一下吗？</div>
+                </div>
+            </div>
+
+            <!-- ---- L20 ---- -->
+            <div id="L20" class="card">
+                <div class="lesson-header">
+                    <div class="lesson-num">20</div>
+                    <div><div class="lesson-title">能力·可能</div><div class="lesson-sub">会……吗？/ 不会……</div></div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">词干 + (으)ㄹ 수 있어요</div>
+                    <div class="cn-meaning">「会……」「能……」（表示能力/可能）</div>
+                    <div class="example"><span class="kr">자전거를 탈 수 있어요?</span> — 会骑自行车吗？</div>
+                </div>
+                <div class="grammar-card">
+                    <div class="kr-pattern">못 + 动词 / 词干 + 지 못해요</div>
+                    <div class="cn-meaning">「不会……」「不能……」（不可能/无法做到）</div>
+                    <div class="example"><span class="kr">자전거를 못 타요.</span> — 不会骑自行车。</div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ⑤ IRREGULAR                                                   -->
+        <!-- ============================================================ -->
+        <section id="irregular" class="mb-14">
+            <h2 class="sec-h2 violet mb-1">⑤ 不规则动词变化</h2>
+            <p class="text-xs text-slate-400 pl-4 mb-6">以下动词在接아/어等母音语尾时，词干会发生变化，需要特别记忆。</p>
+
+            <div class="card">
+                <table class="tbl">
+                    <thead><tr><th>类型</th><th>代表词</th><th>变化规则</th><th>아/어요形</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-blue">ㄹ脱落</span></td>
+                            <td class="kr-sm">살다·알다·멀다·만들다</td>
+                            <td class="note">接ㄴ/ㅂ/시时，ㄹ脱落</td>
+                            <td class="kr-sm">살아요（삽니다）/ 아세요（아십니까）</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-amber">으不规则</span></td>
+                            <td class="kr-sm">바쁘다·예쁘다·쓰다·크다·아프다</td>
+                            <td class="note">接아/어时，ㅡ脱落</td>
+                            <td class="kr-sm">바빠요·예뻐요·써요·커요·아파요</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-rose">ㅂ不规则</span></td>
+                            <td class="kr-sm">덥다·춥다·맵다·가깝다</td>
+                            <td class="note">接母音时，ㅂ→워</td>
+                            <td class="kr-sm">더워요·추워요·매워요·가까워요</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-violet">ㄷ不规则</span></td>
+                            <td class="kr-sm">듣다·묻다</td>
+                            <td class="note">接母音时，ㄷ→ㄹ</td>
+                            <td class="kr-sm">들어요·물어요</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-green">르不规则</span></td>
+                            <td class="kr-sm">모르다·다르다·부르다</td>
+                            <td class="note">르→ㄹ+ㄹ（前节加ㄹ）</td>
+                            <td class="kr-sm">몰라요·달라요·불러요</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-slate">ㅅ不规则</span></td>
+                            <td class="kr-sm">낫다·짓다</td>
+                            <td class="note">接母音时ㅅ脱落</td>
+                            <td class="kr-sm">나아요·지어요</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ⑥ VOCABULARY                                                  -->
+        <!-- ============================================================ -->
+        <section id="vocab" class="mb-14">
+            <h2 class="sec-h2 teal mb-1">⑥ 常用词汇</h2>
+            <p class="text-xs text-slate-400 pl-4 mb-6">按类别整理的初级必备词汇。</p>
+
+            <!-- People -->
+            <div id="v-people" class="card">
+                <p class="sec-h3">人际关系</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">저 / 나</span><span class="text-xs text-slate-500 ml-2">我（礼/随）</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">우리</span><span class="text-xs text-slate-500 ml-2">我们</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">아버지</span><span class="text-xs text-slate-500 ml-2">父亲</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">어머니</span><span class="text-xs text-slate-500 ml-2">母亲</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">부모님</span><span class="text-xs text-slate-500 ml-2">父母（敬）</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">할아버지</span><span class="text-xs text-slate-500 ml-2">祖父</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">할머니</span><span class="text-xs text-slate-500 ml-2">祖母</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">형</span><span class="text-xs text-slate-500 ml-2">哥哥（男性称）</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">오빠</span><span class="text-xs text-slate-500 ml-2">哥哥（女性称）</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">누나</span><span class="text-xs text-slate-500 ml-2">姐姐（男性称）</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">언니</span><span class="text-xs text-slate-500 ml-2">姐姐（女性称）</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">남동생</span><span class="text-xs text-slate-500 ml-2">弟弟</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">여동생</span><span class="text-xs text-slate-500 ml-2">妹妹</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">남편</span><span class="text-xs text-slate-500 ml-2">丈夫</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">아내</span><span class="text-xs text-slate-500 ml-2">妻子</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">아들</span><span class="text-xs text-slate-500 ml-2">儿子</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">딸</span><span class="text-xs text-slate-500 ml-2">女儿</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">친구</span><span class="text-xs text-slate-500 ml-2">朋友</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">남자 친구</span><span class="text-xs text-slate-500 ml-2">男朋友</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">여자 친구</span><span class="text-xs text-slate-500 ml-2">女朋友</span></div>
+                </div>
+            </div>
+
+            <!-- Jobs -->
+            <div id="v-jobs" class="card">
+                <p class="sec-h3">职业</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">회사원</span><span class="text-xs text-slate-500 ml-2">公司职员</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">교사</span><span class="text-xs text-slate-500 ml-2">教师</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">의사</span><span class="text-xs text-slate-500 ml-2">医生</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">간호사</span><span class="text-xs text-slate-500 ml-2">护士</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">약사</span><span class="text-xs text-slate-500 ml-2">药剂师</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">공무원</span><span class="text-xs text-slate-500 ml-2">公务员</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">주부</span><span class="text-xs text-slate-500 ml-2">家庭主妇</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">학생</span><span class="text-xs text-slate-500 ml-2">学生</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">대학생</span><span class="text-xs text-slate-500 ml-2">大学生</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">유학생</span><span class="text-xs text-slate-500 ml-2">留学生</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">비서</span><span class="text-xs text-slate-500 ml-2">秘书</span></div>
+                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">가수</span><span class="text-xs text-slate-500 ml-2">歌手</span></div>
+                </div>
+            </div>
+
+            <!-- Adjectives -->
+            <div id="v-adj" class="card">
+                <p class="sec-h3">常用形容词（已变아/어요形）</p>
+                <table class="tbl">
+                    <thead><tr><th>原形</th><th>아/어요</th><th>中文</th><th>反义词</th></tr></thead>
+                    <tbody>
+                        <tr><td class="kr-sm">좋다</td><td class="kr-sm">좋아요</td><td>好</td><td class="kr-sm">나쁘다→나빠요 坏</td></tr>
+                        <tr><td class="kr-sm">크다</td><td class="kr-sm">커요</td><td>大</td><td class="kr-sm">작다→작아요 小</td></tr>
+                        <tr><td class="kr-sm">많다</td><td class="kr-sm">많아요</td><td>多</td><td class="kr-sm">적다→적어요 少</td></tr>
+                        <tr><td class="kr-sm">싸다</td><td class="kr-sm">싸요</td><td>便宜</td><td class="kr-sm">비싸다→비싸요 贵</td></tr>
+                        <tr><td class="kr-sm">덥다</td><td class="kr-sm">더워요</td><td>热</td><td class="kr-sm">춥다→추워요 冷</td></tr>
+                        <tr><td class="kr-sm">맵다</td><td class="kr-sm">매워요</td><td>辣</td><td class="kr-sm">—</td></tr>
+                        <tr><td class="kr-sm">맛있다</td><td class="kr-sm">맛있어요</td><td>好吃</td><td class="kr-sm">맛없다→맛없어요 难吃</td></tr>
+                        <tr><td class="kr-sm">재미있다</td><td class="kr-sm">재미있어요</td><td>有趣</td><td class="kr-sm">재미없다→재미없어요 无聊</td></tr>
+                        <tr><td class="kr-sm">멀다</td><td class="kr-sm">멀어요</td><td>远</td><td class="kr-sm">가깝다→가까워요 近</td></tr>
+                        <tr><td class="kr-sm">바쁘다</td><td class="kr-sm">바빠요</td><td>忙</td><td class="kr-sm">—</td></tr>
+                        <tr><td class="kr-sm">쉽다</td><td class="kr-sm">쉬워요</td><td>简单</td><td class="kr-sm">어렵다→어려워요 难</td></tr>
+                        <tr><td class="kr-sm">예쁘다</td><td class="kr-sm">예뻐요</td><td>漂亮</td><td class="kr-sm">—</td></tr>
+                        <tr><td class="kr-sm">친절하다</td><td class="kr-sm">친절해요</td><td>亲切</td><td class="kr-sm">—</td></tr>
+                        <tr><td class="kr-sm">유명하다</td><td class="kr-sm">유명해요</td><td>有名</td><td class="kr-sm">—</td></tr>
+                        <tr><td class="kr-sm">편리하다</td><td class="kr-sm">편리해요</td><td>方便</td><td class="kr-sm">—</td></tr>
+                        <tr><td class="kr-sm">따뜻하다</td><td class="kr-sm">따뜻해요</td><td>温暖</td><td class="kr-sm">—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Verbs -->
+            <div id="v-verbs" class="card">
+                <p class="sec-h3">常用动词（已变아/어요形）</p>
+                <table class="tbl">
+                    <thead><tr><th>原形</th><th>아/어요</th><th>中文</th></tr></thead>
+                    <tbody>
+                        <tr><td class="kr-sm">가다</td><td class="kr-sm">가요</td><td>去</td></tr>
+                        <tr><td class="kr-sm">오다</td><td class="kr-sm">와요</td><td>来</td></tr>
+                        <tr><td class="kr-sm">먹다</td><td class="kr-sm">먹어요</td><td>吃</td></tr>
+                        <tr><td class="kr-sm">마시다</td><td class="kr-sm">마셔요</td><td>喝</td></tr>
+                        <tr><td class="kr-sm">보다</td><td class="kr-sm">봐요</td><td>看</td></tr>
+                        <tr><td class="kr-sm">만나다</td><td class="kr-sm">만나요</td><td>见面</td></tr>
+                        <tr><td class="kr-sm">자다</td><td class="kr-sm">자요</td><td>睡觉</td></tr>
+                        <tr><td class="kr-sm">읽다</td><td class="kr-sm">읽어요</td><td>阅读</td></tr>
+                        <tr><td class="kr-sm">쓰다</td><td class="kr-sm">써요</td><td>写/用</td></tr>
+                        <tr><td class="kr-sm">말하다</td><td class="kr-sm">말해요</td><td>说话</td></tr>
+                        <tr><td class="kr-sm">듣다</td><td class="kr-sm">들어요</td><td>听（ㄷ不规则）</td></tr>
+                        <tr><td class="kr-sm">알다</td><td class="kr-sm">알아요</td><td>知道</td></tr>
+                        <tr><td class="kr-sm">모르다</td><td class="kr-sm">몰라요</td><td>不知道（르不规则）</td></tr>
+                        <tr><td class="kr-sm">만들다</td><td class="kr-sm">만들어요</td><td>制作</td></tr>
+                        <tr><td class="kr-sm">쉬다</td><td class="kr-sm">쉬어요</td><td>休息</td></tr>
+                        <tr><td class="kr-sm">다니다</td><td class="kr-sm">다녀요</td><td>上班/上学（反复往来）</td></tr>
+                        <tr><td class="kr-sm">살다</td><td class="kr-sm">살아요</td><td>居住/生活</td></tr>
+                        <tr><td class="kr-sm">사다</td><td class="kr-sm">사요</td><td>买</td></tr>
+                        <tr><td class="kr-sm">주다</td><td class="kr-sm">줘요</td><td>给</td></tr>
+                        <tr><td class="kr-sm">받다</td><td class="kr-sm">받아요</td><td>收到</td></tr>
+                        <tr><td class="kr-sm">배우다</td><td class="kr-sm">배워요</td><td>学（习）</td></tr>
+                        <tr><td class="kr-sm">가르치다</td><td class="kr-sm">가르쳐요</td><td>教</td></tr>
+                        <tr><td class="kr-sm">찾다</td><td class="kr-sm">찾아요</td><td>寻找</td></tr>
+                        <tr><td class="kr-sm">기다리다</td><td class="kr-sm">기다려요</td><td>等待</td></tr>
+                        <tr><td class="kr-sm">좋아하다</td><td class="kr-sm">좋아해요</td><td>喜欢</td></tr>
+                        <tr><td class="kr-sm">결혼하다</td><td class="kr-sm">결혼해요</td><td>结婚</td></tr>
+                        <tr><td class="kr-sm">공부하다</td><td class="kr-sm">공부해요</td><td>学习</td></tr>
+                        <tr><td class="kr-sm">운동하다</td><td class="kr-sm">운동해요</td><td>运动</td></tr>
+                        <tr><td class="kr-sm">시작하다</td><td class="kr-sm">시작해요</td><td>开始</td></tr>
+                        <tr><td class="kr-sm">끝나다</td><td class="kr-sm">끝나요</td><td>结束</td></tr>
+                        <tr><td class="kr-sm">사귀다</td><td class="kr-sm">사귀어요</td><td>交往/约会</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ⑦ PRONUNCIATION                                               -->
+        <!-- ============================================================ -->
+        <section id="pronunciation" class="mb-14">
+            <h2 class="sec-h2 rose mb-1">⑦ 发音规则</h2>
+            <p class="text-xs text-slate-400 pl-4 mb-6">实际发音与书写形式不同时，需遵循以下规则。</p>
+
+            <div class="card">
+                <table class="tbl">
+                    <thead><tr><th>规则名</th><th>说明</th><th>例</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="badge badge-blue">연음화 连音化</span></td>
+                            <td class="note">收音（尾音）后接元音时，收音移到下一个音节</td>
+                            <td><span class="kr-eg">사람이</span>→[사라미]　<span class="kr-eg">읽어요</span>→[일거요]</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-rose">비음화 鼻音化</span></td>
+                            <td class="note">ㅂ/ㄷ/ㄱ后接鼻音(ㄴ/ㅁ)时→ ㅁ/ㄴ/ㅇ</td>
+                            <td><span class="kr-eg">입니다</span>→[임니다]　<span class="kr-eg">학년</span>→[항년]</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-amber">농음화 紧音化</span></td>
+                            <td class="note">收音ㅂ/ㄷ/ㄱ后接ㄱ/ㄷ/ㅂ/ㅈ/ㅅ→后者变紧音</td>
+                            <td><span class="kr-eg">학교</span>→[학꾜]　<span class="kr-eg">약속</span>→[약쏙]</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-teal" style="background:#ccfbf1;color:#115e59;">격음화 激音化</span></td>
+                            <td class="note">ㅎ与相邻辅音ㄱ/ㄷ/ㅈ/ㅂ合流→ ㅋ/ㅌ/ㅊ/ㅍ</td>
+                            <td><span class="kr-eg">좋다</span>→[조타]　<span class="kr-eg">어떻게</span>→[어떠케]</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-violet">유음화 流音化</span></td>
+                            <td class="note">ㄴ+ㄹ或ㄹ+ㄴ → 都变[ㄹㄹ]</td>
+                            <td><span class="kr-eg">일 년</span>→[일련]　<span class="kr-eg">한류</span>→[할류]</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-green">구개음화 腭音化</span></td>
+                            <td class="note">ㄷ/ㅌ后接이→变[지/치]</td>
+                            <td><span class="kr-eg">같이</span>→[가치]　<span class="kr-eg">굳이</span>→[구지]</td>
+                        </tr>
+                        <tr>
+                            <td><span class="badge badge-slate">ㅎ약화 H弱化</span></td>
+                            <td class="note">有声音之间的ㅎ发音变弱或消失</td>
+                            <td><span class="kr-eg">전화</span>→[저놔]　<span class="kr-eg">결혼</span>→[겨론]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="text-center text-xs text-slate-400 pb-8 pt-4 border-t border-slate-200">
+            <p>本笔记内容整理自《できる韓国語 初級 I》（新大久保語学院）</p>
+            <p class="mt-1">供个人学习参考使用</p>
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>
