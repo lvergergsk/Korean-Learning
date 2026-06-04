@@ -42,21 +42,17 @@ After adding new files to `sentense/` or `character/`, run `/update-index`. This
 
 All pages share the same visual design. Use this as the template when creating new pages.
 
-**`<head>` boilerplate** — every page needs both the CDN tag and the font config:
+**`<head>` boilerplate** — every page links to the two shared files. Use `../` prefix for pages inside `sentense/` or `character/`:
 ```html
 <script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                fontFamily: {
-                    sans: ['PingFang SC', 'Microsoft YaHei', 'system-ui', 'sans-serif'],
-                    kr: ['Malgun Gothic', 'Dotum', 'sans-serif'],
-                }
-            }
-        }
-    }
-</script>
+<script src="../tailwind-config.js"></script>
+<link rel="stylesheet" href="../shared.css">
+```
+Root-level pages (`index.html`, etc.) omit the `../`:
+```html
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="tailwind-config.js"></script>
+<link rel="stylesheet" href="shared.css">
 ```
 
 **Page shell:**
@@ -79,7 +75,7 @@ All pages share the same visual design. Use this as the template when creating n
 ```html
 <div class="bg-white shadow-sm ring-1 ring-slate-200 rounded-xl p-6 mb-8">
 ```
-Blue accent bar inside a card: `<div style="width:32px;height:3px;background:#1e3a5f;margin-bottom:18px;"></div>`
+Blue accent bar inside a card: `<div class="accent-bar"></div>`
 
 **Tables:**
 ```html
@@ -113,13 +109,9 @@ Blue accent bar inside a card: `<div style="width:32px;height:3px;background:#1e
     </ul>
 </div>
 ```
-The `.tip-item` class (diamond bullet `◆`) is defined in a `<style>` block — include it whenever tips are used:
-```css
-.tip-item { position: relative; padding-left: 14px; }
-.tip-item::before { content: '◆'; position: absolute; left: 0; font-size: 8px; color: #b45309; top: 5px; }
-```
+The `.tip-item` class (diamond bullet `◆`) comes from `shared.css` — no inline `<style>` block needed.
 
-**Sentence page custom CSS** — also keep these in the `<style>` block for `.ch`/`.wrd`/`.hc`/`.ks`/`.k`/`.k-sh` syllable layout classes (see any existing `sentense/` file for the full block).
+**Sentence page CSS** — `.wrd`/`.hc`/`.ks`/`.k`/`.k-sh` syllable layout classes and `.tip-item` are all in `shared.css`. No per-page `<style>` block is needed for sentence pages.
 
 ## Git workflow
 

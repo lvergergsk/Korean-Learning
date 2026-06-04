@@ -5,23 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>できる韓国語 初級I — 学习笔记</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['PingFang SC', 'Microsoft YaHei', 'system-ui', 'sans-serif'],
-                        kr:   ['Malgun Gothic', 'Dotum', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="tailwind-config.js"></script>
     <link rel="stylesheet" href="shared.css">
     <style>
-        /* Smooth scroll */
-        html { scroll-behavior: smooth; }
-
         /* TOC active / hover */
         .toc-link { display: block; padding: 3px 10px; border-left: 2px solid transparent; font-size: 0.78rem; color: #64748b; transition: all .15s; text-decoration: none; }
         .toc-link:hover { border-left-color: #2563eb; color: #1d4ed8; background: #eff6ff; border-radius: 0 6px 6px 0; }
@@ -60,15 +46,6 @@
         /* Inline kr highlight */
         .kr { font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-weight: 700; color: #1e40af; }
         .kr-eg { font-family: 'Malgun Gothic', 'Dotum', sans-serif; color: #1d4ed8; }
-
-        /* Badge */
-        .badge { display:inline-block; border-radius:9999px; padding: 1px 9px; font-size:.7rem; font-weight:600; }
-        .badge-blue   { background:#dbeafe; color:#1d4ed8; }
-        .badge-green  { background:#dcfce7; color:#166534; }
-        .badge-amber  { background:#fef3c7; color:#b45309; }
-        .badge-violet { background:#ede9fe; color:#6d28d9; }
-        .badge-rose   { background:#ffe4e6; color:#be123c; }
-        .badge-slate  { background:#f1f5f9; color:#475569; }
 
         /* Tip box */
         .tip-box { background:#fffbeb; border:1px solid #fcd34d; border-radius:10px; padding:10px 14px; }

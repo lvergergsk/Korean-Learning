@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
@@ -6,27 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>韩语学习笔记</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['PingFang SC', 'Microsoft YaHei', 'system-ui', 'sans-serif'],
-                        kr: ['Malgun Gothic', 'Dotum', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .wrd { display: inline-flex; align-items: flex-end; gap: 4px; }
-        .hc { display: inline-flex; flex-direction: column; align-items: center; }
-        .ks { display: flex; gap: 2px; margin-bottom: 5px; }
-        .k { background: #fff; border: 1px solid #d1d5db; border-bottom: 2px solid #9ca3af; border-radius: 2px; color: #374151; font-size: 9px; font-weight: 700; font-family: 'Courier New', Courier, monospace; line-height: 1.5; padding: 0 3.5px; min-width: 14px; text-align: center; }
-        .k-sh { background: #fef3c7; border-color: #d97706; border-bottom-color: #b45309; color: #92400e; }
-        .tip-item { position: relative; padding-left: 14px; }
-        .tip-item::before { content: '◆'; position: absolute; left: 0; font-size: 8px; color: #b45309; top: 5px; }
-    </style>
+    <script src="../tailwind-config.js"></script>
+    <link rel="stylesheet" href="../shared.css">
 </head>
 
 <body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen">
@@ -34,7 +15,7 @@
     <div class="max-w-5xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
 
         <div class="bg-white shadow-sm ring-1 ring-slate-200 rounded-xl p-6 mb-8">
-            <div style="width:32px;height:3px;background:#1e3a5f;margin-bottom:18px;"></div>
+            <div class="accent-bar"></div>
 
             <div class="flex flex-wrap items-end mb-4" style="gap: 8px 12px;">
 

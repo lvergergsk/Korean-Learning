@@ -1,22 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ㅎ hi-eut — 韩语辅音</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['PingFang SC', 'Microsoft YaHei', 'system-ui', 'sans-serif'],
-                        kr: ['Malgun Gothic', 'Dotum', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="../tailwind-config.js"></script>
+    <link rel="stylesheet" href="../shared.css">
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen">
 <div class="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
@@ -26,7 +16,7 @@
     </div>
 
     <div class="mb-10">
-        <div style="width:32px;height:3px;background:#1e3a5f;margin-bottom:16px;"></div>
+        <div class="accent-bar"></div>
         <div class="flex items-baseline gap-4">
             <span class="font-kr text-5xl font-bold text-blue-900" style="line-height:1;">ㅎ</span>
             <div>
