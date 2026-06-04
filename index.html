@@ -6,79 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>韩语学习</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .entry-link {
-            display: flex;
-            align-items: baseline;
-            gap: 14px;
-            text-decoration: none;
-            padding: 14px 16px;
-            border-radius: 6px;
-            border: 1px solid transparent;
-            transition: background 0.15s, border-color 0.15s;
-        }
-
-        .entry-link:hover {
-            background: #f8fafc;
-            border-color: #e2e8f0;
-        }
-
-        .entry-link:hover .entry-text {
-            color: #2563eb;
-        }
-
-        .entry-link:hover .entry-arrow {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .entry-date {
-            flex-shrink: 0;
-            font-size: 11px;
-            font-weight: 600;
-            color: #9ca3af;
-            letter-spacing: 0.06em;
-            font-family: 'Courier New', monospace;
-            padding-top: 3px;
-        }
-
-        .entry-text {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1e3a5f;
-            letter-spacing: 0.02em;
-            transition: color 0.15s;
-            line-height: 1.4;
-        }
-
-        .entry-arrow {
-            margin-left: auto;
-            flex-shrink: 0;
-            color: #93c5fd;
-            opacity: 0;
-            transform: translateX(-6px);
-            transition: opacity 0.15s, transform 0.15s;
-        }
-    </style>
+    <script src="tailwind-config.js"></script>
+    <link rel="stylesheet" href="shared.css">
 </head>
 
-<body class="bg-gray-100 text-gray-800"
-    style="font-family:'Helvetica Neue',Arial,'Noto Sans CJK SC','Malgun Gothic',sans-serif; min-height:100vh; padding: 20px 8px;">
+<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen">
 
-    <div class="max-w-2xl mx-auto">
+    <div class="max-w-2xl mx-auto px-4 py-8">
 
         <header class="mb-6">
-            <div style="width:32px;height:3px;background:#1e3a5f;margin-bottom:18px;"></div>
-            <h1 style="font-size:24px;font-weight:700;color:#111827;letter-spacing:0.02em;margin:0 0 6px;">韩语学习</h1>
-            <p style="font-size:13px;color:#9ca3af;margin:0;">每日句子笔记</p>
+            <div class="accent-bar"></div>
+            <h1 class="text-2xl font-bold text-gray-900 tracking-tight mb-1.5">韩语学习</h1>
+            <p class="text-sm text-slate-400">每日句子笔记</p>
         </header>
 
         <section class="mb-8">
             <div class="flex items-center gap-3 mb-3">
-                <span style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.2em;">笔记</span>
-                <div style="flex:1;height:1px;background:#e5e7eb;"></div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">笔记</span>
+                <div class="flex-1 h-px bg-slate-200"></div>
             </div>
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px;">
+            <ul class="list-none p-0 m-0 flex flex-col gap-0.5">
                 <li>
                     <a href="できる韓国語初級I-notes.html" class="entry-link">
                         <span class="entry-date">参考</span>
@@ -91,10 +38,10 @@
 
         <section class="mb-8">
             <div class="flex items-center gap-3 mb-3">
-                <span style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.2em;">字母</span>
-                <div style="flex:1;height:1px;background:#e5e7eb;"></div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">字母</span>
+                <div class="flex-1 h-px bg-slate-200"></div>
             </div>
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px;">
+            <ul class="list-none p-0 m-0 flex flex-col gap-0.5">
                 <li>
                     <a href="character/alphabet.html" class="entry-link">
                         <span class="entry-date">参考</span>
@@ -121,10 +68,10 @@
 
         <section>
             <div class="flex items-center gap-3 mb-3">
-                <span style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.2em;">句子</span>
-                <div style="flex:1;height:1px;background:#e5e7eb;"></div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">句子</span>
+                <div class="flex-1 h-px bg-slate-200"></div>
             </div>
-            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:2px;">
+            <ul class="list-none p-0 m-0 flex flex-col gap-0.5">
                 <li>
                     <a href="sentense/20260530-001.html" class="entry-link">
                         <span class="entry-date">2026.05.30</span>
