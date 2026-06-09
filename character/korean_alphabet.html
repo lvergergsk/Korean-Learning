@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>韓国語 ハングル字母表 | Korean Alphabet Chart</title>
+  <meta name="description" content="韓国語のハングル字母表。ローマ字と日本語カタカナの発音付き。">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Gothic+A1:wght@400;700&family=Do+Hyeon&family=Jua&family=Gamja+Flower&family=Nanum+Gothic:wght@400;700&family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
+      background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 40%, #24243e 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      padding: 20px 80px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin: 20px 0 8px;
+      background: linear-gradient(90deg, #60efff, #a78bfa, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #94a3b8;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    .legend-color {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: max-content;
+      min-width: 100%;
+    }
+
+    th,
+    td {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      vertical-align: middle;
+      padding: 4px 3px;
+      min-width: 52px;
+    }
+
+    /* Header cells - vowels */
+    thead th {
+      background: linear-gradient(180deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.1));
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding: 6px 4px;
+    }
+
+    thead th .vowel-hangul {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #4ade80;
+    }
+
+    thead th .vowel-roman {
+      font-size: 0.7rem;
+      color: #86efac;
+      margin-top: 1px;
+    }
+
+    /* Corner cell */
+    .corner {
+      background: linear-gradient(135deg, rgba(251, 146, 60, 0.2), rgba(34, 197, 94, 0.2)) !important;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      min-width: 60px;
+    }
+
+    .corner .label-row {
+      color: #4ade80;
+    }
+
+    .corner .label-col {
+      color: #fb923c;
+    }
+
+    /* Consonant header cells */
+    .consonant-header {
+      background: linear-gradient(90deg, rgba(251, 146, 60, 0.25), rgba(251, 146, 60, 0.1));
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      min-width: 60px;
+      padding: 4px 6px;
+    }
+
+    .consonant-header .cons-hangul {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #fb923c;
+    }
+
+    .consonant-header .cons-roman {
+      font-size: 0.7rem;
+      color: #fdba74;
+    }
+
+    /* Data cells */
+    td.cell {
+      transition: all 0.2s ease;
+      cursor: default;
+      padding: 5px 3px;
+    }
+
+    td.cell:hover,
+    tr.aspirated td.cell:hover,
+    tr.tense td.cell:hover {
+      background: rgba(139, 92, 246, 0.45);
+      transform: scale(1.02);
+      box-shadow: 0 0 16px rgba(139, 92, 246, 0.5);
+    }
+
+    .hangul {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #f1f5f9;
+      line-height: 1.3;
+    }
+
+    .roman {
+      font-size: 0.65rem;
+      color: #60a5fa;
+      line-height: 1.2;
+    }
+
+    .japanese {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.7rem;
+      color: #f472b6;
+      line-height: 1.2;
+    }
+
+    /* Aspirated consonant rows (ㅊ ㅋ ㅌ ㅍ) */
+    tr.aspirated td.cell {
+      background: rgba(34, 211, 238, 0.12);
+    }
+
+    tr.aspirated .consonant-header {
+      background: linear-gradient(90deg, rgba(34, 211, 238, 0.25), rgba(34, 211, 238, 0.08));
+    }
+
+    tr.aspirated .cons-hangul {
+      color: #22d3ee;
+    }
+
+    tr.aspirated .cons-roman {
+      color: #67e8f9;
+    }
+
+    /* Tense consonant rows (ㄲ ㄸ ㅃ ㅆ ㅉ) */
+    tr.tense td.cell {
+      background: rgba(232, 121, 249, 0.12);
+    }
+
+    tr.tense .consonant-header {
+      background: linear-gradient(90deg, rgba(232, 121, 249, 0.25), rgba(232, 121, 249, 0.08));
+    }
+
+    tr.tense .cons-hangul {
+      color: #e879f9;
+    }
+
+    tr.tense .cons-roman {
+      color: #f0abfc;
+    }
+
+    /* Toggle switches */
+    .toggle-panel {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(20, 20, 50, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toggle-label {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      min-width: 60px;
+      flex: 1;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 40px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 22px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle-slider::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 16px;
+      height: 16px;
+      background: #94a3b8;
+      border-radius: 50%;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .toggle-switch input:checked+.toggle-slider {
+      background: rgba(139, 92, 246, 0.5);
+    }
+
+    .toggle-switch input:checked+.toggle-slider::before {
+      transform: translateX(18px);
+      background: #a78bfa;
+    }
+
+    /* Hidden by default; shown when table has the class */
+    .roman,
+    .japanese,
+    .vowel-roman,
+    .cons-roman {
+      display: none;
+    }
+
+    #hangulTable.show-roman .roman,
+    #hangulTable.show-roman .vowel-roman,
+    #hangulTable.show-roman .cons-roman {
+      display: block;
+    }
+
+    #hangulTable.show-japanese .japanese {
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 8px 16px;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      th,
+      td {
+        min-width: 44px;
+        padding: 3px 2px;
+      }
+
+      .hangul {
+        font-size: 1rem;
+      }
+
+      .roman,
+      .japanese {
+        font-size: 0.6rem;
+      }
+
+      .toggle-panel {
+        top: 8px;
+        right: 8px;
+        padding: 10px 12px;
+      }
+    }
+
+    /* Tooltip */
+    .tooltip {
+      display: none;
+      position: fixed;
+      background: rgba(30, 30, 60, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      border-radius: 12px;
+      padding: 16px;
+      z-index: 100;
+      pointer-events: none;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .tooltip.show {
+      display: block;
+    }
+
+    .tooltip .t-hangul {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+    }
+
+    .tooltip .t-roman {
+      font-size: 1rem;
+      color: #60a5fa;
+      text-align: center;
+      margin: 4px 0;
+    }
+
+    .tooltip .t-japanese {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1.1rem;
+      color: #f472b6;
+      text-align: center;
+    }
+
+    /* Font toolbar */
+    .font-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      flex-wrap: wrap;
+    }
+
+    .font-toolbar label {
+      font-size: 0.82rem;
+      color: #94a3b8;
+    }
+
+    .font-select {
+      background: rgba(255, 255, 255, 0.08);
+      color: #e0e0e0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .font-select:hover {
+      background: rgba(139, 92, 246, 0.25);
+      border-color: rgba(139, 92, 246, 0.4);
+      color: #fff;
+    }
+
+    /* Font picker popup */
+    .font-popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .font-popup-overlay.show {
+      display: flex;
+    }
+
+    .font-popup {
+      background: linear-gradient(135deg, #1a1a3e, #24243e);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 520px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 16px 64px rgba(0, 0, 0, 0.6);
+    }
+
+    .font-popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .font-popup-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e0e0e0;
+    }
+
+    .font-popup-close {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .font-popup-close:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .font-popup-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .font-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .font-card:hover {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: rgba(139, 92, 246, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
+    }
+
+    .font-card.active {
+      border-color: #a78bfa;
+      background: rgba(139, 92, 246, 0.2);
+    }
+
+    .font-card-preview {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      line-height: 1.4;
+    }
+
+    .font-card-name {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 480px) {
+      .font-popup-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .font-btn {
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .font-btn:hover {
+      background: rgba(139, 92, 246, 0.25);
+      border-color: rgba(139, 92, 246, 0.4);
+      color: #fff;
+    }
+
+    .font-btn:active {
+      transform: scale(0.95);
+    }
+
+    .toolbar-separator {
+      width: 1px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="toggle-panel">
+    <div class="toggle-row">
+      <span class="toggle-label" style="color:#60a5fa">Romanization</span>
+      <label class="toggle-switch"><input type="checkbox" id="toggleRoman"><span class="toggle-slider"></span></label>
+    </div>
+    <div class="toggle-row">
+      <span class="toggle-label" style="color:#f472b6">カタカナ</span>
+      <label class="toggle-switch"><input type="checkbox" id="toggleJapanese"><span
+          class="toggle-slider"></span></label>
+    </div>
+    <div class="toggle-row">
+      <span class="toggle-label" style="color:#4ade80">発音</span>
+      <label class="toggle-switch"><input type="checkbox" id="toggleSound" checked><span
+          class="toggle-slider"></span></label>
+    </div>
+  </div>
+
+  <h1>韓国語字母表 한글</h1>
+  <p class="subtitle">母音（横）× 子音（縦）の組み合わせ ｜ ローマ字・日本語カタカナ発音付き</p>
+
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-color" style="background:#4ade80"></div>母音 (Vowels)
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background:#fb923c"></div>子音 (Consonants)
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background:#22d3ee"></div>激音 (Aspirated)
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background:#e879f9"></div>濃音 (Tense)
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background:#60a5fa"></div>ローマ字
+    </div>
+    <div class="legend-item">
+      <div class="legend-color" style="background:#f472b6"></div>カタカナ
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table id="hangulTable"></table>
+  </div>
+
+  <div class="font-toolbar">
+    <button class="font-select" id="fontPickerBtn">フォント選択</button>
+    <div class="toolbar-separator"></div>
+    <button class="font-btn" id="fontSmaller" title="縮小">A−</button>
+    <button class="font-btn" id="fontLarger" title="拡大">A＋</button>
+    <div class="toolbar-separator"></div>
+    <span class="toggle-label" style="color:#cbd5e1;font-size:0.82rem">太字</span>
+    <label class="toggle-switch"><input type="checkbox" id="toggleBold"><span class="toggle-slider"></span></label>
+  </div>
+
+  <div class="font-popup-overlay" id="fontPopupOverlay">
+    <div class="font-popup">
+      <div class="font-popup-header">
+        <span class="font-popup-title">フォントを選択</span>
+        <button class="font-popup-close" id="fontPopupClose">×</button>
+      </div>
+      <div class="font-popup-grid" id="fontPopupGrid"></div>
+    </div>
+  </div>
+
+  <div class="tooltip" id="tooltip">
+    <div class="t-hangul" id="t-hangul"></div>
+    <div class="t-roman" id="t-roman"></div>
+    <div class="t-japanese" id="t-japanese"></div>
+  </div>
+
+  <script>
+    // Vowel data: [hangul, roman]
+    const vowels = [
+      ['ㅏ', 'a'], ['ㅑ', 'ya'], ['ㅓ', 'eo'], ['ㅕ', 'yeo'], ['ㅗ', 'o'], ['ㅛ', 'yo'],
+      ['ㅜ', 'u'], ['ㅠ', 'yu'], ['ㅡ', 'eu'], ['ㅣ', 'i'],
+      ['ㅐ', 'ae'], ['ㅒ', 'yae'], ['ㅔ', 'e'], ['ㅖ', 'ye'],
+      ['ㅘ', 'wa'], ['ㅙ', 'wae'], ['ㅚ', 'oe'], ['ㅝ', 'wo'], ['ㅞ', 'we'], ['ㅟ', 'wi'], ['ㅢ', 'ui']
+    ];
+
+    // Consonant data: [hangul, roman, type]
+    const consonants = [
+      ['ㄱ', 'k/g', ''], ['ㄴ', 'n', ''], ['ㄷ', 't/d', ''], ['ㄹ', 'r', ''],
+      ['ㅁ', 'm', ''], ['ㅂ', 'p/b', ''], ['ㅅ', 's', ''], ['ㅇ', '無音', ''],
+      ['ㅈ', 'ch/j', ''], ['ㅊ', 'ch', 'aspirated'], ['ㅋ', 'k', 'aspirated'], ['ㅌ', 't', 'aspirated'],
+      ['ㅍ', 'p', 'aspirated'], ['ㅎ', 'h', ''],
+      ['ㄲ', 'kk', 'tense'], ['ㄸ', 'tt', 'tense'], ['ㅃ', 'pp', 'tense'], ['ㅆ', 'ss', 'tense'], ['ㅉ', 'cch', 'tense']
+    ];
+
+    // Unicode initial consonant indices (for syllable generation)
+    const initialMap = {
+      'ㄱ': 0, 'ㄲ': 1, 'ㄴ': 2, 'ㄷ': 3, 'ㄸ': 4, 'ㄹ': 5, 'ㅁ': 6, 'ㅂ': 7, 'ㅃ': 8,
+      'ㅅ': 9, 'ㅆ': 10, 'ㅇ': 11, 'ㅈ': 12, 'ㅉ': 13, 'ㅊ': 14, 'ㅋ': 15, 'ㅌ': 16, 'ㅍ': 17, 'ㅎ': 18
+    };
+    const medialMap = {
+      'ㅏ': 0, 'ㅐ': 1, 'ㅑ': 2, 'ㅒ': 3, 'ㅓ': 4, 'ㅔ': 5, 'ㅕ': 6, 'ㅖ': 7, 'ㅗ': 8, 'ㅘ': 9,
+      'ㅙ': 10, 'ㅚ': 11, 'ㅛ': 12, 'ㅜ': 13, 'ㅝ': 14, 'ㅞ': 15, 'ㅟ': 16, 'ㅠ': 17, 'ㅡ': 18, 'ㅢ': 19, 'ㅣ': 20
+    };
+
+    function makeSyllable(consHangul, vowelHangul) {
+      const ini = initialMap[consHangul];
+      const med = medialMap[vowelHangul];
+      if (ini === undefined || med === undefined) return '?';
+      return String.fromCharCode(0xAC00 + (ini * 21 + med) * 28);
+    }
+
+    // Romanization: consonant roman prefix + vowel roman
+    function makeRoman(consRoman, vowelRoman) {
+      let c = consRoman;
+      if (c === 'k/g') c = 'k';
+      else if (c === 't/d') c = 't';
+      else if (c === 'p/b') c = 'p';
+      else if (c === 'ch/j') c = 'ch';
+      else if (c === '無音') c = '';
+      return c + vowelRoman;
+    }
+
+    // Japanese katakana mapping
+    const jpConsonantBase = {
+      'ㄱ': {
+        a: 'カ', ya: 'キャ', eo: 'コ', yeo: 'キョ', o: 'コ', yo: 'キョ', u: 'ク', yu: 'キュ', eu: 'ク', i: 'キ',
+        ae: 'ケ', yae: 'キェ', e: 'ケ', ye: 'キェ', wa: 'クァ', wae: 'クェ', oe: 'クェ', wo: 'クォ', we: 'クェ', wi: 'クィ', ui: 'キ'
+      },
+      'ㄴ': {
+        a: 'ナ', ya: 'ニャ', eo: 'ノ', yeo: 'ニョ', o: 'ノ', yo: 'ニョ', u: 'ヌ', yu: 'ニュ', eu: 'ヌ', i: 'ニ',
+        ae: 'ネ', yae: 'ニェ', e: 'ネ', ye: 'ニェ', wa: 'ヌァ', wae: 'ヌェ', oe: 'ヌェ', wo: 'ヌォ', we: 'ヌェ', wi: 'ヌィ', ui: 'ニ'
+      },
+      'ㄷ': {
+        a: 'タ', ya: 'ティヤ', eo: 'ト', yeo: 'テョ', o: 'ト', yo: 'テョ', u: 'トゥ', yu: 'テュ', eu: 'トゥ', i: 'ティ',
+        ae: 'テ', yae: 'ティェ', e: 'テ', ye: 'ティェ', wa: 'トァ', wae: 'トェ', oe: 'トェ', wo: 'トォ', we: 'トェ', wi: 'トィ', ui: 'ティ'
+      },
+      'ㄹ': {
+        a: 'ラ', ya: 'リャ', eo: 'ロ', yeo: 'リョ', o: 'ロ', yo: 'リョ', u: 'ル', yu: 'リュ', eu: 'ル', i: 'リ',
+        ae: 'レ', yae: 'リェ', e: 'レ', ye: 'リェ', wa: 'ルァ', wae: 'ルェ', oe: 'ルェ', wo: 'ルォ', we: 'ルェ', wi: 'ルィ', ui: 'リ'
+      },
+      'ㅁ': {
+        a: 'マ', ya: 'ミャ', eo: 'モ', yeo: 'ミョ', o: 'モ', yo: 'ミョ', u: 'ム', yu: 'ミュ', eu: 'ム', i: 'ミ',
+        ae: 'メ', yae: 'ミェ', e: 'メ', ye: 'ミェ', wa: 'ムァ', wae: 'ムェ', oe: 'ムェ', wo: 'ムォ', we: 'ムェ', wi: 'ムィ', ui: 'ミ'
+      },
+      'ㅂ': {
+        a: 'パ', ya: 'ピャ', eo: 'ポ', yeo: 'ピョ', o: 'ポ', yo: 'ピョ', u: 'プ', yu: 'ピュ', eu: 'プ', i: 'ピ',
+        ae: 'ペ', yae: 'ピェ', e: 'ペ', ye: 'ピェ', wa: 'プァ', wae: 'プェ', oe: 'プェ', wo: 'プォ', we: 'プェ', wi: 'プィ', ui: 'ピ'
+      },
+      'ㅅ': {
+        a: 'サ', ya: 'シャ', eo: 'ソ', yeo: 'ショ', o: 'ソ', yo: 'ショ', u: 'ス', yu: 'シュ', eu: 'ス', i: 'シ',
+        ae: 'セ', yae: 'シェ', e: 'セ', ye: 'シェ', wa: 'スァ', wae: 'スェ', oe: 'スェ', wo: 'スォ', we: 'スェ', wi: 'スィ', ui: 'シ'
+      },
+      'ㅇ': {
+        a: 'ア', ya: 'ヤ', eo: 'オ', yeo: 'ヨ', o: 'オ', yo: 'ヨ', u: 'ウ', yu: 'ユ', eu: 'ウ', i: 'イ',
+        ae: 'エ', yae: 'イェ', e: 'エ', ye: 'イェ', wa: 'ワ', wae: 'ウェ', oe: 'ウェ', wo: 'ウォ', we: 'ウェ', wi: 'ウィ', ui: 'ウィ'
+      },
+      'ㅈ': {
+        a: 'チャ', ya: 'チャ', eo: 'チョ', yeo: 'チョ', o: 'チョ', yo: 'チョ', u: 'チュ', yu: 'チュ', eu: 'チュ', i: 'チ',
+        ae: 'チェ', yae: 'チェ', e: 'チェ', ye: 'チェ', wa: 'チュァ', wae: 'チュェ', oe: 'チュェ', wo: 'チュォ', we: 'チュェ', wi: 'チュィ', ui: 'チィ'
+      },
+      'ㅊ': {
+        a: 'チャ', ya: 'チャ', eo: 'チョ', yeo: 'チョ', o: 'チョ', yo: 'チョ', u: 'チュ', yu: 'チュ', eu: 'チュ', i: 'チ',
+        ae: 'チェ', yae: 'チェ', e: 'チェ', ye: 'チェ', wa: 'チュァ', wae: 'チュェ', oe: 'チュェ', wo: 'チュォ', we: 'チュェ', wi: 'チュィ', ui: 'チィ'
+      },
+      'ㅋ': {
+        a: 'カ', ya: 'キャ', eo: 'コ', yeo: 'キョ', o: 'コ', yo: 'キョ', u: 'ク', yu: 'キュ', eu: 'ク', i: 'キ',
+        ae: 'ケ', yae: 'キェ', e: 'ケ', ye: 'キェ', wa: 'クァ', wae: 'クェ', oe: 'クェ', wo: 'クォ', we: 'クェ', wi: 'クィ', ui: 'キ'
+      },
+      'ㅌ': {
+        a: 'タ', ya: 'ティヤ', eo: 'ト', yeo: 'テョ', o: 'ト', yo: 'テョ', u: 'トゥ', yu: 'テュ', eu: 'トゥ', i: 'ティ',
+        ae: 'テ', yae: 'ティェ', e: 'テ', ye: 'ティェ', wa: 'トァ', wae: 'トェ', oe: 'トェ', wo: 'トォ', we: 'トェ', wi: 'トィ', ui: 'ティ'
+      },
+      'ㅍ': {
+        a: 'パ', ya: 'ピャ', eo: 'ポ', yeo: 'ピョ', o: 'ポ', yo: 'ピョ', u: 'プ', yu: 'ピュ', eu: 'プ', i: 'ピ',
+        ae: 'ペ', yae: 'ピェ', e: 'ペ', ye: 'ピェ', wa: 'プァ', wae: 'プェ', oe: 'プェ', wo: 'プォ', we: 'プェ', wi: 'プィ', ui: 'ピ'
+      },
+      'ㅎ': {
+        a: 'ハ', ya: 'ヒャ', eo: 'ホ', yeo: 'ヒョ', o: 'ホ', yo: 'ヒョ', u: 'フ', yu: 'ヒュ', eu: 'フ', i: 'ヒ',
+        ae: 'ヘ', yae: 'ヒェ', e: 'ヘ', ye: 'ヒェ', wa: 'ファ', wae: 'フェ', oe: 'フェ', wo: 'フォ', we: 'フェ', wi: 'フィ', ui: 'ヒ'
+      },
+      'ㄲ': {
+        a: 'ッカ', ya: 'ッキャ', eo: 'ッコ', yeo: 'ッキョ', o: 'ッコ', yo: 'ッキョ', u: 'ック', yu: 'ッキュ', eu: 'ック', i: 'ッキ',
+        ae: 'ッケ', yae: 'ッキェ', e: 'ッケ', ye: 'ッキェ', wa: 'ックァ', wae: 'ックェ', oe: 'ックェ', wo: 'ックォ', we: 'ックェ', wi: 'ックィ', ui: 'ッキ'
+      },
+      'ㄸ': {
+        a: 'ッタ', ya: 'ッティヤ', eo: 'ット', yeo: 'ッテョ', o: 'ット', yo: 'ッテョ', u: 'ットゥ', yu: 'ッテュ', eu: 'ットゥ', i: 'ッティ',
+        ae: 'ッテ', yae: 'ッティェ', e: 'ッテ', ye: 'ッティェ', wa: 'ットァ', wae: 'ットェ', oe: 'ットェ', wo: 'ットォ', we: 'ットェ', wi: 'ットィ', ui: 'ッティ'
+      },
+      'ㅃ': {
+        a: 'ッパ', ya: 'ッピャ', eo: 'ッポ', yeo: 'ッピョ', o: 'ッポ', yo: 'ッピョ', u: 'ップ', yu: 'ッピュ', eu: 'ップ', i: 'ッピ',
+        ae: 'ッペ', yae: 'ッピェ', e: 'ッペ', ye: 'ッピェ', wa: 'ップァ', wae: 'ップェ', oe: 'ップェ', wo: 'ップォ', we: 'ップェ', wi: 'ップィ', ui: 'ッピ'
+      },
+      'ㅆ': {
+        a: 'ッサ', ya: 'ッシャ', eo: 'ッソ', yeo: 'ッショ', o: 'ッソ', yo: 'ッショ', u: 'ッス', yu: 'ッシュ', eu: 'ッス', i: 'ッシ',
+        ae: 'ッセ', yae: 'ッシェ', e: 'ッセ', ye: 'ッシェ', wa: 'ッスァ', wae: 'ッスェ', oe: 'ッスェ', wo: 'ッスォ', we: 'ッスェ', wi: 'ッスィ', ui: 'ッシ'
+      },
+      'ㅉ': {
+        a: 'ッチャ', ya: 'ッチャ', eo: 'ッチョ', yeo: 'ッチョ', o: 'ッチョ', yo: 'ッチョ', u: 'ッチュ', yu: 'ッチュ', eu: 'ッチュ', i: 'ッチ',
+        ae: 'ッチェ', yae: 'ッチェ', e: 'ッチェ', ye: 'ッチェ', wa: 'ッチュァ', wae: 'ッチュェ', oe: 'ッチュェ', wo: 'ッチュォ', we: 'ッチュェ', wi: 'ッチュィ', ui: 'ッチィ'
+      }
+    };
+
+    function getJapanese(consHangul, vowelRoman) {
+      const map = jpConsonantBase[consHangul];
+      return map ? (map[vowelRoman] || '') : '';
+    }
+
+    // Build table
+    const table = document.getElementById('hangulTable');
+
+    // Header row
+    let thead = document.createElement('thead');
+    let headerRow = document.createElement('tr');
+    let corner = document.createElement('th');
+    corner.className = 'corner';
+    corner.innerHTML = '<div class="label-row">母音→</div><div class="label-col">子音↓</div>';
+    headerRow.appendChild(corner);
+
+    vowels.forEach(([vh, vr]) => {
+      let th = document.createElement('th');
+      th.innerHTML = `<div class="vowel-hangul">${vh}</div><div class="vowel-roman">${vr}</div>`;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Data rows
+    let tbody = document.createElement('tbody');
+    consonants.forEach(([ch, cr, type]) => {
+      let tr = document.createElement('tr');
+      if (type) tr.className = type;
+
+      let th = document.createElement('td');
+      th.className = 'consonant-header';
+      th.innerHTML = `<div class="cons-hangul">${ch}</div><div class="cons-roman">${cr}</div>`;
+      tr.appendChild(th);
+
+      vowels.forEach(([vh, vr]) => {
+        const syllable = makeSyllable(ch, vh);
+        const roman = makeRoman(cr, vr);
+        const jp = getJapanese(ch, vr);
+
+        let td = document.createElement('td');
+        td.className = 'cell';
+        td.innerHTML = `<div class="hangul">${syllable}</div><div class="roman">${roman}</div><div class="japanese">${jp}</div>`;
+        td.dataset.hangul = syllable;
+        td.dataset.roman = roman;
+        td.dataset.jp = jp;
+        tr.appendChild(td);
+      });
+
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+
+    // Tooltip
+    const tooltip = document.getElementById('tooltip');
+    const tHangul = document.getElementById('t-hangul');
+    const tRoman = document.getElementById('t-roman');
+    const tJapanese = document.getElementById('t-japanese');
+
+    document.querySelectorAll('td.cell').forEach(cell => {
+      cell.addEventListener('mouseenter', (e) => {
+        tHangul.textContent = cell.dataset.hangul;
+        tRoman.textContent = cell.dataset.roman;
+        tJapanese.textContent = cell.dataset.jp;
+        tooltip.classList.add('show');
+        speakKorean(cell.dataset.hangul);
+      });
+      cell.addEventListener('mousemove', (e) => {
+        const tw = tooltip.offsetWidth || 140;
+        const th = tooltip.offsetHeight || 100;
+        const pad = 16;
+        let left = e.clientX + pad;
+        let top = e.clientY - 60;
+        // Flip to left side if too close to right edge
+        if (left + tw > window.innerWidth - pad) {
+          left = e.clientX - tw - pad;
+        }
+        // Keep within vertical bounds
+        if (top + th > window.innerHeight - pad) {
+          top = window.innerHeight - th - pad;
+        }
+        if (top < pad) top = pad;
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+      });
+      cell.addEventListener('mouseleave', () => {
+        tooltip.classList.remove('show');
+      });
+    });
+
+    // Sound: Web Speech API
+    let soundEnabled = true;
+    document.getElementById('toggleSound').addEventListener('change', (e) => {
+      soundEnabled = e.target.checked;
+    });
+
+    function speakKorean(text) {
+      if (!soundEnabled || !window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'ko-KR';
+      utter.rate = 0.1;
+      utter.pitch = 1;
+      // Try to find a Korean voice
+      const voices = window.speechSynthesis.getVoices();
+      const koVoice = voices.find(v => v.lang.startsWith('ko'));
+      if (koVoice) utter.voice = koVoice;
+      window.speechSynthesis.speak(utter);
+    }
+
+    // Preload voices (some browsers load asynchronously)
+    if (window.speechSynthesis) {
+      window.speechSynthesis.getVoices();
+      window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    }
+
+    // Toggle switches
+    document.getElementById('toggleRoman').addEventListener('change', (e) => {
+      table.classList.toggle('show-roman', e.target.checked);
+    });
+    document.getElementById('toggleJapanese').addEventListener('change', (e) => {
+      table.classList.toggle('show-japanese', e.target.checked);
+    });
+
+    // Font controls
+    let currentFontSize = 1.15; // rem
+    const MIN_FONT = 0.7;
+    const MAX_FONT = 2.5;
+    const STEP = 0.1;
+
+    const allHangul = () => document.querySelectorAll('#hangulTable .hangul, #hangulTable .vowel-hangul, #hangulTable .cons-hangul');
+
+    // Font picker popup
+    const fontList = [
+      { name: 'Noto Sans KR', value: "'Noto Sans KR', sans-serif" },
+      { name: 'Noto Serif KR', value: "'Noto Serif KR', serif" },
+      { name: 'Nanum Gothic', value: "'Nanum Gothic', sans-serif" },
+      { name: 'Nanum Myeongjo', value: "'Nanum Myeongjo', serif" },
+      { name: 'Gothic A1', value: "'Gothic A1', sans-serif" },
+      { name: 'Do Hyeon', value: "'Do Hyeon', sans-serif" },
+      { name: 'Jua', value: "'Jua', sans-serif" },
+      { name: 'Gamja Flower', value: "'Gamja Flower', cursive" }
+    ];
+
+    const overlay = document.getElementById('fontPopupOverlay');
+    const grid = document.getElementById('fontPopupGrid');
+    let currentFont = fontList[0].value;
+
+    // Build font cards
+    fontList.forEach((font, i) => {
+      const card = document.createElement('div');
+      card.className = 'font-card' + (i === 0 ? ' active' : '');
+      card.innerHTML = `<div class="font-card-preview" style="font-family:${font.value}">한글</div><div class="font-card-name">${font.name}</div>`;
+      card.addEventListener('click', () => {
+        currentFont = font.value;
+        allHangul().forEach(el => el.style.fontFamily = font.value);
+        tHangul.style.fontFamily = font.value;
+        grid.querySelectorAll('.font-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+        overlay.classList.remove('show');
+      });
+      grid.appendChild(card);
+    });
+
+    document.getElementById('fontPickerBtn').addEventListener('click', () => {
+      overlay.classList.add('show');
+    });
+    document.getElementById('fontPopupClose').addEventListener('click', () => {
+      overlay.classList.remove('show');
+    });
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) overlay.classList.remove('show');
+    });
+
+    document.getElementById('fontSmaller').addEventListener('click', () => {
+      currentFontSize = Math.max(MIN_FONT, currentFontSize - STEP);
+      allHangul().forEach(el => el.style.fontSize = currentFontSize + 'rem');
+    });
+
+    document.getElementById('fontLarger').addEventListener('click', () => {
+      currentFontSize = Math.min(MAX_FONT, currentFontSize + STEP);
+      allHangul().forEach(el => el.style.fontSize = currentFontSize + 'rem');
+    });
+
+    document.getElementById('toggleBold').addEventListener('change', (e) => {
+      const weight = e.target.checked ? '700' : '400';
+      allHangul().forEach(el => el.style.fontWeight = weight);
+    });
+  </script>
+</body>
+
+</html>
