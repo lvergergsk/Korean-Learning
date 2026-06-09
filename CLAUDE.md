@@ -4,10 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this project is
 
-A static GitHub Pages site for Korean language study notes, written in Chinese (zh-CN). Two content types:
+A static GitHub Pages site for Korean language study notes, written in Chinese (zh-CN). Three content types:
 
 - **`sentense/`** — sentence study pages, one per Korean sentence
 - **`character/`** — character/alphabet reference pages
+- **`lecture/`** — textbook lecture notes (できる韓国語 初級I), one page per study session covering one or more lessons
 
 No build step, no dependencies, no server. All pages are standalone HTML files using Tailwind CSS via CDN.
 
@@ -20,7 +21,7 @@ Before writing or editing any HTML or CSS in this project, you MUST read these t
 
 ## Maintaining the index
 
-After adding new files to `sentense/` or `character/`, run `/update-index`. This skill:
+After adding new files to `sentense/`, `character/`, or `lecture/`, run `/update-index`. This skill:
 1. Verifies Google Translate pronunciation links in changed `sentense/` files match the actual sentence text
 2. Fixes any mismatches
 3. Adds missing entries to `index.html`
@@ -39,11 +40,19 @@ After adding new files to `sentense/` or `character/`, run `/update-index`. This
 - Vocabulary table + grammar notes section
 
 **Index (`index.html`):**
-- Two `<section>` blocks: **字母** (character/) and **句子** (sentense/)
+- `<section>` blocks: **讲义** (lecture/), **笔记**, **字母** (character/), **句子** (sentense/) — in that order
 - Each `<li>` uses `.entry-link` with `.entry-date` (from filename) and `.entry-text` (Korean sentence or character heading)
+- Lecture entries use the study date (from page header, not filename) as `.entry-date`, and the lesson title as `.entry-text`
 
 **Character pages (`character/`):**
 - Use `<h2>` section headings with Korean characters (used by `/update-index` for index labels)
+
+**Lecture pages (`lecture/`):**
+- Cover one or more lessons from できる韓国語 初級I per file; filename date = date the note was created
+- Page header shows the textbook name, study date, lesson title, and page range covered
+- Sections: consonant/vowel grids (character cards), syllable combination tables, example vocabulary table, 记忆要点 tips
+- Google Translate pronunciation links on grids/tables where audio helps
+- No `.ch`/`.wrd`/`.hc`/`.ks` syllable-layout classes (those are sentence-page only)
 
 ## Style guide
 
