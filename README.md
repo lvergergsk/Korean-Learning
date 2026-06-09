@@ -2,6 +2,8 @@
 
 A GitHub Pages site for Korean sentence study notes.
 
+https://lvergergsk.github.io/Korean-Learning/
+
 ## Structure
 
 - `index.html` — root page linking to all sentences
