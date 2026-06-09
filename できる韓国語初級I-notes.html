@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -10,62 +10,62 @@
     <style>
         /* TOC active / hover */
         .toc-link { display: block; padding: 3px 10px; border-left: 2px solid transparent; font-size: 0.78rem; color: #64748b; transition: all .15s; text-decoration: none; }
-        .toc-link:hover { border-left-color: #2563eb; color: #1d4ed8; background: #eff6ff; border-radius: 0 6px 6px 0; }
-        .toc-link.sub { padding-left: 20px; font-size: 0.73rem; color: #94a3b8; }
-        .toc-link.sub:hover { color: #2563eb; }
+        .toc-link:hover { border-left-color: #6366f1; color: #a5b4fc; background: rgba(99,102,241,0.08); border-radius: 0 6px 6px 0; }
+        .toc-link.sub { padding-left: 20px; font-size: 0.73rem; color: #475569; }
+        .toc-link.sub:hover { color: #818cf8; }
 
         /* Section heading */
-        .sec-h2 { font-size: 1.15rem; font-weight: 700; color: #0f172a; border-left: 4px solid #2563eb; padding-left: 12px; margin-bottom: 4px; letter-spacing: .02em; }
+        .sec-h2 { font-size: 1.15rem; font-weight: 700; color: #e2e8f0; border-left: 4px solid #6366f1; padding-left: 12px; margin-bottom: 4px; letter-spacing: .02em; }
         .sec-h2.green { border-color: #16a34a; }
         .sec-h2.amber { border-color: #d97706; }
         .sec-h2.violet { border-color: #7c3aed; }
         .sec-h2.rose   { border-color: #e11d48; }
         .sec-h2.teal   { border-color: #0d9488; }
-        .sec-h3 { font-size: 0.78rem; font-weight: 600; color: #475569; text-transform: uppercase; letter-spacing: .08em; border-left: 4px solid #cbd5e1; padding-left: 10px; margin-bottom: 12px; }
+        .sec-h3 { font-size: 0.78rem; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: .08em; border-left: 4px solid #334155; padding-left: 10px; margin-bottom: 12px; }
 
         /* Card */
-        .card { background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.07); border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px 22px; margin-bottom: 20px; }
+        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 20px 22px; margin-bottom: 20px; }
 
         /* Table */
         .tbl { width: 100%; border-collapse: collapse; font-size: .82rem; }
-        .tbl thead tr { background: #f8fafc; }
-        .tbl th { text-align: left; padding: 8px 12px; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; color: #475569; border-bottom: 1px solid #e2e8f0; }
-        .tbl td { padding: 7px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; color: #334155; }
+        .tbl thead tr { background: rgba(30,41,59,0.5); }
+        .tbl th { text-align: left; padding: 8px 12px; font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; color: #64748b; border-bottom: 1px solid #1e293b; }
+        .tbl td { padding: 7px 12px; border-bottom: 1px solid #0f172a; vertical-align: top; color: #94a3b8; }
         .tbl tr:last-child td { border-bottom: none; }
-        .tbl tr:hover td { background: #f8fafc; }
-        .tbl .kr { font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-size: 1rem; font-weight: 700; color: #1e40af; }
-        .tbl .kr-sm { font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-weight: 700; color: #1e40af; }
-        .tbl .cn { color: #334155; }
-        .tbl .note { color: #94a3b8; font-size: .72rem; }
+        .tbl tr:hover td { background: rgba(30,41,59,0.4); }
+        .tbl .kr { font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-size: 1rem; font-weight: 700; color: #a5b4fc; }
+        .tbl .kr-sm { font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-weight: 700; color: #a5b4fc; }
+        .tbl .cn { color: #cbd5e1; }
+        .tbl .note { color: #475569; font-size: .72rem; }
 
         /* Number grid */
-        .num-cell { background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:8px 4px; text-align:center; }
-        .num-cell .n { font-size:1.5rem; font-family:'Malgun Gothic','Dotum',sans-serif; font-weight:700; color:#1e40af; }
-        .num-cell .r { font-size:.68rem; color:#64748b; margin-top:2px; }
+        .num-cell { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 8px 4px; text-align: center; }
+        .num-cell .n { font-size: 1.5rem; font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-weight: 700; color: #a5b4fc; }
+        .num-cell .r { font-size: .68rem; color: #64748b; margin-top: 2px; }
 
         /* Inline kr highlight */
-        .kr { font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-weight: 700; color: #1e40af; }
-        .kr-eg { font-family: 'Malgun Gothic', 'Dotum', sans-serif; color: #1d4ed8; }
+        .kr { font-family: 'Malgun Gothic', 'Dotum', sans-serif; font-weight: 700; color: #a5b4fc; }
+        .kr-eg { font-family: 'Malgun Gothic', 'Dotum', sans-serif; color: #818cf8; }
 
         /* Tip box */
-        .tip-box { background:#fffbeb; border:1px solid #fcd34d; border-radius:10px; padding:10px 14px; }
-        .tip-box p { font-size:.78rem; color:#78350f; }
+        .tip-box { background: rgba(217,119,6,0.1); border: 1px solid rgba(217,119,6,0.3); border-radius: 10px; padding: 10px 14px; }
+        .tip-box p { font-size: .78rem; color: #fcd34d; }
 
         /* Grammar section */
-        .lesson-header { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
-        .lesson-num { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#1e40af; color:#fff; font-size:.8rem; font-weight:700; flex-shrink:0; }
-        .lesson-title { font-size:.95rem; font-weight:700; color:#1e3a5f; }
-        .lesson-sub { font-size:.75rem; color:#94a3b8; }
+        .lesson-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+        .lesson-num { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #4f46e5; color: #fff; font-size: .8rem; font-weight: 700; flex-shrink: 0; }
+        .lesson-title { font-size: .95rem; font-weight: 700; color: #c7d2fe; }
+        .lesson-sub { font-size: .75rem; color: #475569; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen">
+<body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen">
 
 <!-- ======== Page Header ======== -->
-<div class="bg-white border-b border-slate-200 px-4 py-6">
+<div class="bg-slate-900 border-b border-slate-800 px-4 py-6">
     <div class="max-w-6xl mx-auto">
-        <p class="text-xs text-slate-400 mb-1">できる韓国語 初級 I</p>
-        <h1 class="text-2xl font-bold text-slate-900">韩语初级学习笔记</h1>
-        <p class="mt-1 text-sm text-slate-500">零基础中文读者适用 · 涵盖全书 20 课语法、助词、词汇与发音规则</p>
+        <p class="text-xs text-slate-500 mb-1">できる韓国語 初級 I</p>
+        <h1 class="text-2xl font-bold text-slate-100">韩语初级学习笔记</h1>
+        <p class="mt-1 text-sm text-slate-400">零基础中文读者适用 · 涵盖全书 20 课语法、助词、词汇与发音规则</p>
         <div class="mt-3 flex flex-wrap gap-2">
             <span class="badge badge-blue">20课语法</span>
             <span class="badge badge-green">助词速查</span>
@@ -373,7 +373,7 @@
                     <div class="num-cell"><div class="n">백</div><div class="r">100</div></div>
                     <div class="num-cell"><div class="n">천</div><div class="r">1,000</div></div>
                     <div class="num-cell"><div class="n">만</div><div class="r">10,000</div></div>
-                    <div class="num-cell bg-slate-50"><div class="n" style="color:#64748b">공/영</div><div class="r">0</div></div>
+                    <div class="num-cell bg-slate-900"><div class="n" style="color:#64748b">공/영</div><div class="r">0</div></div>
                 </div>
                 <div class="tip-box">
                     <p>● 16（십육）的发音是 [심뉵]，注意特殊变音。</p>
@@ -441,27 +441,27 @@
             <div id="time-words" class="card">
                 <p class="sec-h3">时间词汇</p>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">새벽</div><div class="text-xs text-slate-500 mt-1">深夜/凌晨（午夜后至天亮）</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">아침</div><div class="text-xs text-slate-500 mt-1">早晨</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">점심</div><div class="text-xs text-slate-500 mt-1">午/中午</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">낮</div><div class="text-xs text-slate-500 mt-1">白天</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">저녁</div><div class="text-xs text-slate-500 mt-1">傍晚/晚上</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">밤</div><div class="text-xs text-slate-500 mt-1">夜晚</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">오전 / 오후</div><div class="text-xs text-slate-500 mt-1">上午 / 下午</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">그저께</div><div class="text-xs text-slate-500 mt-1">前天</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">어제</div><div class="text-xs text-slate-500 mt-1">昨天</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">오늘</div><div class="text-xs text-slate-500 mt-1">今天</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">내일</div><div class="text-xs text-slate-500 mt-1">明天</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">모레</div><div class="text-xs text-slate-500 mt-1">后天</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">지난주</div><div class="text-xs text-slate-500 mt-1">上周</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">이번 주</div><div class="text-xs text-slate-500 mt-1">本周</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">다음 주</div><div class="text-xs text-slate-500 mt-1">下周</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">지난달</div><div class="text-xs text-slate-500 mt-1">上个月</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">이번 달</div><div class="text-xs text-slate-500 mt-1">本月</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">다음 달</div><div class="text-xs text-slate-500 mt-1">下个月</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">작년</div><div class="text-xs text-slate-500 mt-1">去年</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">올해</div><div class="text-xs text-slate-500 mt-1">今年</div></div>
-                    <div class="bg-slate-50 rounded-lg p-3"><div class="kr text-base">내년</div><div class="text-xs text-slate-500 mt-1">明年</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">새벽</div><div class="text-xs text-slate-500 mt-1">深夜/凌晨（午夜后至天亮）</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">아침</div><div class="text-xs text-slate-500 mt-1">早晨</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">점심</div><div class="text-xs text-slate-500 mt-1">午/中午</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">낮</div><div class="text-xs text-slate-500 mt-1">白天</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">저녁</div><div class="text-xs text-slate-500 mt-1">傍晚/晚上</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">밤</div><div class="text-xs text-slate-500 mt-1">夜晚</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">오전 / 오후</div><div class="text-xs text-slate-500 mt-1">上午 / 下午</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">그저께</div><div class="text-xs text-slate-500 mt-1">前天</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">어제</div><div class="text-xs text-slate-500 mt-1">昨天</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">오늘</div><div class="text-xs text-slate-500 mt-1">今天</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">내일</div><div class="text-xs text-slate-500 mt-1">明天</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">모레</div><div class="text-xs text-slate-500 mt-1">后天</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">지난주</div><div class="text-xs text-slate-500 mt-1">上周</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">이번 주</div><div class="text-xs text-slate-500 mt-1">本周</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">다음 주</div><div class="text-xs text-slate-500 mt-1">下周</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">지난달</div><div class="text-xs text-slate-500 mt-1">上个月</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">이번 달</div><div class="text-xs text-slate-500 mt-1">本月</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">다음 달</div><div class="text-xs text-slate-500 mt-1">下个月</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">작년</div><div class="text-xs text-slate-500 mt-1">去年</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">올해</div><div class="text-xs text-slate-500 mt-1">今年</div></div>
+                    <div class="bg-slate-900 rounded-lg p-3"><div class="kr text-base">내년</div><div class="text-xs text-slate-500 mt-1">明年</div></div>
                 </div>
                 <p class="text-xs text-slate-400 mt-3">* 오늘·어제·내일·모레 等词后面 <b>不加</b> 时间助词「에」。</p>
             </div>
@@ -543,7 +543,7 @@
                     <div class="cn-meaning">「不是……」——日常否定</div>
                     <div class="example"><span class="kr">교사가 아니에요.</span> — 不是老师。</div>
                 </div>
-                <div class="overflow-hidden bg-white ring-1 ring-slate-200 rounded-xl mt-3">
+                <div class="overflow-hidden bg-slate-900 border border-slate-800 rounded-xl mt-3">
                     <table class="tbl">
                         <thead><tr><th>指示代词</th><th>单独</th><th>+은/는</th><th>+이/가</th></tr></thead>
                         <tbody>
@@ -584,7 +584,7 @@
                     <div class="cn-meaning">「在……里/上/前……」，位置助词用「에」</div>
                     <div class="example"><span class="kr">책상 위에 있어요.</span> — 在书桌上面。/ <span class="kr">가방은 어디에 있어요?</span> — 包在哪里？</div>
                 </div>
-                <div class="overflow-hidden bg-white ring-1 ring-slate-200 rounded-xl">
+                <div class="overflow-hidden bg-slate-900 border border-slate-800 rounded-xl">
                     <table class="tbl">
                         <thead><tr><th>韩语</th><th>中文</th><th>韩语</th><th>中文</th></tr></thead>
                         <tbody>
@@ -730,7 +730,7 @@
                         <span class="kr">알다</span> → <span class="kr">아세요?</span>（ㄹ脱落，您知道吗？）
                     </div>
                 </div>
-                <div class="overflow-hidden bg-white ring-1 ring-slate-200 rounded-xl">
+                <div class="overflow-hidden bg-slate-900 border border-slate-800 rounded-xl">
                     <table class="tbl">
                         <thead><tr><th>普通</th><th>敬语</th><th>中文</th></tr></thead>
                         <tbody>
@@ -989,26 +989,26 @@
             <div id="v-people" class="card">
                 <p class="sec-h3">人际关系</p>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">저 / 나</span><span class="text-xs text-slate-500 ml-2">我（礼/随）</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">우리</span><span class="text-xs text-slate-500 ml-2">我们</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">아버지</span><span class="text-xs text-slate-500 ml-2">父亲</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">어머니</span><span class="text-xs text-slate-500 ml-2">母亲</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">부모님</span><span class="text-xs text-slate-500 ml-2">父母（敬）</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">할아버지</span><span class="text-xs text-slate-500 ml-2">祖父</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">할머니</span><span class="text-xs text-slate-500 ml-2">祖母</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">형</span><span class="text-xs text-slate-500 ml-2">哥哥（男性称）</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">오빠</span><span class="text-xs text-slate-500 ml-2">哥哥（女性称）</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">누나</span><span class="text-xs text-slate-500 ml-2">姐姐（男性称）</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">언니</span><span class="text-xs text-slate-500 ml-2">姐姐（女性称）</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">남동생</span><span class="text-xs text-slate-500 ml-2">弟弟</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">여동생</span><span class="text-xs text-slate-500 ml-2">妹妹</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">남편</span><span class="text-xs text-slate-500 ml-2">丈夫</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">아내</span><span class="text-xs text-slate-500 ml-2">妻子</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">아들</span><span class="text-xs text-slate-500 ml-2">儿子</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">딸</span><span class="text-xs text-slate-500 ml-2">女儿</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">친구</span><span class="text-xs text-slate-500 ml-2">朋友</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">남자 친구</span><span class="text-xs text-slate-500 ml-2">男朋友</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">여자 친구</span><span class="text-xs text-slate-500 ml-2">女朋友</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">저 / 나</span><span class="text-xs text-slate-500 ml-2">我（礼/随）</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">우리</span><span class="text-xs text-slate-500 ml-2">我们</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">아버지</span><span class="text-xs text-slate-500 ml-2">父亲</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">어머니</span><span class="text-xs text-slate-500 ml-2">母亲</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">부모님</span><span class="text-xs text-slate-500 ml-2">父母（敬）</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">할아버지</span><span class="text-xs text-slate-500 ml-2">祖父</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">할머니</span><span class="text-xs text-slate-500 ml-2">祖母</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">형</span><span class="text-xs text-slate-500 ml-2">哥哥（男性称）</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">오빠</span><span class="text-xs text-slate-500 ml-2">哥哥（女性称）</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">누나</span><span class="text-xs text-slate-500 ml-2">姐姐（男性称）</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">언니</span><span class="text-xs text-slate-500 ml-2">姐姐（女性称）</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">남동생</span><span class="text-xs text-slate-500 ml-2">弟弟</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">여동생</span><span class="text-xs text-slate-500 ml-2">妹妹</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">남편</span><span class="text-xs text-slate-500 ml-2">丈夫</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">아내</span><span class="text-xs text-slate-500 ml-2">妻子</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">아들</span><span class="text-xs text-slate-500 ml-2">儿子</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">딸</span><span class="text-xs text-slate-500 ml-2">女儿</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">친구</span><span class="text-xs text-slate-500 ml-2">朋友</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">남자 친구</span><span class="text-xs text-slate-500 ml-2">男朋友</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">여자 친구</span><span class="text-xs text-slate-500 ml-2">女朋友</span></div>
                 </div>
             </div>
 
@@ -1016,18 +1016,18 @@
             <div id="v-jobs" class="card">
                 <p class="sec-h3">职业</p>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">회사원</span><span class="text-xs text-slate-500 ml-2">公司职员</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">교사</span><span class="text-xs text-slate-500 ml-2">教师</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">의사</span><span class="text-xs text-slate-500 ml-2">医生</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">간호사</span><span class="text-xs text-slate-500 ml-2">护士</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">약사</span><span class="text-xs text-slate-500 ml-2">药剂师</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">공무원</span><span class="text-xs text-slate-500 ml-2">公务员</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">주부</span><span class="text-xs text-slate-500 ml-2">家庭主妇</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">학생</span><span class="text-xs text-slate-500 ml-2">学生</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">대학생</span><span class="text-xs text-slate-500 ml-2">大学生</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">유학생</span><span class="text-xs text-slate-500 ml-2">留学生</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">비서</span><span class="text-xs text-slate-500 ml-2">秘书</span></div>
-                    <div class="bg-slate-50 rounded-lg p-2.5"><span class="kr text-sm">가수</span><span class="text-xs text-slate-500 ml-2">歌手</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">회사원</span><span class="text-xs text-slate-500 ml-2">公司职员</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">교사</span><span class="text-xs text-slate-500 ml-2">教师</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">의사</span><span class="text-xs text-slate-500 ml-2">医生</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">간호사</span><span class="text-xs text-slate-500 ml-2">护士</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">약사</span><span class="text-xs text-slate-500 ml-2">药剂师</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">공무원</span><span class="text-xs text-slate-500 ml-2">公务员</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">주부</span><span class="text-xs text-slate-500 ml-2">家庭主妇</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">학생</span><span class="text-xs text-slate-500 ml-2">学生</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">대학생</span><span class="text-xs text-slate-500 ml-2">大学生</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">유학생</span><span class="text-xs text-slate-500 ml-2">留学生</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">비서</span><span class="text-xs text-slate-500 ml-2">秘书</span></div>
+                    <div class="bg-slate-900 rounded-lg p-2.5"><span class="kr text-sm">가수</span><span class="text-xs text-slate-500 ml-2">歌手</span></div>
                 </div>
             </div>
 
@@ -1151,7 +1151,7 @@
         </section>
 
         <!-- Footer -->
-        <div class="text-center text-xs text-slate-400 pb-8 pt-4 border-t border-slate-200">
+        <div class="text-center text-xs text-slate-400 pb-8 pt-4 border-t border-slate-800">
             <p>本笔记内容整理自《できる韓国語 初級 I》（新大久保語学院）</p>
             <p class="mt-1">供个人学习参考使用</p>
         </div>
