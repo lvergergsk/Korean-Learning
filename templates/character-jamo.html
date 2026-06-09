@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE: jamo detail page
+  File location: character/jamo-<name>.html  (e.g. jamo-giyeok.html)
+  Copy this file and replace all <!-- FILL: ... --> placeholders.
+
+  Rules:
+  - The back link always points to alphabet.html (relative).
+  - The large jamo char uses text-indigo-400 (consonants) or text-sky-400 (vowels).
+  - <kbd class="kbd-key"> for inline key display — class is defined in shared.css.
+  - Combination table: one row per vowel combination.
+    · 字母 column: font-kr text-3xl font-bold text-indigo-400
+    · 发音 column: font-medium text-slate-400
+    · 常用单词 column: example word + romanization + Google Translate link
+    · 含义 column: Chinese meaning
+    · 键盘输入 column: <kbd class="kbd-key"> elements with "+" separators
+  - If the jamo has a tense/aspirated counterpart (쌍자음), add a second table section.
+-->
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FILL: "ㄱ gi-yeok — 韩语辅音" or "ㅏ a — 韩语元音" -->
+    <title><!-- FILL --> — 韩语辅音</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind-config.js"></script>
+    <link rel="stylesheet" href="../shared.css">
+</head>
+
+<body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen">
+<div class="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+
+    <!-- Back link -->
+    <div class="mb-6">
+        <a href="alphabet.html" class="text-sm text-indigo-400 hover:text-indigo-300 hover:underline">← 字母表</a>
+    </div>
+
+    <!-- Jamo header -->
+    <div class="mb-10">
+        <div class="accent-bar"></div>
+        <div class="flex items-baseline gap-4">
+            <!-- FILL: the jamo character; use text-indigo-400 for consonants, text-sky-400 for vowels -->
+            <span class="font-kr text-5xl font-bold text-indigo-400" style="line-height:1;">ㄱ</span>
+            <div>
+                <!-- FILL: romanization name (e.g. "gi-yeok") -->
+                <div class="text-xl font-bold text-slate-100 tracking-wide">gi-yeok</div>
+                <div class="text-sm text-slate-400 mt-0.5">
+                    <!-- FILL: pronunciation rule in context -->
+                    词首发 <span class="font-mono text-slate-400">[k]</span>，元音间发 <span class="font-mono text-slate-400">[g]</span>，作收音发 <span class="font-mono text-slate-400">[k̚]</span>
+                    &ensp;·&ensp; 键盘 <kbd class="kbd-key"><!-- FILL: key --></kbd>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ① Basic vowel combination table -->
+    <div class="mb-12">
+        <!-- FILL: heading, e.g. "ㄱ + 基础元音" -->
+        <h2 class="text-lg font-bold text-slate-100 border-l-4 border-indigo-500 pl-3 mb-4 tracking-wide"><!-- FILL --> + 基础元音</h2>
+        <div class="overflow-hidden bg-slate-900 border border-slate-800 rounded-xl">
+            <table class="min-w-full divide-y divide-slate-800">
+                <thead class="bg-slate-800/50 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+                    <tr>
+                        <th scope="col" class="px-6 py-4 text-left tracking-wider w-[12%]">字母</th>
+                        <th scope="col" class="px-6 py-4 text-left tracking-wider w-[12%]">发音</th>
+                        <th scope="col" class="px-6 py-4 text-left tracking-wider w-[38%]">常用单词</th>
+                        <th scope="col" class="px-6 py-4 text-left tracking-wider w-[22%]">含义</th>
+                        <th scope="col" class="px-6 py-4 text-left tracking-wider w-[16%]">键盘输入</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800 bg-transparent text-sm">
+                    <!-- FILL: one <tr> per vowel (ㅏ ㅓ ㅗ ㅜ ㅡ ㅣ etc.) -->
+                    <tr class="hover:bg-slate-800/40 transition-colors">
+                        <!-- FILL: combined syllable, e.g. 가 -->
+                        <td class="px-6 py-4 whitespace-nowrap font-kr text-3xl font-bold text-indigo-400">가</td>
+                        <!-- FILL: romanization -->
+                        <td class="px-6 py-4 whitespace-nowrap font-medium text-slate-400">ga</td>
+                        <!-- Example word cell -->
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center space-x-2">
+                                <!-- FILL: example word -->
+                                <span class="font-kr text-base font-semibold text-slate-100">가방</span>
+                                <!-- FILL: romanization of example word -->
+                                <span class="text-xs text-slate-400 font-mono">(ga-bang)</span>
+                                <!-- FILL: URL-encoded example word in Google Translate link -->
+                                <a href="https://translate.google.com/?sl=ko&tl=zh-CN&text=가방&op=translate"
+                                    target="_blank"
+                                    class="text-xs text-indigo-400 hover:text-indigo-300 hover:underline font-medium">发音</a>
+                            </div>
+                        </td>
+                        <!-- FILL: Chinese meaning -->
+                        <td class="px-6 py-4 text-slate-400">包 / 背包</td>
+                        <!-- FILL: IME keystrokes — one <kbd> per key, "+" between consonant and vowel -->
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <kbd class="kbd-key">r</kbd>
+                            <span class="text-slate-400 mx-1 text-xs">+</span>
+                            <kbd class="kbd-key">k</kbd>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ② Tense/aspirated counterpart section (optional — omit if not applicable) -->
+    <!--
+    <div class="mb-12">
+        <h2 class="text-lg font-bold text-slate-100 border-l-4 border-indigo-500 pl-3 mb-4 tracking-wide">ㄲ 쌍기역 (ssang-gi-yeok) + 基础元音</h2>
+        ... same table structure ...
+    </div>
+    -->
+
+</div>
+</body>
+
+</html>

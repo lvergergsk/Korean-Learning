@@ -18,6 +18,19 @@ Before writing or editing any HTML or CSS in this project, you MUST read these t
 1. **`styling.md`** (project root) — the authoritative design system: dark theme, color palette, component specs.
 2. **Modern web guidance** — run the `modern-web-guidance` skill to search for best practices relevant to what you're about to implement.
 
+## Page templates — MUST use when generating new content
+
+When creating any new page, read the corresponding template first and follow it exactly:
+
+| Page type | Template file | Output location |
+|---|---|---|
+| Sentence study page | `templates/sentense.html` | `sentense/YYYYMMDD-NNN.html` |
+| Jamo detail page | `templates/character-jamo.html` | `character/jamo-<name>.html` |
+| Character combination page | `templates/character-combo.html` | `character/YYYYMMDD-NNN.html` |
+| Vocabulary list page | `templates/word.html` | `word/YYYYMMDD.html` |
+
+Each template has `<!-- FILL: ... -->` comments marking every placeholder. Replace all of them; leave no template comment in the generated file. The templates also contain inline rules explaining constraints specific to that page type (e.g. which CSS classes to use for syllable chars, how to format the Google Translate URL, etc.).
+
 ## Maintaining the index
 
 After adding new files to `sentense/` or `character/`, run `/update-index`. This skill:

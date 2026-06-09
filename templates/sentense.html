@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE: sentense page
+  File location: sentense/YYYYMMDD-NNN.html
+  Copy this file and replace all <!-- FILL: ... --> placeholders.
+
+  Rules:
+  - .ch spans hold individual Korean syllables — do NOT add inline color styles;
+    the .ch class in shared.css handles the color.
+  - Google Translate href must use URL-encoded form of the full sentence.
+  - Each <span class="wrd"> is one space-separated word.
+  - Each <span class="hc"> is one syllable: .ks row (key badges) above, .ch below.
+  - Use .k for normal IME keys, .k-sh for Shift keys.
+  - Romanization uses hyphens between syllables, pipes between words.
+-->
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><!-- FILL: short Korean sentence or topic --></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind-config.js"></script>
+    <link rel="stylesheet" href="../shared.css">
+</head>
+
+<body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen">
+
+    <div class="max-w-5xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+
+        <!-- ① Sentence card: syllable breakdown + translation + romanization -->
+        <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-8">
+            <div class="accent-bar"></div>
+
+            <!-- Syllable breakdown -->
+            <!-- Each .wrd = one word. Each .hc = one syllable (key row above, char below). -->
+            <div class="flex flex-wrap items-end mb-4" style="gap: 8px 12px;">
+
+                <!-- FILL: repeat .wrd blocks for every word in the sentence -->
+                <span class="wrd">
+                    <span class="hc">
+                        <!-- FILL: one .k per keystroke; use .k-sh for Shift keys -->
+                        <span class="ks"><span class="k">r</span><span class="k">k</span></span>
+                        <!-- FILL: the Korean syllable character -->
+                        <span class="ch font-kr">가</span>
+                    </span>
+                    <!-- Add more .hc siblings for multi-syllable words -->
+                </span>
+                <!-- End-of-sentence punctuation (no key row needed) -->
+                <span class="font-kr text-slate-400" style="font-size:21px;padding-bottom:1px;">.</span>
+
+            </div>
+
+            <!-- Chinese translation (left) + Google Translate pronunciation link (right) -->
+            <div class="flex items-center justify-between mb-2">
+                <div class="text-sm text-slate-400"><!-- FILL: Chinese translation --></div>
+                <a href="https://translate.google.com/?sl=ko&tl=zh-CN&text=<!-- FILL: URL-encoded sentence -->&op=translate"
+                    target="_blank"
+                    class="inline-flex items-center gap-1 text-slate-400 hover:text-indigo-400 transition-colors"
+                    style="font-size:11px;letter-spacing:0.03em;text-decoration:none;" title="在 Google 翻译中朗读">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                    </svg>
+                    朗读
+                </a>
+            </div>
+
+            <!-- Romanization row -->
+            <div class="flex items-baseline gap-2">
+                <span class="shrink-0 font-bold uppercase text-slate-500 font-mono text-xs tracking-widest">ROM</span>
+                <!-- FILL: syllable-by-syllable romanization, pipes between words -->
+                <span class="text-slate-400 text-sm">ga | na-da</span>
+            </div>
+        </div>
+
+        <!-- ② Vocabulary table -->
+        <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider border-l-4 border-indigo-500 pl-3 mb-4">核心词汇与语法</h2>
+        <div class="overflow-hidden bg-slate-900 border border-slate-800 rounded-xl mb-8">
+            <table class="min-w-full divide-y divide-slate-800">
+                <thead class="bg-slate-800/50 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+                    <tr>
+                        <th scope="col" class="px-5 py-3 text-left tracking-wider w-[27%]">词汇</th>
+                        <th scope="col" class="px-5 py-3 text-left tracking-wider w-[43%]">释义与语法作用</th>
+                        <th scope="col" class="px-5 py-3 text-left tracking-wider">备注</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800 bg-transparent">
+                    <!-- FILL: one <tr> per vocabulary item / grammar point -->
+                    <tr class="hover:bg-slate-800/40 transition-colors">
+                        <td class="px-5 py-3 align-top">
+                            <!-- FILL: the word or morpheme as it appears in the sentence -->
+                            <span class="font-kr font-bold text-indigo-300 text-sm">가다</span>
+                            <span class="block text-xs text-slate-400 font-mono mt-1">ga-da</span>
+                        </td>
+                        <!-- FILL: grammatical role / meaning -->
+                        <td class="px-5 py-3 align-top text-slate-400 text-xs leading-relaxed">去（动词基本形）</td>
+                        <!-- FILL: usage notes, related forms, memory tips -->
+                        <td class="px-5 py-3 align-top text-slate-400 text-xs leading-relaxed">最基础的移动动词。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ③ Grammar / memory tips section -->
+        <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider border-l-4 border-amber-500 pl-3 mb-4">记忆要点</h2>
+        <div class="border-l-4 border-amber-500 pl-4">
+            <ul style="list-style:none;padding:0;margin:0;">
+
+                <!-- FILL: one <li> per tip. Use <strong class="text-slate-200"> for the heading. -->
+                <li class="tip-item text-sm text-slate-400 leading-relaxed mb-4">
+                    <strong class="text-slate-200"><!-- FILL: tip heading -->：</strong>
+                    <!-- FILL: tip body -->
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+</html>

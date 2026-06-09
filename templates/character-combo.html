@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE: character combination page
+  File location: character/YYYYMMDD-NNN.html
+  Copy this file and replace all <!-- FILL: ... --> placeholders.
+
+  Purpose: show a vowel or consonant group combined with other characters
+  (e.g. "all consonants + ㅏ", "ㄱ + all vowels").
+
+  Rules:
+  - Each section is one consonant/vowel group.
+  - Syllable chars in first column: font-kr text-3xl font-bold text-indigo-400
+  - Use <kbd class="kbd-key"> for keyboard inputs in the last column.
+  - Headings use border-indigo-500 for primary sections.
+-->
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FILL: descriptive title, e.g. "基础辅音 + ㅏ 组合表" -->
+    <title><!-- FILL --></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tailwind-config.js"></script>
+    <link rel="stylesheet" href="../shared.css">
+</head>
+
+<body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen">
+
+    <div class="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+
+        <!-- Back link (optional but recommended) -->
+        <div class="mb-6">
+            <a href="alphabet.html" class="text-sm text-indigo-400 hover:text-indigo-300 hover:underline">← 字母表</a>
+        </div>
+
+        <!-- ① First combination group -->
+        <div class="mb-12">
+            <!-- FILL: group heading, e.g. "基础辅音 + ㅏ 组合" -->
+            <h2 class="text-lg font-bold text-slate-100 border-l-4 border-indigo-500 pl-3 mb-4 tracking-wide"><!-- FILL --></h2>
+            <div class="overflow-hidden bg-slate-900 border border-slate-800 rounded-xl">
+                <table class="min-w-full divide-y divide-slate-800">
+                    <thead class="bg-slate-800/50 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+                        <tr>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[15%]">字母</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[15%]">发音</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[35%]">常用单词</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[20%]">含义</th>
+                            <th scope="col" class="px-6 py-4 text-left tracking-wider w-[15%]">键盘输入</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800 bg-transparent text-sm">
+                        <!-- FILL: one <tr> per syllable in this group -->
+                        <tr class="hover:bg-slate-800/40 transition-colors">
+                            <!-- FILL: combined syllable char -->
+                            <td class="px-6 py-4 whitespace-nowrap font-kr text-3xl font-bold text-indigo-400">가</td>
+                            <!-- FILL: romanization -->
+                            <td class="px-6 py-4 whitespace-nowrap font-medium text-slate-400">ga</td>
+                            <!-- Example word cell -->
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center space-x-2">
+                                    <!-- FILL: example word -->
+                                    <span class="font-kr text-base font-semibold text-slate-100">가방</span>
+                                    <!-- FILL: romanization of example word -->
+                                    <span class="text-xs text-slate-400 font-mono">(ga-bang)</span>
+                                    <!-- FILL: URL-encoded example word -->
+                                    <a href="https://translate.google.com/?sl=ko&tl=zh-CN&text=가방&op=translate"
+                                        target="_blank"
+                                        class="text-xs text-indigo-400 hover:text-indigo-300 hover:underline font-medium">发音</a>
+                                </div>
+                            </td>
+                            <!-- FILL: Chinese meaning -->
+                            <td class="px-6 py-4 text-slate-400">包 / 背包</td>
+                            <!-- FILL: IME keystrokes -->
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <kbd class="kbd-key">r</kbd>
+                                <span class="text-slate-400 mx-1 text-xs">+</span>
+                                <kbd class="kbd-key">k</kbd>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FILL: add more <div class="mb-12"> sections for additional groups (e.g. tense consonants) -->
+
+    </div>
+</body>
+
+</html>
