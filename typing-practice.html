@@ -409,54 +409,104 @@
             background: var(--practice-summary-bg);
             border-color: var(--practice-summary-border);
         }
+
+        @media (max-width: 639px) {
+            .practice-hero::after {
+                inset: auto -52px -82px auto;
+                width: 168px;
+                height: 168px;
+            }
+
+            .practice-picker-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .practice-chip {
+                min-height: 80px;
+                padding: 10px 10px 8px;
+            }
+
+            .practice-chip-char {
+                font-size: 1.65rem;
+            }
+
+            .practice-stage {
+                border-radius: 20px;
+                padding: 20px 18px;
+            }
+
+            .practice-letter {
+                font-size: clamp(3.75rem, 24vw, 6rem);
+            }
+
+            .practice-placeholder {
+                min-height: 144px;
+                font-size: 0.94rem;
+                line-height: 1.6;
+            }
+
+            .practice-stat {
+                padding: 12px 14px;
+            }
+
+            .answer-value-kr {
+                font-size: 1.72rem;
+            }
+        }
+
+        @media (min-width: 480px) {
+            .practice-picker-grid {
+                grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+            }
+        }
     </style>
 </head>
 
 <body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen">
 
-    <div class="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8 w-full">
-        <section class="practice-hero practice-panel p-6 sm:p-8 mb-8">
+    <div class="max-w-7xl mx-auto px-3 py-5 sm:px-6 sm:py-10 lg:px-8 w-full">
+        <section class="practice-hero practice-panel p-5 sm:p-8 mb-5 sm:mb-8">
             <div class="relative z-10">
                 <div class="accent-bar"></div>
-                <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-50">韩语打字练习</h1>
+                <h1 class="text-2xl sm:text-4xl font-bold tracking-tight text-slate-50">韩语打字练习</h1>
             </div>
         </section>
 
-        <div class="grid gap-6 xl:grid-cols-[380px_minmax(0,1fr)]">
-            <aside class="practice-panel p-6">
-                <div class="mb-5">
+        <div class="grid gap-5 sm:gap-6 xl:grid-cols-[380px_minmax(0,1fr)]">
+            <aside class="practice-panel order-2 xl:order-1 p-5 sm:p-6">
+                <div class="mb-4 sm:mb-5">
                     <h2 class="text-lg font-bold text-slate-100">难度设置</h2>
                 </div>
 
-                <section class="mb-8" aria-labelledby="consonant-heading">
-                    <div class="flex items-center justify-between gap-3 mb-3">
+                <section class="mb-6 sm:mb-8" aria-labelledby="consonant-heading">
+                    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-3">
                         <h3 id="consonant-heading" class="text-sm font-semibold text-slate-300 uppercase tracking-wider border-l-4 border-indigo-500 pl-3">
                             辅音
                         </h3>
                         <div class="flex flex-wrap gap-2">
-                            <button type="button" class="practice-mini-button" data-preset="consonants-all">全选</button>
-                            <button type="button" class="practice-mini-button" data-preset="consonants-none">清空</button>
+                            <button type="button" class="practice-mini-button flex-1 sm:flex-none" data-preset="consonants-all">全选</button>
+                            <button type="button" class="practice-mini-button flex-1 sm:flex-none" data-preset="consonants-none">清空</button>
                         </div>
                     </div>
                     <div id="consonant-picker"></div>
                 </section>
 
                 <section aria-labelledby="vowel-heading">
-                    <div class="flex items-center justify-between gap-3 mb-3">
+                    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-3">
                         <h3 id="vowel-heading" class="text-sm font-semibold text-slate-300 uppercase tracking-wider border-l-4 border-amber-500 pl-3">
                             母音
                         </h3>
                         <div class="flex flex-wrap gap-2">
-                            <button type="button" class="practice-mini-button" data-preset="vowels-all">全选</button>
-                            <button type="button" class="practice-mini-button" data-preset="vowels-none">清空</button>
+                            <button type="button" class="practice-mini-button flex-1 sm:flex-none" data-preset="vowels-all">全选</button>
+                            <button type="button" class="practice-mini-button flex-1 sm:flex-none" data-preset="vowels-none">清空</button>
                         </div>
                     </div>
                     <div id="vowel-picker"></div>
                 </section>
             </aside>
 
-            <main class="space-y-6">
-                <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <main class="order-1 xl:order-2 space-y-5 sm:space-y-6">
+                <section class="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
                     <div class="practice-stat">
                         <div class="practice-stat-label">题库大小</div>
                         <div id="pool-count" class="practice-stat-value">0</div>
@@ -475,17 +525,17 @@
                     </div>
                 </section>
 
-                <section class="practice-panel p-6 sm:p-8">
-                    <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between mb-6">
+                <section class="practice-panel p-5 sm:p-8">
+                    <div class="flex flex-col gap-3 sm:gap-4 lg:flex-row lg:items-start lg:justify-between mb-5 sm:mb-6">
                         <div>
                             <h2 class="text-lg font-bold text-slate-100">开始练习</h2>
                         </div>
-                        <div class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-xs text-slate-200">
+                        <div class="inline-flex w-full sm:w-auto items-center gap-2 rounded-2xl sm:rounded-full border border-slate-700 bg-slate-900/70 px-3 py-2 sm:py-1.5 text-xs text-slate-200">
                             <span id="selection-summary">请选择至少 1 个辅音和 1 个母音</span>
                         </div>
                     </div>
 
-                    <div class="practice-stage mb-6">
+                    <div class="practice-stage mb-5 sm:mb-6">
                         <div id="prompt-letter" class="practice-letter font-kr" lang="ko">가</div>
                         <div id="prompt-placeholder" class="practice-placeholder hidden">
                             请选择至少 1 个辅音和 1 个母音
@@ -508,25 +558,25 @@
                             >
                         </div>
 
-                        <div class="flex flex-wrap gap-3">
-                            <button id="check-button" type="submit" class="bg-indigo-600 text-white font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-indigo-500 active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950">
+                        <div class="grid gap-3 sm:flex sm:flex-wrap">
+                            <button id="check-button" type="submit" class="w-full sm:w-auto bg-indigo-600 text-white font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-indigo-500 active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950">
                                 检查输入
                             </button>
-                            <button id="reveal-button" type="button" class="border border-slate-700 bg-slate-900 text-slate-200 font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-slate-800 hover:text-white active:scale-95">
+                            <button id="reveal-button" type="button" class="w-full sm:w-auto border border-slate-700 bg-slate-900 text-slate-200 font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-slate-800 hover:text-white active:scale-95">
                                 不会，显示答案
                             </button>
-                            <button id="next-button" type="button" class="border border-slate-700 bg-slate-900 text-slate-200 font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-slate-800 hover:text-white active:scale-95">
+                            <button id="next-button" type="button" class="w-full sm:w-auto border border-slate-700 bg-slate-900 text-slate-200 font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-slate-800 hover:text-white active:scale-95">
                                 下一题
                             </button>
                         </div>
                     </form>
 
-                    <div id="feedback" class="practice-feedback mt-4" data-tone="muted" aria-live="polite">
+                    <div id="feedback" class="practice-feedback mt-5 sm:mt-4" data-tone="muted" aria-live="polite">
                         开始练习。
                     </div>
 
-                    <section id="answer-panel" class="answer-panel mt-6" data-visible="false" aria-live="polite">
-                        <div class="grid gap-4 md:grid-cols-3">
+                    <section id="answer-panel" class="answer-panel mt-5 sm:mt-6" data-visible="false" aria-live="polite">
+                        <div class="grid gap-3 sm:gap-4 md:grid-cols-3">
                             <div class="answer-box">
                                 <div class="answer-label">答案</div>
                                 <div id="answer-char" class="answer-value answer-value-kr font-kr" lang="ko">가</div>
