@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩语打字练习 — 韩语学习</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <style>
+        :root {
+            --practice-hero-bg:
+                radial-gradient(circle at top left, rgba(99, 102, 241, 0.22), transparent 34%),
+                radial-gradient(circle at right center, rgba(14, 165, 233, 0.12), transparent 28%),
+                linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.9));
+            --practice-hero-glow: radial-gradient(circle, rgba(56, 189, 248, 0.16), transparent 68%);
+            --practice-chip-bg: linear-gradient(180deg, rgba(30, 41, 59, 0.78), rgba(15, 23, 42, 0.9));
+            --practice-chip-selected-bg:
+                radial-gradient(circle at top left, rgba(99, 102, 241, 0.18), transparent 60%),
+                linear-gradient(180deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.96));
+            --practice-chip-shadow: 0 14px 30px rgba(15, 23, 42, 0.18);
+            --practice-chip-selected-shadow: 0 18px 36px rgba(79, 70, 229, 0.16);
+            --practice-stat-bg: rgba(2, 6, 23, 0.42);
+            --practice-stage-border: rgba(71, 85, 105, 0.85);
+            --practice-stage-bg:
+                radial-gradient(circle at top center, rgba(99, 102, 241, 0.18), transparent 36%),
+                linear-gradient(180deg, rgba(15, 23, 42, 0.94), rgba(2, 6, 23, 0.98));
+            --practice-stage-glow: radial-gradient(circle, rgba(34, 197, 94, 0.12), transparent 70%);
+            --practice-strong: #f8fafc;
+            --practice-soft: #e2e8f0;
+            --practice-muted: #cbd5e1;
+            --practice-button-bg: rgba(30, 41, 59, 0.9);
+            --practice-button-border: rgba(51, 65, 85, 0.95);
+            --practice-button-text: #f8fafc;
+            --practice-summary-bg: rgba(15, 23, 42, 0.7);
+            --practice-summary-border: rgba(51, 65, 85, 0.82);
+            --practice-summary-text: #e2e8f0;
+            --practice-input-bg: #0f172a;
+            --practice-input-border: #334155;
+            --practice-input-text: #f8fafc;
+            --practice-input-placeholder: #94a3b8;
+            --practice-feedback-bg: rgba(15, 23, 42, 0.7);
+            --practice-answer-bg: rgba(15, 23, 42, 0.74);
+        }
+
+        html[data-theme="light"] {
+            --practice-hero-bg:
+                radial-gradient(circle at top left, rgba(99, 102, 241, 0.12), transparent 34%),
+                radial-gradient(circle at right center, rgba(14, 165, 233, 0.08), transparent 28%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.96));
+            --practice-hero-glow: radial-gradient(circle, rgba(56, 189, 248, 0.1), transparent 68%);
+            --practice-chip-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(241, 245, 249, 0.96));
+            --practice-chip-selected-bg:
+                radial-gradient(circle at top left, rgba(99, 102, 241, 0.12), transparent 60%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(238, 242, 255, 0.96));
+            --practice-chip-shadow: 0 14px 24px rgba(148, 163, 184, 0.16);
+            --practice-chip-selected-shadow: 0 18px 30px rgba(129, 140, 248, 0.18);
+            --practice-stat-bg: rgba(255, 255, 255, 0.82);
+            --practice-stage-border: rgba(148, 163, 184, 0.55);
+            --practice-stage-bg:
+                radial-gradient(circle at top center, rgba(99, 102, 241, 0.1), transparent 36%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.98));
+            --practice-stage-glow: radial-gradient(circle, rgba(99, 102, 241, 0.08), transparent 70%);
+            --practice-strong: #0f172a;
+            --practice-soft: #1e293b;
+            --practice-muted: #334155;
+            --practice-button-bg: rgba(255, 255, 255, 0.94);
+            --practice-button-border: rgba(148, 163, 184, 0.65);
+            --practice-button-text: #0f172a;
+            --practice-summary-bg: rgba(255, 255, 255, 0.9);
+            --practice-summary-border: rgba(148, 163, 184, 0.55);
+            --practice-summary-text: #1e293b;
+            --practice-input-bg: #ffffff;
+            --practice-input-border: #cbd5e1;
+            --practice-input-text: #0f172a;
+            --practice-input-placeholder: #64748b;
+            --practice-feedback-bg: rgba(255, 255, 255, 0.88);
+            --practice-answer-bg: rgba(255, 255, 255, 0.88);
+        }
+
+        .practice-hero {
+            position: relative;
+            overflow: hidden;
+            background: var(--practice-hero-bg);
+        }
+
+        .practice-hero::after {
+            content: "";
+            position: absolute;
+            inset: auto -72px -96px auto;
+            width: 220px;
+            height: 220px;
+            border-radius: 999px;
+            background: var(--practice-hero-glow);
+            pointer-events: none;
+        }
+
+        .practice-panel {
+            background: color-mix(in srgb, var(--site-panel) 94%, transparent);
+            border: 1px solid var(--site-border);
+            border-radius: 20px;
+            box-shadow: var(--site-card-shadow);
+        }
+
+        .practice-group {
+            border-top: 1px solid rgba(51, 65, 85, 0.75);
+            padding-top: 18px;
+            margin-top: 18px;
+        }
+
+        .practice-group:first-child {
+            border-top: 0;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .practice-group-title {
+            margin: 0 0 12px;
+            color: var(--practice-soft);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+
+        .practice-group-copy {
+            margin: -6px 0 12px;
+            color: var(--site-text-muted);
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+
+        .practice-picker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+            gap: 10px;
+        }
+
+        .practice-toggle {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .practice-chip {
+            display: flex;
+            min-height: 88px;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 8px;
+            border-radius: 16px;
+            border: 1px solid rgba(51, 65, 85, 0.88);
+            background: var(--practice-chip-bg);
+            padding: 12px 12px 10px;
+            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+            cursor: pointer;
+        }
+
+        .practice-chip:hover {
+            transform: translateY(-1px);
+            border-color: rgba(99, 102, 241, 0.45);
+            box-shadow: var(--practice-chip-shadow);
+        }
+
+        .practice-toggle:focus-visible + .practice-chip {
+            outline: 2px solid var(--site-accent);
+            outline-offset: 2px;
+        }
+
+        .practice-toggle:checked + .practice-chip {
+            border-color: rgba(129, 140, 248, 0.68);
+            background: var(--practice-chip-selected-bg);
+            box-shadow: var(--practice-chip-selected-shadow);
+        }
+
+        .practice-chip-top {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .practice-chip-char {
+            font-family: 'Malgun Gothic', 'Dotum', sans-serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--practice-strong);
+        }
+
+        .practice-toggle:checked + .practice-chip .practice-chip-char {
+            color: #a5b4fc;
+        }
+
+        .practice-chip-meta {
+            color: var(--practice-soft);
+            font-size: 0.8rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+        }
+
+        .practice-chip-hint {
+            color: var(--practice-muted);
+            font-size: 0.72rem;
+            line-height: 1.45;
+            font-weight: 600;
+        }
+
+        .practice-mini-button {
+            border: 1px solid var(--practice-button-border);
+            background: var(--practice-button-bg);
+            color: var(--practice-button-text);
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            line-height: 1;
+            padding: 8px 12px;
+            transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+        }
+
+        .practice-mini-button:hover {
+            border-color: rgba(99, 102, 241, 0.55);
+            color: var(--site-text);
+            transform: translateY(-1px);
+        }
+
+        .practice-mini-button:focus-visible {
+            outline: 2px solid var(--site-accent);
+            outline-offset: 2px;
+        }
+
+        .practice-stat {
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            border-radius: 16px;
+            background: var(--practice-stat-bg);
+            padding: 14px 16px;
+        }
+
+        .practice-stat-label {
+            color: var(--practice-muted);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .practice-stat-value {
+            margin-top: 6px;
+            color: var(--practice-strong);
+            font-size: 1.35rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .practice-stage {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            border: 1px solid var(--practice-stage-border);
+            background: var(--practice-stage-bg);
+            padding: 24px;
+        }
+
+        .practice-stage::after {
+            content: "";
+            position: absolute;
+            inset: auto auto -78px -44px;
+            width: 180px;
+            height: 180px;
+            border-radius: 999px;
+            background: var(--practice-stage-glow);
+            pointer-events: none;
+        }
+
+        .practice-letter {
+            font-family: 'Malgun Gothic', 'Dotum', sans-serif;
+            font-size: clamp(4.5rem, 15vw, 8rem);
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--practice-strong);
+            text-align: center;
+            text-shadow: 0 20px 44px rgba(15, 23, 42, 0.42);
+        }
+
+        .practice-placeholder {
+            min-height: 188px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--practice-soft);
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+
+        .practice-feedback {
+            border-radius: 16px;
+            border: 1px solid rgba(51, 65, 85, 0.82);
+            padding: 12px 14px;
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .practice-feedback[data-tone="muted"] {
+            background: var(--practice-feedback-bg);
+            color: var(--practice-soft);
+        }
+
+        .practice-feedback[data-tone="success"] {
+            background: rgba(22, 163, 74, 0.12);
+            border-color: rgba(22, 163, 74, 0.38);
+            color: #bbf7d0;
+        }
+
+        .practice-feedback[data-tone="error"] {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.34);
+            color: #fecaca;
+        }
+
+        .answer-panel[data-visible="false"] {
+            display: none;
+        }
+
+        .answer-box {
+            border-radius: 18px;
+            border: 1px solid rgba(51, 65, 85, 0.84);
+            background: var(--practice-answer-bg);
+            padding: 16px;
+        }
+
+        .answer-label {
+            color: var(--practice-muted);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .answer-value {
+            margin-top: 8px;
+            color: var(--practice-strong);
+        }
+
+        .answer-value-kr {
+            font-family: 'Malgun Gothic', 'Dotum', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .answer-value-roman {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .key-sequence {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .key-sequence-sep {
+            color: var(--practice-muted);
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .practice-hero h1,
+        .practice-panel h2,
+        .practice-panel h3,
+        label[for="answer-input"] {
+            color: var(--practice-strong);
+        }
+
+        #answer-input {
+            background: var(--practice-input-bg);
+            color: var(--practice-input-text);
+            border-color: var(--practice-input-border);
+        }
+
+        #answer-input::placeholder {
+            color: var(--practice-input-placeholder);
+        }
+
+        #reveal-button,
+        #next-button {
+            background: var(--practice-button-bg);
+            color: var(--practice-button-text);
+            border-color: var(--practice-button-border);
+        }
+
+        #reveal-button:hover,
+        #next-button:hover {
+            color: var(--practice-button-text);
+        }
+
+        #selection-summary {
+            color: var(--practice-summary-text);
+        }
+
+        .practice-panel .inline-flex.rounded-full {
+            background: var(--practice-summary-bg);
+            border-color: var(--practice-summary-border);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen">
+
+    <div class="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8 w-full">
+        <section class="practice-hero practice-panel p-6 sm:p-8 mb-8">
+            <div class="relative z-10">
+                <div class="accent-bar"></div>
+                <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-50">韩语打字练习</h1>
+            </div>
+        </section>
+
+        <div class="grid gap-6 xl:grid-cols-[380px_minmax(0,1fr)]">
+            <aside class="practice-panel p-6">
+                <div class="mb-5">
+                    <h2 class="text-lg font-bold text-slate-100">难度设置</h2>
+                </div>
+
+                <section class="mb-8" aria-labelledby="consonant-heading">
+                    <div class="flex items-center justify-between gap-3 mb-3">
+                        <h3 id="consonant-heading" class="text-sm font-semibold text-slate-300 uppercase tracking-wider border-l-4 border-indigo-500 pl-3">
+                            辅音
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button type="button" class="practice-mini-button" data-preset="consonants-all">全选</button>
+                            <button type="button" class="practice-mini-button" data-preset="consonants-none">清空</button>
+                        </div>
+                    </div>
+                    <div id="consonant-picker"></div>
+                </section>
+
+                <section aria-labelledby="vowel-heading">
+                    <div class="flex items-center justify-between gap-3 mb-3">
+                        <h3 id="vowel-heading" class="text-sm font-semibold text-slate-300 uppercase tracking-wider border-l-4 border-amber-500 pl-3">
+                            母音
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <button type="button" class="practice-mini-button" data-preset="vowels-all">全选</button>
+                            <button type="button" class="practice-mini-button" data-preset="vowels-none">清空</button>
+                        </div>
+                    </div>
+                    <div id="vowel-picker"></div>
+                </section>
+            </aside>
+
+            <main class="space-y-6">
+                <section class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                    <div class="practice-stat">
+                        <div class="practice-stat-label">题库大小</div>
+                        <div id="pool-count" class="practice-stat-value">0</div>
+                    </div>
+                    <div class="practice-stat">
+                        <div class="practice-stat-label">答对次数</div>
+                        <div id="correct-count" class="practice-stat-value">0</div>
+                    </div>
+                    <div class="practice-stat">
+                        <div class="practice-stat-label">看答案次数</div>
+                        <div id="reveal-count" class="practice-stat-value">0</div>
+                    </div>
+                    <div class="practice-stat">
+                        <div class="practice-stat-label">当前连对</div>
+                        <div id="streak-count" class="practice-stat-value">0</div>
+                    </div>
+                </section>
+
+                <section class="practice-panel p-6 sm:p-8">
+                    <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between mb-6">
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-100">开始练习</h2>
+                        </div>
+                        <div class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-3 py-1.5 text-xs text-slate-200">
+                            <span id="selection-summary">请选择至少 1 个辅音和 1 个母音</span>
+                        </div>
+                    </div>
+
+                    <div class="practice-stage mb-6">
+                        <div id="prompt-letter" class="practice-letter font-kr" lang="ko">가</div>
+                        <div id="prompt-placeholder" class="practice-placeholder hidden">
+                            请选择至少 1 个辅音和 1 个母音
+                        </div>
+                    </div>
+
+                    <form id="practice-form" class="space-y-4">
+                        <div>
+                            <label for="answer-input" class="block text-sm font-medium text-slate-300 mb-1.5">输入这个字</label>
+                            <input
+                                id="answer-input"
+                                type="text"
+                                inputmode="text"
+                                autocomplete="off"
+                                autocapitalize="off"
+                                spellcheck="false"
+                                class="w-full bg-slate-900 text-slate-100 border border-slate-800 rounded-lg px-3.5 py-3 text-lg placeholder-slate-500 transition-colors focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 font-kr"
+                                placeholder="例如：가"
+                                lang="ko"
+                            >
+                        </div>
+
+                        <div class="flex flex-wrap gap-3">
+                            <button id="check-button" type="submit" class="bg-indigo-600 text-white font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-indigo-500 active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950">
+                                检查输入
+                            </button>
+                            <button id="reveal-button" type="button" class="border border-slate-700 bg-slate-900 text-slate-200 font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-slate-800 hover:text-white active:scale-95">
+                                不会，显示答案
+                            </button>
+                            <button id="next-button" type="button" class="border border-slate-700 bg-slate-900 text-slate-200 font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-slate-800 hover:text-white active:scale-95">
+                                下一题
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="feedback" class="practice-feedback mt-4" data-tone="muted" aria-live="polite">
+                        开始练习。
+                    </div>
+
+                    <section id="answer-panel" class="answer-panel mt-6" data-visible="false" aria-live="polite">
+                        <div class="grid gap-4 md:grid-cols-3">
+                            <div class="answer-box">
+                                <div class="answer-label">答案</div>
+                                <div id="answer-char" class="answer-value answer-value-kr font-kr" lang="ko">가</div>
+                            </div>
+                            <div class="answer-box">
+                                <div class="answer-label">读音（罗马音）</div>
+                                <div id="answer-roman" class="answer-value answer-value-roman">ga</div>
+                            </div>
+                            <div class="answer-box">
+                                <div class="answer-label">键盘顺序</div>
+                                <div id="answer-keys" class="key-sequence"></div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'korean-learning-typing-practice-selection';
+        const HANGUL_BASE = 0xac00;
+        const ONSET_MULTIPLIER = 21 * 28;
+        const VOWEL_MULTIPLIER = 28;
+
+        const CONSONANTS = [
+            { id: 'giyeok', char: 'ㄱ', roman: 'g', index: 0, keys: ['r'], group: 'lesson', note: '平音' },
+            { id: 'nieun', char: 'ㄴ', roman: 'n', index: 2, keys: ['s'], group: 'lesson', note: '平音' },
+            { id: 'digeut', char: 'ㄷ', roman: 'd', index: 3, keys: ['e'], group: 'lesson', note: '平音' },
+            { id: 'rieul', char: 'ㄹ', roman: 'r', index: 5, keys: ['f'], group: 'lesson', note: '平音' },
+            { id: 'mieum', char: 'ㅁ', roman: 'm', index: 6, keys: ['a'], group: 'lesson', note: '平音' },
+            { id: 'bieup', char: 'ㅂ', roman: 'b', index: 7, keys: ['q'], group: 'lesson', note: '平音' },
+            { id: 'siot', char: 'ㅅ', roman: 's', index: 9, keys: ['t'], group: 'lesson', note: '平音' },
+            { id: 'ieung', char: 'ㅇ', roman: '', index: 11, keys: ['d'], group: 'lesson', note: '词首不发音' },
+            { id: 'jieut', char: 'ㅈ', roman: 'j', index: 12, keys: ['w'], group: 'lesson', note: '平音' },
+            { id: 'chieut', char: 'ㅊ', roman: 'ch', index: 14, keys: ['c'], group: 'aspirated', note: '激音' },
+            { id: 'kieuk', char: 'ㅋ', roman: 'k', index: 15, keys: ['v'], group: 'aspirated', note: '激音' },
+            { id: 'tieut', char: 'ㅌ', roman: 't', index: 16, keys: ['x'], group: 'aspirated', note: '激音' },
+            { id: 'pieup', char: 'ㅍ', roman: 'p', index: 17, keys: ['z'], group: 'aspirated', note: '激音' },
+            { id: 'hieut', char: 'ㅎ', roman: 'h', index: 18, keys: ['g'], group: 'aspirated', note: '激音' },
+            { id: 'ssang-giyeok', char: 'ㄲ', roman: 'kk', index: 1, keys: ['Shift', 'R'], group: 'tense', note: '紧音' },
+            { id: 'ssang-digeut', char: 'ㄸ', roman: 'tt', index: 4, keys: ['Shift', 'E'], group: 'tense', note: '紧音' },
+            { id: 'ssang-bieup', char: 'ㅃ', roman: 'pp', index: 8, keys: ['Shift', 'Q'], group: 'tense', note: '紧音' },
+            { id: 'ssang-siot', char: 'ㅆ', roman: 'ss', index: 10, keys: ['Shift', 'T'], group: 'tense', note: '紧音' },
+            { id: 'ssang-jieut', char: 'ㅉ', roman: 'jj', index: 13, keys: ['Shift', 'W'], group: 'tense', note: '紧音' }
+        ];
+
+        const VOWELS = [
+            { id: 'a', char: 'ㅏ', roman: 'a', index: 0, keys: ['k'], group: 'lesson', note: '教材前10个' },
+            { id: 'ya', char: 'ㅑ', roman: 'ya', index: 2, keys: ['i'], group: 'lesson', note: '教材前10个' },
+            { id: 'eo', char: 'ㅓ', roman: 'eo', index: 4, keys: ['j'], group: 'lesson', note: '教材前10个' },
+            { id: 'yeo', char: 'ㅕ', roman: 'yeo', index: 6, keys: ['u'], group: 'lesson', note: '教材前10个' },
+            { id: 'o', char: 'ㅗ', roman: 'o', index: 8, keys: ['h'], group: 'lesson', note: '教材前10个' },
+            { id: 'yo', char: 'ㅛ', roman: 'yo', index: 12, keys: ['y'], group: 'lesson', note: '教材前10个' },
+            { id: 'u', char: 'ㅜ', roman: 'u', index: 13, keys: ['n'], group: 'lesson', note: '教材前10个' },
+            { id: 'yu', char: 'ㅠ', roman: 'yu', index: 17, keys: ['b'], group: 'lesson', note: '教材前10个' },
+            { id: 'eu', char: 'ㅡ', roman: 'eu', index: 18, keys: ['m'], group: 'lesson', note: '教材前10个' },
+            { id: 'i', char: 'ㅣ', roman: 'i', index: 20, keys: ['l'], group: 'lesson', note: '教材前10个' },
+            { id: 'ae', char: 'ㅐ', roman: 'ae', index: 1, keys: ['o'], group: 'extended', note: '扩展母音' },
+            { id: 'yae', char: 'ㅒ', roman: 'yae', index: 3, keys: ['Shift', 'O'], group: 'extended', note: '扩展母音' },
+            { id: 'e', char: 'ㅔ', roman: 'e', index: 5, keys: ['p'], group: 'extended', note: '扩展母音' },
+            { id: 'ye', char: 'ㅖ', roman: 'ye', index: 7, keys: ['Shift', 'P'], group: 'extended', note: '扩展母音' },
+            { id: 'wa', char: 'ㅘ', roman: 'wa', index: 9, keys: ['h', 'k'], group: 'extended', note: '复合母音' },
+            { id: 'wae', char: 'ㅙ', roman: 'wae', index: 10, keys: ['h', 'o'], group: 'extended', note: '复合母音' },
+            { id: 'oe', char: 'ㅚ', roman: 'oe', index: 11, keys: ['h', 'l'], group: 'extended', note: '复合母音' },
+            { id: 'wo', char: 'ㅝ', roman: 'wo', index: 14, keys: ['n', 'j'], group: 'extended', note: '复合母音' },
+            { id: 'we', char: 'ㅞ', roman: 'we', index: 15, keys: ['n', 'p'], group: 'extended', note: '复合母音' },
+            { id: 'wi', char: 'ㅟ', roman: 'wi', index: 16, keys: ['n', 'l'], group: 'extended', note: '复合母音' },
+            { id: 'ui', char: 'ㅢ', roman: 'ui', index: 19, keys: ['m', 'l'], group: 'extended', note: '复合母音' }
+        ];
+
+        const CONSONANT_GROUPS = [
+            {
+                title: '基础',
+                items: CONSONANTS.filter((item) => item.group === 'lesson')
+            },
+            {
+                title: '激音',
+                items: CONSONANTS.filter((item) => item.group === 'aspirated')
+            },
+            {
+                title: '紧音',
+                items: CONSONANTS.filter((item) => item.group === 'tense')
+            }
+        ];
+
+        const VOWEL_GROUPS = [
+            {
+                title: '基础',
+                items: VOWELS.filter((item) => item.group === 'lesson')
+            },
+            {
+                title: '扩展 / 复合',
+                items: VOWELS.filter((item) => item.group === 'extended')
+            }
+        ];
+
+        const DEFAULT_CONSONANTS = CONSONANTS.filter((item) => item.group === 'lesson').map((item) => item.id);
+        const DEFAULT_VOWELS = VOWELS.filter((item) => item.group === 'lesson').map((item) => item.id);
+
+        const state = {
+            queue: [],
+            pool: [],
+            current: null,
+            revealed: false,
+            solved: false,
+            correct: 0,
+            reveals: 0,
+            streak: 0
+        };
+
+        const consonantPicker = document.getElementById('consonant-picker');
+        const vowelPicker = document.getElementById('vowel-picker');
+        const poolCount = document.getElementById('pool-count');
+        const correctCount = document.getElementById('correct-count');
+        const revealCount = document.getElementById('reveal-count');
+        const streakCount = document.getElementById('streak-count');
+        const selectionSummary = document.getElementById('selection-summary');
+        const promptLetter = document.getElementById('prompt-letter');
+        const promptPlaceholder = document.getElementById('prompt-placeholder');
+        const answerInput = document.getElementById('answer-input');
+        const feedback = document.getElementById('feedback');
+        const answerPanel = document.getElementById('answer-panel');
+        const answerChar = document.getElementById('answer-char');
+        const answerRoman = document.getElementById('answer-roman');
+        const answerKeys = document.getElementById('answer-keys');
+        const practiceForm = document.getElementById('practice-form');
+        const revealButton = document.getElementById('reveal-button');
+        const nextButton = document.getElementById('next-button');
+        const checkButton = document.getElementById('check-button');
+
+        function saveSelection() {
+            const payload = {
+                consonants: selectedValues('consonant'),
+                vowels: selectedValues('vowel')
+            };
+
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+            } catch (error) {
+                // Ignore storage write failures.
+            }
+        }
+
+        function loadSelection() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) {
+                    return null;
+                }
+                const parsed = JSON.parse(raw);
+                if (!parsed || !Array.isArray(parsed.consonants) || !Array.isArray(parsed.vowels)) {
+                    return null;
+                }
+                return parsed;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function selectedValues(kind) {
+            return Array.from(document.querySelectorAll(`input[data-kind="${kind}"]:checked`)).map((input) => input.value);
+        }
+
+        function escapeHtml(value) {
+            return value
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function renderPicker(container, kind, groups) {
+            container.innerHTML = groups.map((group) => {
+                return [
+                    '<section class="practice-group">',
+                    `  <h4 class="practice-group-title">${escapeHtml(group.title)}</h4>`,
+                    '  <div class="practice-picker-grid">',
+                    group.items.map((item) => {
+                        return [
+                            `<label class="relative block" title="${escapeHtml(item.note)}">`,
+                            `  <input class="practice-toggle" type="checkbox" data-kind="${kind}" value="${escapeHtml(item.id)}">`,
+                            '  <span class="practice-chip">',
+                            '      <span class="practice-chip-top">',
+                            `          <span class="practice-chip-char font-kr" lang="ko">${escapeHtml(item.char)}</span>`,
+                            `          <span class="practice-chip-meta">${escapeHtml(item.roman || 'silent')}</span>`,
+                            '      </span>',
+                            `      <span class="practice-chip-hint">键位 ${escapeHtml(item.keys.join(' + '))}<br>${escapeHtml(item.note)}</span>`,
+                            '  </span>',
+                            '</label>'
+                        ].join('');
+                    }).join(''),
+                    '  </div>',
+                    '</section>'
+                ].join('');
+            }).join('');
+        }
+
+        function applyStoredOrDefaultSelection() {
+            const saved = loadSelection();
+            const savedConsonants = new Set(saved?.consonants || DEFAULT_CONSONANTS);
+            const savedVowels = new Set(saved?.vowels || DEFAULT_VOWELS);
+
+            document.querySelectorAll('input[data-kind="consonant"]').forEach((input) => {
+                input.checked = savedConsonants.has(input.value);
+            });
+
+            document.querySelectorAll('input[data-kind="vowel"]').forEach((input) => {
+                input.checked = savedVowels.has(input.value);
+            });
+        }
+
+        function setSelection(kind, ids) {
+            const selected = new Set(ids);
+            document.querySelectorAll(`input[data-kind="${kind}"]`).forEach((input) => {
+                input.checked = selected.has(input.value);
+            });
+            saveSelection();
+            rebuildPool('题库已更新。');
+        }
+
+        function createSyllable(consonant, vowel) {
+            return String.fromCharCode(HANGUL_BASE + consonant.index * ONSET_MULTIPLIER + vowel.index * VOWEL_MULTIPLIER);
+        }
+
+        function buildPool() {
+            const consonantIds = new Set(selectedValues('consonant'));
+            const vowelIds = new Set(selectedValues('vowel'));
+
+            const selectedConsonants = CONSONANTS.filter((item) => consonantIds.has(item.id));
+            const selectedVowels = VOWELS.filter((item) => vowelIds.has(item.id));
+
+            const pool = [];
+            selectedConsonants.forEach((consonant) => {
+                selectedVowels.forEach((vowel) => {
+                    pool.push({
+                        consonant,
+                        vowel,
+                        syllable: createSyllable(consonant, vowel),
+                        roman: `${consonant.roman}${vowel.roman}`,
+                        keySequence: consonant.keys.concat(vowel.keys)
+                    });
+                });
+            });
+
+            return {
+                selectedConsonants,
+                selectedVowels,
+                pool
+            };
+        }
+
+        function shuffle(items) {
+            const copy = items.slice();
+            for (let index = copy.length - 1; index > 0; index -= 1) {
+                const swapIndex = Math.floor(Math.random() * (index + 1));
+                [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+            }
+            return copy;
+        }
+
+        function setFeedback(message, tone) {
+            feedback.textContent = message;
+            feedback.dataset.tone = tone;
+        }
+
+        function updateStats() {
+            poolCount.textContent = String(state.pool.length);
+            correctCount.textContent = String(state.correct);
+            revealCount.textContent = String(state.reveals);
+            streakCount.textContent = String(state.streak);
+        }
+
+        function renderKeySequence(sequence) {
+            answerKeys.innerHTML = sequence.map((key, index) => {
+                const separator = index === 0 ? '' : '<span class="key-sequence-sep">+</span>';
+                return `${separator}<kbd class="kbd-key">${escapeHtml(key)}</kbd>`;
+            }).join('');
+        }
+
+        function renderAnswerPanel() {
+            if (!state.current || !state.revealed) {
+                answerPanel.dataset.visible = 'false';
+                return;
+            }
+
+            answerChar.textContent = state.current.syllable;
+            answerRoman.textContent = state.current.roman || state.current.vowel.roman;
+            renderKeySequence(state.current.keySequence);
+            answerPanel.dataset.visible = 'true';
+        }
+
+        function renderPrompt() {
+            if (!state.current) {
+                promptLetter.classList.add('hidden');
+                promptPlaceholder.classList.remove('hidden');
+                answerPanel.dataset.visible = 'false';
+                checkButton.disabled = true;
+                revealButton.disabled = true;
+                nextButton.disabled = true;
+                answerInput.disabled = true;
+                answerInput.value = '';
+                return;
+            }
+
+            promptLetter.textContent = state.current.syllable;
+            promptLetter.classList.remove('hidden');
+            promptPlaceholder.classList.add('hidden');
+            checkButton.disabled = false;
+            revealButton.disabled = false;
+            nextButton.disabled = false;
+            answerInput.disabled = false;
+            answerInput.value = '';
+            renderAnswerPanel();
+        }
+
+        function updateSelectionSummary(selectedConsonants, selectedVowels) {
+            selectionSummary.textContent = `${selectedConsonants.length} 个辅音 × ${selectedVowels.length} 个母音 = ${state.pool.length} 个练习字`;
+        }
+
+        function nextPrompt() {
+            if (!state.pool.length) {
+                state.current = null;
+                state.revealed = false;
+                state.solved = false;
+                renderPrompt();
+                return;
+            }
+
+            if (!state.queue.length) {
+                state.queue = shuffle(state.pool);
+            }
+
+            let next = state.queue.pop();
+
+            if (state.current && state.pool.length > 1 && next.syllable === state.current.syllable) {
+                state.queue.unshift(next);
+                next = state.queue.pop();
+            }
+
+            state.current = next;
+            state.revealed = false;
+            state.solved = false;
+            renderPrompt();
+        }
+
+        function rebuildPool(message) {
+            const { selectedConsonants, selectedVowels, pool } = buildPool();
+            state.pool = pool;
+            state.queue = [];
+            state.current = null;
+            state.revealed = false;
+            state.solved = false;
+
+            saveSelection();
+            updateStats();
+
+            if (!selectedConsonants.length || !selectedVowels.length) {
+                selectionSummary.textContent = '请选择至少 1 个辅音和 1 个母音';
+                renderPrompt();
+                setFeedback('请选择至少 1 个辅音和 1 个母音。', 'error');
+                return;
+            }
+
+            updateSelectionSummary(selectedConsonants, selectedVowels);
+            nextPrompt();
+            setFeedback(message, 'muted');
+        }
+
+        function revealAnswer() {
+            if (!state.current) {
+                return;
+            }
+
+            if (!state.revealed) {
+                state.reveals += 1;
+                state.streak = 0;
+                updateStats();
+            }
+
+            state.revealed = true;
+            renderAnswerPanel();
+            setFeedback('已显示答案。', 'muted');
+        }
+
+        function isSingleCharacter(value) {
+            return Array.from(value).length === 1;
+        }
+
+        function checkAnswer() {
+            if (!state.current) {
+                return;
+            }
+
+            const value = answerInput.value.trim();
+
+            if (!value) {
+                setFeedback('请输入一个韩文字。', 'error');
+                return;
+            }
+
+            if (!isSingleCharacter(value)) {
+                setFeedback('请输入一个韩文字。', 'error');
+                return;
+            }
+
+            if (value !== state.current.syllable) {
+                state.streak = 0;
+                updateStats();
+                setFeedback('不对。', 'error');
+                return;
+            }
+
+            if (!state.solved) {
+                state.correct += 1;
+                state.streak += 1;
+                state.solved = true;
+            }
+
+            state.revealed = true;
+            updateStats();
+            renderAnswerPanel();
+            setFeedback('答对了。', 'success');
+        }
+
+        renderPicker(consonantPicker, 'consonant', CONSONANT_GROUPS);
+        renderPicker(vowelPicker, 'vowel', VOWEL_GROUPS);
+        applyStoredOrDefaultSelection();
+        updateStats();
+        rebuildPool('开始练习。');
+
+        document.addEventListener('change', (event) => {
+            if (!(event.target instanceof HTMLInputElement)) {
+                return;
+            }
+            if (event.target.matches('input[data-kind="consonant"], input[data-kind="vowel"]')) {
+                rebuildPool('题库已更新。');
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            const target = event.target;
+            if (!(target instanceof HTMLElement)) {
+                return;
+            }
+
+            const preset = target.dataset.preset;
+            if (!preset) {
+                return;
+            }
+
+            if (preset === 'consonants-all') {
+                setSelection('consonant', CONSONANTS.map((item) => item.id));
+            } else if (preset === 'consonants-none') {
+                setSelection('consonant', []);
+            } else if (preset === 'vowels-all') {
+                setSelection('vowel', VOWELS.map((item) => item.id));
+            } else if (preset === 'vowels-none') {
+                setSelection('vowel', []);
+            }
+        });
+
+        revealButton.addEventListener('click', revealAnswer);
+        nextButton.addEventListener('click', () => {
+            nextPrompt();
+            setFeedback('下一题。', 'muted');
+        });
+
+        practiceForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            checkAnswer();
+        });
+    </script>
+</body>
+
+</html>

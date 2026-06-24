@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩语猜词练习 — 韩语学习</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
+    <link rel="stylesheet" href="shared.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <script src="lecture-vocab-data.js"></script>
+    <style>
+        :root {
+            --quiz-stage-border: rgba(71, 85, 105, 0.82);
+            --quiz-stage-bg:
+                radial-gradient(circle at top left, rgba(99, 102, 241, 0.18), transparent 34%),
+                linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.98));
+            --quiz-strong: #f8fafc;
+            --quiz-soft: #e2e8f0;
+            --quiz-muted: #cbd5e1;
+            --quiz-pill-bg: rgba(15, 23, 42, 0.7);
+            --quiz-pill-border: rgba(71, 85, 105, 0.82);
+            --quiz-feedback-bg: rgba(15, 23, 42, 0.72);
+            --quiz-answer-bg: rgba(15, 23, 42, 0.74);
+            --quiz-input-bg: #0f172a;
+            --quiz-input-border: #334155;
+            --quiz-input-text: #f8fafc;
+            --quiz-input-placeholder: #94a3b8;
+            --quiz-button-bg: #0f172a;
+            --quiz-button-border: #334155;
+            --quiz-button-text: #f8fafc;
+        }
+
+        html[data-theme="light"] {
+            --quiz-stage-border: rgba(148, 163, 184, 0.55);
+            --quiz-stage-bg:
+                radial-gradient(circle at top left, rgba(99, 102, 241, 0.1), transparent 34%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 245, 249, 0.98));
+            --quiz-strong: #0f172a;
+            --quiz-soft: #1e293b;
+            --quiz-muted: #334155;
+            --quiz-pill-bg: rgba(255, 255, 255, 0.9);
+            --quiz-pill-border: rgba(148, 163, 184, 0.55);
+            --quiz-feedback-bg: rgba(255, 255, 255, 0.88);
+            --quiz-answer-bg: rgba(255, 255, 255, 0.88);
+            --quiz-input-bg: #ffffff;
+            --quiz-input-border: #cbd5e1;
+            --quiz-input-text: #0f172a;
+            --quiz-input-placeholder: #64748b;
+            --quiz-button-bg: rgba(255, 255, 255, 0.94);
+            --quiz-button-border: rgba(148, 163, 184, 0.65);
+            --quiz-button-text: #0f172a;
+        }
+
+        .quiz-panel {
+            background: color-mix(in srgb, var(--site-panel) 94%, transparent);
+            border: 1px solid var(--site-border);
+            border-radius: 20px;
+            box-shadow: var(--site-card-shadow);
+        }
+
+        .quiz-stage {
+            border-radius: 24px;
+            border: 1px solid var(--quiz-stage-border);
+            background: var(--quiz-stage-bg);
+            padding: 28px 24px;
+        }
+
+        .quiz-label {
+            color: var(--quiz-muted);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .quiz-prompt {
+            margin-top: 14px;
+            color: var(--quiz-strong);
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+
+        .quiz-prompt.font-kr {
+            line-height: 1.05;
+        }
+
+        .quiz-meta {
+            color: var(--quiz-soft);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .quiz-count {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid var(--quiz-pill-border);
+            border-radius: 999px;
+            background: var(--quiz-pill-bg);
+            color: var(--quiz-soft);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 8px 12px;
+        }
+
+        .quiz-feedback {
+            border-radius: 16px;
+            border: 1px solid rgba(51, 65, 85, 0.82);
+            padding: 12px 14px;
+            font-size: 0.95rem;
+            line-height: 1.55;
+        }
+
+        .quiz-feedback[data-tone="muted"] {
+            background: var(--quiz-feedback-bg);
+            color: var(--quiz-soft);
+        }
+
+        .quiz-feedback[data-tone="success"] {
+            background: rgba(22, 163, 74, 0.12);
+            border-color: rgba(22, 163, 74, 0.36);
+            color: #bbf7d0;
+        }
+
+        .quiz-feedback[data-tone="error"] {
+            background: rgba(239, 68, 68, 0.12);
+            border-color: rgba(239, 68, 68, 0.34);
+            color: #fecaca;
+        }
+
+        .quiz-answer-panel[data-visible="false"] {
+            display: none;
+        }
+
+        .quiz-answer-box {
+            border-radius: 18px;
+            border: 1px solid rgba(51, 65, 85, 0.84);
+            background: var(--quiz-answer-bg);
+            padding: 16px;
+        }
+
+        .quiz-answer-title {
+            color: var(--quiz-muted);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .quiz-answer-value {
+            margin-top: 8px;
+            color: var(--quiz-strong);
+            font-size: 1.08rem;
+            font-weight: 700;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .quiz-answer-value.font-kr {
+            font-size: 1.7rem;
+            line-height: 1.1;
+        }
+
+        .quiz-panel h1,
+        .quiz-panel label {
+            color: var(--quiz-strong);
+        }
+
+        #answer-one,
+        #answer-two {
+            background: var(--quiz-input-bg);
+            color: var(--quiz-input-text);
+            border-color: var(--quiz-input-border);
+        }
+
+        #answer-one::placeholder,
+        #answer-two::placeholder {
+            color: var(--quiz-input-placeholder);
+        }
+
+        #reveal-button,
+        #next-button {
+            background: var(--quiz-button-bg);
+            color: var(--quiz-button-text);
+            border-color: var(--quiz-button-border);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 antialiased font-sans min-h-screen">
+
+    <div class="max-w-5xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+        <section class="quiz-panel p-6 sm:p-8 mb-6">
+            <div class="accent-bar"></div>
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <h1 class="text-3xl font-bold tracking-tight text-slate-50">韩语猜词练习</h1>
+                <div id="pool-count" class="quiz-count">题库 0</div>
+            </div>
+        </section>
+
+        <section class="quiz-panel p-6 sm:p-8">
+            <div class="quiz-stage mb-6">
+                <div class="quiz-label" id="prompt-label">提示</div>
+                <div id="prompt-value" class="quiz-prompt">-</div>
+            </div>
+
+            <form id="quiz-form" class="space-y-4">
+                <div class="grid gap-4 md:grid-cols-2">
+                    <div>
+                        <label id="answer-one-label" for="answer-one" class="block text-sm font-medium text-slate-200 mb-1.5">答案一</label>
+                        <input
+                            id="answer-one"
+                            type="text"
+                            autocomplete="off"
+                            autocapitalize="off"
+                            spellcheck="false"
+                            class="w-full bg-slate-900 text-slate-100 border border-slate-700 rounded-lg px-3.5 py-3 text-base placeholder-slate-400 transition-colors focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                        >
+                    </div>
+                    <div>
+                        <label id="answer-two-label" for="answer-two" class="block text-sm font-medium text-slate-200 mb-1.5">答案二</label>
+                        <input
+                            id="answer-two"
+                            type="text"
+                            autocomplete="off"
+                            autocapitalize="off"
+                            spellcheck="false"
+                            class="w-full bg-slate-900 text-slate-100 border border-slate-700 rounded-lg px-3.5 py-3 text-base placeholder-slate-400 transition-colors focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                        >
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                    <button type="submit" class="bg-indigo-600 text-white font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-indigo-500 active:scale-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-950">
+                        检查
+                    </button>
+                    <button id="reveal-button" type="button" class="border border-slate-700 bg-slate-900 text-slate-100 font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-slate-800 active:scale-95">
+                        显示答案
+                    </button>
+                    <button id="next-button" type="button" class="border border-slate-700 bg-slate-900 text-slate-100 font-medium text-sm px-4 py-2.5 rounded-lg transition-all hover:bg-slate-800 active:scale-95">
+                        下一题
+                    </button>
+                </div>
+            </form>
+
+            <div id="feedback" class="quiz-feedback mt-4" data-tone="muted" aria-live="polite">开始练习。</div>
+
+            <section id="answer-panel" class="quiz-answer-panel mt-6" data-visible="false" aria-live="polite">
+                <div class="grid gap-4 md:grid-cols-3">
+                    <div class="quiz-answer-box">
+                        <div class="quiz-answer-title">中文</div>
+                        <div id="answer-zh" class="quiz-answer-value"></div>
+                    </div>
+                    <div class="quiz-answer-box">
+                        <div class="quiz-answer-title">发音</div>
+                        <div id="answer-roman" class="quiz-answer-value"></div>
+                    </div>
+                    <div class="quiz-answer-box">
+                        <div class="quiz-answer-title">韩文</div>
+                        <div id="answer-ko" class="quiz-answer-value font-kr" lang="ko"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+
+    <script>
+        const DATA = Array.isArray(window.KOREAN_LECTURE_VOCAB) ? window.KOREAN_LECTURE_VOCAB.slice() : [];
+        const FIELDS = [
+            { key: 'zh', label: '中文', inputClass: '' },
+            { key: 'roman', label: '发音', inputClass: '' },
+            { key: 'ko', label: '韩文', inputClass: 'font-kr' }
+        ];
+
+        const state = {
+            pool: DATA,
+            queue: [],
+            current: null,
+            clueKey: null,
+            answerKeys: [],
+            revealed: false,
+            solved: false
+        };
+
+        const poolCount = document.getElementById('pool-count');
+        const promptLabel = document.getElementById('prompt-label');
+        const promptValue = document.getElementById('prompt-value');
+        const answerOneLabel = document.getElementById('answer-one-label');
+        const answerTwoLabel = document.getElementById('answer-two-label');
+        const answerOne = document.getElementById('answer-one');
+        const answerTwo = document.getElementById('answer-two');
+        const quizForm = document.getElementById('quiz-form');
+        const feedback = document.getElementById('feedback');
+        const revealButton = document.getElementById('reveal-button');
+        const nextButton = document.getElementById('next-button');
+        const answerPanel = document.getElementById('answer-panel');
+        const answerZh = document.getElementById('answer-zh');
+        const answerRoman = document.getElementById('answer-roman');
+        const answerKo = document.getElementById('answer-ko');
+
+        function shuffle(items) {
+            const copy = items.slice();
+            for (let index = copy.length - 1; index > 0; index -= 1) {
+                const swapIndex = Math.floor(Math.random() * (index + 1));
+                [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+            }
+            return copy;
+        }
+
+        function setFeedback(message, tone) {
+            feedback.textContent = message;
+            feedback.dataset.tone = tone;
+        }
+
+        function setPromptClass(fieldKey) {
+            const field = FIELDS.find((item) => item.key === fieldKey);
+            promptValue.className = `quiz-prompt${field && field.inputClass ? ` ${field.inputClass}` : ''}`;
+        }
+
+        function setInputClass(input, fieldKey) {
+            const field = FIELDS.find((item) => item.key === fieldKey);
+            input.className = `w-full rounded-lg px-3.5 py-3 text-base transition-colors focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500${field && field.inputClass ? ` ${field.inputClass}` : ''}`;
+        }
+
+        function normalizeRoman(value) {
+            return value.toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
+
+        function normalizeKorean(value) {
+            return value.replace(/[\s!?,.，。！、（）()\-[\]{}]/g, '');
+        }
+
+        function normalizeChinese(value) {
+            return value.replace(/[\s!?,.，。！、（）()·\-]/g, '');
+        }
+
+        function isMatch(fieldKey, inputValue, targetValue) {
+            if (fieldKey === 'roman') {
+                return normalizeRoman(inputValue) === normalizeRoman(targetValue);
+            }
+
+            if (fieldKey === 'ko') {
+                return normalizeKorean(inputValue) === normalizeKorean(targetValue);
+            }
+
+            const normalizedInput = normalizeChinese(inputValue);
+            const normalizedTarget = normalizeChinese(targetValue);
+            if (!normalizedInput) {
+                return false;
+            }
+            return normalizedInput === normalizedTarget
+                || normalizedTarget.includes(normalizedInput)
+                || normalizedInput.includes(normalizedTarget);
+        }
+
+        function renderAnswerPanel() {
+            if (!state.current || !state.revealed) {
+                answerPanel.dataset.visible = 'false';
+                return;
+            }
+
+            answerZh.textContent = state.current.zh;
+            answerRoman.textContent = state.current.roman;
+            answerKo.textContent = state.current.ko;
+            answerPanel.dataset.visible = 'true';
+        }
+
+        function renderCurrent() {
+            if (!state.current) {
+                promptLabel.textContent = '提示';
+                promptValue.textContent = '题库为空';
+                answerOne.disabled = true;
+                answerTwo.disabled = true;
+                revealButton.disabled = true;
+                nextButton.disabled = true;
+                answerPanel.dataset.visible = 'false';
+                return;
+            }
+
+            const clueField = FIELDS.find((item) => item.key === state.clueKey);
+            const firstField = FIELDS.find((item) => item.key === state.answerKeys[0]);
+            const secondField = FIELDS.find((item) => item.key === state.answerKeys[1]);
+
+            promptLabel.textContent = clueField.label;
+            promptValue.textContent = state.current[state.clueKey];
+            setPromptClass(state.clueKey);
+
+            answerOneLabel.textContent = firstField.label;
+            answerTwoLabel.textContent = secondField.label;
+            answerOne.placeholder = firstField.label;
+            answerTwo.placeholder = secondField.label;
+            answerOne.value = '';
+            answerTwo.value = '';
+            answerOne.disabled = false;
+            answerTwo.disabled = false;
+            revealButton.disabled = false;
+            nextButton.disabled = false;
+            setInputClass(answerOne, firstField.key);
+            setInputClass(answerTwo, secondField.key);
+            renderAnswerPanel();
+        }
+
+        function nextQuestion() {
+            if (!state.pool.length) {
+                state.current = null;
+                renderCurrent();
+                setFeedback('题库为空。', 'error');
+                return;
+            }
+
+            if (!state.queue.length) {
+                state.queue = shuffle(state.pool);
+            }
+
+            let next = state.queue.pop();
+            if (state.current && state.pool.length > 1 && next.ko === state.current.ko) {
+                state.queue.unshift(next);
+                next = state.queue.pop();
+            }
+
+            const clueField = FIELDS[Math.floor(Math.random() * FIELDS.length)];
+            state.current = next;
+            state.clueKey = clueField.key;
+            state.answerKeys = FIELDS.filter((item) => item.key !== clueField.key).map((item) => item.key);
+            state.revealed = false;
+            state.solved = false;
+            renderCurrent();
+        }
+
+        function revealAnswer() {
+            if (!state.current) {
+                return;
+            }
+            state.revealed = true;
+            renderAnswerPanel();
+            setFeedback('已显示答案。', 'muted');
+        }
+
+        function checkAnswers() {
+            if (!state.current) {
+                return;
+            }
+
+            const firstValue = answerOne.value.trim();
+            const secondValue = answerTwo.value.trim();
+            if (!firstValue || !secondValue) {
+                setFeedback('请把两个答案都填上。', 'error');
+                return;
+            }
+
+            const firstOk = isMatch(state.answerKeys[0], firstValue, state.current[state.answerKeys[0]]);
+            const secondOk = isMatch(state.answerKeys[1], secondValue, state.current[state.answerKeys[1]]);
+
+            if (!firstOk || !secondOk) {
+                setFeedback('不对。', 'error');
+                return;
+            }
+
+            state.revealed = true;
+            state.solved = true;
+            renderAnswerPanel();
+            setFeedback('答对了。', 'success');
+        }
+
+        poolCount.textContent = `题库 ${state.pool.length}`;
+        nextQuestion();
+        setFeedback('开始练习。', 'muted');
+
+        quizForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            checkAnswers();
+        });
+
+        revealButton.addEventListener('click', revealAnswer);
+        nextButton.addEventListener('click', () => {
+            nextQuestion();
+            setFeedback('下一题。', 'muted');
+        });
+    </script>
+</body>
+
+</html>
